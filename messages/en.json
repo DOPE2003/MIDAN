@@ -1,0 +1,567 @@
+{
+  "meta": {
+    "title": "Midan Alemar Contracting Co. | Saudi Arabia's Premier Construction Partner",
+    "description": "Leading construction and contracting company in Saudi Arabia since 2013 — civil works, infrastructure, steel erection, roads, landscape, and more."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "clients": "Clients",
+    "equipment": "Equipment",
+    "contact": "Contact",
+    "cta": "Request a Quote"
+  },
+  "hero": {
+    "badge": "ISO 9001 · ISO 14001 · ISO 45001 · D-U-N-S Registered",
+    "title": "Building Saudi Arabia's",
+    "titleAccent": "Most Ambitious Projects",
+    "subtitle": "Your strategic construction partner since 2013. Delivering complex civil, infrastructure, steel, and landscape projects for Saudi Arabia's leading organizations.",
+    "ctaProjects": "View Our Projects",
+    "ctaQuote": "Get a Quote",
+    "statProjects": "Projects Completed",
+    "statTeam": "Skilled Workforce",
+    "statYears": "Years of Excellence",
+    "statCert": "Internationally Certified",
+    "statProjectsVal": "80+",
+    "statTeamVal": "338",
+    "statYearsVal": "12+",
+    "statCertVal": "ISO",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "label": "About Us",
+    "title": "Your Strategic Partner in Construction & Development",
+    "body1": "Founded in 2013 with a clear vision: to be the ideal partner for every ambitious construction project in Saudi Arabia. Over more than a decade, we have established our presence through major projects ranging from NEOM to the Jubail Industrial City.",
+    "body2": "We believe every project is a true contribution to the nation. That's why we deploy the best engineering talent and the most advanced equipment to deliver results that exceed expectations in quality, timing, and value.",
+    "cta": "Learn More About Us",
+    "yearsVal": "12+",
+    "yearsLabel": "Years of Excellence",
+    "dunsTitle": "International Rating",
+    "dunsLabel": "D-U-N-S Registered",
+    "dunsNumber": "#67-269-8009",
+    "certBadge": "Certified",
+    "highlights": [
+      "Over 80 successfully completed projects across multiple sectors",
+      "Certified to ISO 9001, ISO 14001, and ISO 45001 standards",
+      "A workforce of 338 engineers, technicians, and specialists",
+      "Modern heavy equipment fleet ensuring efficiency and speed",
+      "Established partnerships with Saudi Arabia's top companies",
+      "D-U-N-S registered with a verified credit rating (#67-269-8009)"
+    ],
+    "homeLabel": "About Midan Alemar",
+    "homeTitle": "Your Strategic Construction Partner Since 2013",
+    "homeCta": "Learn More",
+    "foundedLabel": "Founded",
+    "foundedValue": "2013 · Riyadh, KSA",
+    "workforceLabel": "Workforce",
+    "workforceValue": "338 Specialists",
+    "certsLabel": "Certifications",
+    "certsValue": "3 ISO Standards"
+  },
+  "services": {
+    "label": "Our Services",
+    "title": "Comprehensive Construction Solutions",
+    "body": "Seven specialized disciplines under one roof — engineered to the highest international standards from foundation to final handover.",
+    "cta": "View All Services",
+    "linkText": "Service Details",
+    "items": {
+      "civil": {
+        "title": "Civil Works",
+        "desc": "Full-scope reinforced concrete and structural works — from deep foundations and pile systems to superstructures and architectural finishes for industrial, commercial, and institutional clients.",
+        "features": [
+          "Excavation & Deep Foundations",
+          "Reinforced Concrete Structures",
+          "Structural Construction",
+          "Interior & Exterior Finishes"
+        ]
+      },
+      "infrastructure": {
+        "title": "Infrastructure Works",
+        "desc": "End-to-end infrastructure development including internal road networks, utility corridors, drainage systems, potable water networks, and electrical distribution for large-scale industrial and residential projects.",
+        "features": [
+          "Road & Sidewalk Networks",
+          "Sewage & Drainage Systems",
+          "Water Networks & Pipelines",
+          "Power & Communications Lines"
+        ]
+      },
+      "finishing": {
+        "title": "Finishing Works",
+        "desc": "Premium interior and exterior finishing services to the highest specification — flooring systems, wall cladding, ceiling systems, joinery, MEP finishing, and handover-ready fit-out for world-class developments.",
+        "features": [
+          "Premium Flooring Systems",
+          "Wall Cladding & Plastering",
+          "Ceiling Systems & Partitions",
+          "MEP & Joinery Finishes"
+        ]
+      },
+      "steel": {
+        "title": "Steel Erection Works",
+        "desc": "Fabrication and erection of heavy structural steel systems for industrial facilities, warehouses, petrochemical plants, and special structures — executed with precision lifting equipment and certified welding teams.",
+        "features": [
+          "Heavy Industrial Steel Structures",
+          "Warehouses & Logistics Facilities",
+          "Bridges & Special Structures",
+          "Prefabricated Unit Installation"
+        ]
+      },
+      "roads": {
+        "title": "Roads & Asphalt Works",
+        "desc": "Full-cycle road construction and asphalt paving — from sub-base preparation and kerbing to multilayer asphalt laying, line marking, and road furniture installation for industrial zones and urban networks.",
+        "features": [
+          "Subgrade & Sub-base Preparation",
+          "Multilayer Asphalt Paving",
+          "Kerbs, Drains & Road Furniture",
+          "Line Marking & Signage"
+        ]
+      },
+      "mosque": {
+        "title": "Mosque & Kitchen Works",
+        "desc": "Specialized construction and fit-out of mosques and institutional kitchen facilities — from structural shell to full MEP, acoustic treatment, decorative Islamic finishes, and commercial kitchen equipment installation.",
+        "features": [
+          "Mosque Shell & Core Works",
+          "Decorative Islamic Finishes",
+          "Acoustic & Lighting Systems",
+          "Commercial Kitchen Fit-Out"
+        ]
+      },
+      "landscape": {
+        "title": "Landscape Works",
+        "desc": "Creation of premium outdoor environments — soft landscaping with native and ornamental planting, hardscape elements, water features, decorative paving, pergolas, and automated irrigation for residential compounds, hotels, and public realm.",
+        "features": [
+          "Soft Landscaping & Planting",
+          "Hardscape, Paving & Pergolas",
+          "Pools, Fountains & Water Features",
+          "Automated Irrigation Systems"
+        ]
+      }
+    },
+    "gridLabel": "Our Disciplines",
+    "gridTitle": "Seven Construction Specialisms",
+    "gridBody": "From structural civil works to premium landscape design — a complete construction capability under a single roof.",
+    "viewProjects": "View Projects",
+    "viewAll": "View All Projects",
+    "getQuote": "Get a Quote",
+    "ctaTitle": "Ready to Start Your Project?",
+    "ctaBody": "Our engineering team is available to discuss your requirements and provide a detailed proposal."
+  },
+  "projects": {
+    "label": "Featured Projects",
+    "title": "Projects That Define Excellence",
+    "allLink": "All Projects",
+    "valueLabel": "Contract Value",
+    "currency": "SAR",
+    "filterAll": "All Projects",
+    "items": {
+      "neom": {
+        "title": "NEOM NRC26 Project",
+        "client": "NEOM Company",
+        "location": "NEOM, Saudi Arabia",
+        "duration": "18 Months",
+        "category": "Finishing Works",
+        "categorySlug": "finishing",
+        "desc": "Premium interior and exterior finishing works within the NEOM global development — one of the most technically demanding finishing projects in the Kingdom, delivering world-class specifications across residential and hospitality units.",
+        "scope": [
+          "Premium flooring and wall cladding systems",
+          "High-specification ceiling and joinery works",
+          "MEP coordination and finishing integration",
+          "Quality assurance to NEOM's exacting standards"
+        ],
+        "role": "Finishing Sub-Contractor"
+      },
+      "ksu": {
+        "title": "KSU Learning & Training Center",
+        "client": "King Saud University",
+        "location": "Riyadh",
+        "duration": "24 Months",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "desc": "Complete civil works and structural construction of the Learning & Training Center at King Saud University — a landmark facility combining advanced structural engineering with contemporary architecture.",
+        "scope": [
+          "Deep foundation and pile system",
+          "Multi-storey reinforced concrete structure",
+          "Architectural concrete and blockwork",
+          "External works and site finishes"
+        ],
+        "role": "Main Contractor"
+      },
+      "aramco": {
+        "title": "Saudi Aramco — Ajyad Project",
+        "client": "Saudi Aramco",
+        "location": "Riyadh",
+        "duration": "20 Months",
+        "category": "Infrastructure Works",
+        "categorySlug": "infrastructure",
+        "desc": "Comprehensive infrastructure package for a major industrial site — covering internal road networks, utility trenching, drainage, and all external civil works to Aramco's world-class quality standards.",
+        "scope": [
+          "Internal road and parking networks",
+          "Utility corridors and manhole systems",
+          "Stormwater and sewage drainage",
+          "Landscaping and external works"
+        ],
+        "role": "Main Contractor"
+      },
+      "sipchem": {
+        "title": "SIPCHEM — EVA Production Unit",
+        "client": "Sipchem Co.",
+        "location": "Jubail Industrial City",
+        "duration": "22 Months",
+        "category": "Steel Erection Works",
+        "categorySlug": "steel",
+        "desc": "Erection of a complete heavy-steel industrial production facility for Sipchem's EVA unit in Jubail — including main structural steelwork, equipment platforms, pipe racks, and safety-critical secondary steel.",
+        "scope": [
+          "Heavy structural steel erection",
+          "Equipment support platforms",
+          "Pipe racks and process structures",
+          "Secondary steel and grating"
+        ],
+        "role": "Steel Erection Contractor"
+      },
+      "amwaj": {
+        "title": "Amwaj Half Moon Bay Resort",
+        "client": "Amwaj Group",
+        "location": "Al Khobar",
+        "duration": "16 Months",
+        "category": "Landscape Works",
+        "categorySlug": "landscape",
+        "desc": "Full landscape and water-feature package for a five-star resort — including infinity pools, interactive fountains, ornamental planting, hardscape terraces, and automated irrigation across the entire resort grounds.",
+        "scope": [
+          "Infinity and feature pool construction",
+          "Fountain and water-channel systems",
+          "Premium hardscape and terracing",
+          "Soft landscaping with automated irrigation"
+        ],
+        "role": "Landscape Contractor"
+      },
+      "roads-network": {
+        "title": "Industrial Zone Road Network",
+        "client": "Saudi Industrial Development",
+        "location": "Jubail Industrial City",
+        "duration": "12 Months",
+        "category": "Roads & Asphalt Works",
+        "categorySlug": "roads",
+        "desc": "Complete road network construction for a major industrial zone — from earthworks and sub-base preparation to multilayer asphalt paving, kerbing, drainage, line marking, and road signage.",
+        "scope": [
+          "Earthworks and sub-base preparation",
+          "Multilayer asphalt paving",
+          "Kerb, gutter and drainage installation",
+          "Line marking and road signage"
+        ],
+        "role": "Main Contractor"
+      },
+      "mosque-complex": {
+        "title": "Residential Complex Mosque & Kitchen",
+        "client": "Confidential — Major Developer",
+        "location": "Riyadh",
+        "duration": "10 Months",
+        "category": "Mosque & Kitchen Works",
+        "categorySlug": "mosque",
+        "desc": "Specialized construction and fit-out of a grand mosque and central kitchen facility within a large residential compound — from structural works through to decorative Islamic finishes, acoustic systems, and full commercial kitchen installation.",
+        "scope": [
+          "Mosque structural and architectural works",
+          "Decorative Islamic finish and lighting",
+          "Acoustic treatment and A/V systems",
+          "Commercial kitchen design and fit-out"
+        ],
+        "role": "Main Contractor"
+      }
+    }
+  },
+  "stats": {
+    "label": "Our Achievements in Numbers",
+    "title": "Figures That Reflect Our Market Weight",
+    "statLabels": [
+      "Projects Completed",
+      "Skilled Workforce",
+      "Years of Experience",
+      "SAR Business Volume"
+    ]
+  },
+  "why": {
+    "label": "Why Midan Alemar?",
+    "title": "Six Reasons We Are the Right Choice",
+    "body": "We are chosen over dozens of contracting companies in the Kingdom because what we offer goes beyond project execution — we deliver a strategic partnership built on trust, competence, and results.",
+    "items": [
+      {
+        "number": "01",
+        "title": "Internationally Certified Quality",
+        "desc": "We operate under the ISO 9001 quality management system, meaning every construction phase is subject to rigorous oversight and documented standards."
+      },
+      {
+        "number": "02",
+        "title": "Strict On-Time Delivery",
+        "desc": "Our track record speaks for itself: we have never been late on any of our major projects. Precise planning is our foremost pillar."
+      },
+      {
+        "number": "03",
+        "title": "Elite Engineering Talent",
+        "desc": "Our team comprises 338 specialists — engineers and technicians — with experience on Saudi Arabia's and the region's most prestigious projects."
+      },
+      {
+        "number": "04",
+        "title": "Complete Equipment Fleet",
+        "desc": "We own a fleet of more than 150 state-of-the-art heavy units, eliminating dependence on subcontractors and ensuring full schedule control."
+      },
+      {
+        "number": "05",
+        "title": "Full Reporting Transparency",
+        "desc": "We provide our clients with detailed, regularly updated progress reports so you remain fully informed at every stage of your project."
+      },
+      {
+        "number": "06",
+        "title": "Real Value for Your Investment",
+        "desc": "We study every project carefully and propose the most cost-efficient solutions without compromising material quality or execution precision."
+      }
+    ]
+  },
+  "clients": {
+    "label": "Our Clients",
+    "title": "Trusted by Saudi Arabia's Leading Organizations",
+    "body": "We are proud of strong strategic partnerships with some of the most prominent Saudi and international companies operating in the Kingdom.",
+    "footnote": "And many more major Saudi and regional companies — over 40 clients across 12 years",
+    "items": {
+      "neom": {
+        "name": "NEOM",
+        "sector": "National Development Projects"
+      },
+      "arabian": {
+        "name": "Arabian Centres",
+        "sector": "Commercial Development"
+      },
+      "kinan": {
+        "name": "Kinan",
+        "sector": "Real Estate Development"
+      },
+      "alfanar": {
+        "name": "Alfanar",
+        "sector": "Energy & Industry"
+      },
+      "riyadhcables": {
+        "name": "Riyadh Cables",
+        "sector": "Manufacturing Industry"
+      },
+      "sipchem": {
+        "name": "Sipchem",
+        "sector": "Petrochemicals"
+      },
+      "hassan": {
+        "name": "Hassan Allam",
+        "sector": "Major Contracting"
+      },
+      "herfy": {
+        "name": "Herfy",
+        "sector": "Food & Retail"
+      }
+    }
+  },
+  "cta": {
+    "label": "Talk to Our Team",
+    "photoTitle": "Start Your Project With Us Today",
+    "title": "Let Us Turn Your Vision Into Built Reality",
+    "body": "Our engineering team is ready to study your project and present a comprehensive proposal including the timeline, budget estimate, and execution phases.",
+    "ctaButton": "Get a Free Quote",
+    "homeLabel": "Start Your Project",
+    "servicesBtn": "Our Services"
+  },
+  "footer": {
+    "tagline": "A leading Saudi contracting company founded in 2013. We execute construction and infrastructure projects for top organizations to the highest international quality and safety standards.",
+    "navTitle": "Quick Links",
+    "contactTitle": "Contact Us",
+    "address": "Eastern Ring Rd, Al Ezdihar Dist., Riyadh — KSA",
+    "copyright": "All rights reserved."
+  },
+  "pages": {
+    "about": {
+      "header": {
+        "breadcrumb": "About Us",
+        "title": "Who We Are",
+        "subtitle": "A leading Saudi contracting company in construction and infrastructure since 2013"
+      },
+      "introTitle": "Our Vision & Values",
+      "intro": "We believe great construction builds a better future. Every project we execute carries the hallmark of our quality and commitment.",
+      "values": [
+        {
+          "title": "Quality & Excellence",
+          "desc": "We commit to the highest quality standards across all project execution phases in line with approved international benchmarks."
+        },
+        {
+          "title": "Professional Team",
+          "desc": "We bring together highly experienced engineers and specialists across all areas of construction and development."
+        },
+        {
+          "title": "Environmental Sustainability",
+          "desc": "We uphold environmental standards in all our projects, affirming our responsibility to the environment and community."
+        },
+        {
+          "title": "Partnership & Trust",
+          "desc": "We build long-term client partnerships based on transparency, commitment, and measurable results."
+        }
+      ],
+      "timelineTitle": "A Journey Full of Achievements",
+      "milestones": [
+        {
+          "year": "2013",
+          "event": "Midan Alemar Contracting Co. founded in Riyadh"
+        },
+        {
+          "year": "2015",
+          "event": "Achieved ISO 9001 certification for quality management systems"
+        },
+        {
+          "year": "2017",
+          "event": "Fleet expansion; workforce reaches 150 employees"
+        },
+        {
+          "year": "2019",
+          "event": "Achieved ISO 14001 and ISO 45001 for environment and safety"
+        },
+        {
+          "year": "2021",
+          "event": "First major SIPCHEM and ARAMCO projects executed"
+        },
+        {
+          "year": "2023",
+          "event": "Joined NEOM projects; surpassed 80 completed projects"
+        }
+      ],
+      "manpowerTitle": "Workforce Distribution",
+      "totalManpower": "338",
+      "totalLabel": "Total Employees",
+      "manpowerRoles": [
+        "Engineers & Supervisors",
+        "Skilled Construction Workers",
+        "Equipment & Machinery Operators",
+        "Technical Specialists",
+        "Administration & Support"
+      ],
+      "workWithUs": "Work With Us",
+      "valuesLabel": "Our Values",
+      "decadeTitle": "A Decade of Milestones",
+      "peopleTitle": "Our People",
+      "peopleBody": "We employ {count} specialists across all construction disciplines — committed to delivering excellence on every project."
+    },
+    "services": {
+      "header": {
+        "breadcrumb": "Services",
+        "title": "Our Construction Services",
+        "subtitle": "Seven integrated disciplines delivering every phase of your project to the highest international quality and safety standards"
+      }
+    },
+    "projects": {
+      "header": {
+        "breadcrumb": "Projects",
+        "title": "Our Project Portfolio",
+        "subtitle": "Over 80 successfully completed projects across seven construction disciplines"
+      },
+      "categories": {
+        "civil": "Civil Works",
+        "infrastructure": "Infrastructure",
+        "finishing": "Finishing Works",
+        "steel": "Steel Erection",
+        "roads": "Roads & Asphalt",
+        "mosque": "Mosque & Kitchen",
+        "landscape": "Landscape Works"
+      },
+      "viewGallery": "View Gallery",
+      "sarM": "SAR {value}M",
+      "close": "Close",
+      "prev": "Previous",
+      "next": "Next",
+      "contractValue": "Contract Value",
+      "duration": "Duration",
+      "location": "Location",
+      "scope": "Scope of Work"
+    },
+    "equipment": {
+      "header": {
+        "breadcrumb": "Equipment",
+        "title": "Our Equipment Fleet",
+        "subtitle": "A large fleet of the latest heavy equipment guaranteeing efficiency and quality across all our projects"
+      },
+      "unitsLabel": "Units",
+      "itemsLabel": "Types",
+      "totalLabel": "Total units in this category",
+      "categories": [
+        "Excavation & Grading Equipment",
+        "Lifting & Transport Equipment",
+        "Concrete Equipment",
+        "Road Equipment",
+        "Generators & Pumps"
+      ],
+      "itemNames": [
+        "Large Hydraulic Excavator",
+        "Medium Hydraulic Excavator",
+        "Bulldozer",
+        "Motor Grader",
+        "Wheel Loader",
+        "Tower Crane",
+        "Mobile Crane",
+        "Large Dump Truck",
+        "Mixer Truck",
+        "Heavy Equipment Transporter",
+        "Boom Concrete Pump",
+        "Trailer Concrete Pump",
+        "Concrete Vibrator",
+        "Mobile Concrete Form",
+        "Vibratory Roller",
+        "Asphalt Paver",
+        "Road Compactor",
+        "Large Generator",
+        "Water Pump",
+        "Air Compressor"
+      ],
+      "statsTotal": "Total Units",
+      "statsCategories": "Equipment Categories",
+      "statsBrands": "Premium Brands"
+    },
+    "contact": {
+      "header": {
+        "breadcrumb": "Contact",
+        "title": "We Are Here to Serve You",
+        "subtitle": "Contact our specialized engineering team to get a quote or have your questions answered"
+      },
+      "infoTitle": "Contact Information",
+      "formTitle": "Send Us a Message",
+      "nameLabel": "Full Name",
+      "companyLabel": "Company Name",
+      "emailLabel": "Email Address",
+      "phoneLabel": "Phone Number",
+      "subjectLabel": "Subject",
+      "messageLabel": "Your Request Details",
+      "submitLabel": "Send Request",
+      "successMsg": "Your message has been sent successfully. We will contact you within 24 hours.",
+      "addressTitle": "Company Address",
+      "phoneTitle": "Phone",
+      "emailTitle": "Email",
+      "workingHours": "Working Hours",
+      "hours": "Sun – Thu: 8:00 AM – 5:00 PM",
+      "whatsappCta": "Chat on WhatsApp",
+      "mapsCta": "View on Google Maps",
+      "phoneMobile": "Mobile",
+      "phoneLandline": "Landline"
+    },
+    "projectDetail": {
+      "backToProjects": "Back to Projects",
+      "overview": "Project Overview",
+      "gallery": "Photo Gallery",
+      "scopeTitle": "Scope of Work",
+      "related": "Related Projects",
+      "viewProject": "View Project",
+      "contractorRole": "Contractor Role",
+      "client": "Client",
+      "location": "Location",
+      "duration": "Duration",
+      "contractValue": "Contract Value",
+      "navOverview": "Overview",
+      "navGallery": "Gallery",
+      "navScope": "Scope",
+      "requestQuote": "Request a Quote",
+      "photos": "photos",
+      "openGallery": "View",
+      "allPhotos": "All Photos",
+      "onThisPage": "On This Page"
+    }
+  }
+}

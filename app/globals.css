@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #002060;
+  --secondary: #7030A0;
+  --accent: #00B09B;
+  --dark: #080e20;
+}
+
+* { box-sizing: border-box; padding: 0; margin: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #ffffff;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.font-cairo    { font-family: var(--font-cairo), 'Cairo', sans-serif; }
+.font-inter    { font-family: var(--font-inter), 'Inter', system-ui, sans-serif; }
+.font-nastaliq { font-family: var(--font-nastaliq), 'Noto Nastaliq Urdu', serif; font-size: 105%; }
+
+[dir="rtl"] { direction: rtl; }
+[dir="ltr"] { direction: ltr; }
+
+@layer base {
+  h1, h2, h3, h4, h5 { line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
+  p { line-height: 1.8; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-8 py-3.5 rounded-lg font-semibold text-sm tracking-wide
+           transition-all duration-200 hover:bg-[#001848] hover:shadow-xl hover:-translate-y-0.5
+           inline-flex items-center gap-2.5;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white px-8 py-3.5 rounded-lg font-semibold text-sm tracking-wide
+           transition-all duration-200 hover:bg-[#009b88] hover:shadow-xl hover:-translate-y-0.5
+           inline-flex items-center gap-2.5;
+  }
+
+  .btn-outline-white {
+    @apply border border-white/40 text-white px-8 py-3.5 rounded-lg font-semibold text-sm
+           transition-all duration-200 hover:bg-white hover:text-primary
+           inline-flex items-center gap-2.5;
+  }
+
+  .btn-ghost-white {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-3.5 rounded-lg font-semibold text-sm
+           transition-all duration-200 hover:bg-white/20
+           inline-flex items-center gap-2.5;
+  }
+
+  .section-label {
+    @apply text-accent text-[11px] font-bold tracking-[0.18em] uppercase mb-3 block;
+  }
+
+  .section-title {
+    @apply text-[2rem] md:text-[2.75rem] font-extrabold text-primary leading-[1.1] mb-4;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title-white {
+    @apply text-[2rem] md:text-[2.75rem] font-extrabold text-white leading-[1.1] mb-4;
+    letter-spacing: -0.02em;
+  }
+
+  .section-body    { @apply text-gray-500 text-base leading-relaxed; }
+  .divider-accent  { @apply w-10 h-0.5 bg-accent mt-1 mb-5; }
+
+  .container-custom { @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12; }
+
+  /* Premium card */
+  .card-project {
+    @apply relative overflow-hidden rounded-2xl cursor-pointer;
+    @apply transition-all duration-500 ease-out;
+  }
+  .card-project:hover { transform: translateY(-4px); }
+  .card-project:hover .card-img { transform: scale(1.06); }
+
+  .card-img {
+    @apply w-full h-full object-cover transition-transform duration-700 ease-out;
+  }
+
+  /* Category chip */
+  .chip {
+    @apply inline-flex items-center gap-1.5 bg-accent/10 text-accent text-[10px] font-bold
+           tracking-widest uppercase px-3 py-1 rounded-full;
+  }
+  .chip-white {
+    @apply inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-[10px] font-bold
+           tracking-widest uppercase px-3 py-1.5 rounded-full border border-white/20;
+  }
+
+  /* Stat number */
+  .stat-value { @apply text-[3rem] md:text-[3.5rem] font-extrabold leading-none; letter-spacing: -0.03em; }
+}
+
+@layer utilities {
+  .text-shadow-dark  { text-shadow: 0 2px 24px rgba(0,0,0,0.6); }
+  .img-overlay { background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, transparent 100%); }
+  .img-overlay-mid { background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f3f8; }
+::-webkit-scrollbar-thumb { background: #002060; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00B09B; }
+::selection { background: #002060; color: white; }
+
+/* LTR icon flip */
+[dir="ltr"] .flip-icon { transform: scaleX(-1); }
+
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(12px);
+}
