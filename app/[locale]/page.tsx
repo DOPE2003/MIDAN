@@ -13,7 +13,7 @@ const anim = (delay = 0) => ({
   transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
-const HERO_BG = '/projects/steel/img1.jpg'
+const HERO_BG = '/hero-banner.jpg'
 
 export default function HomePage() {
   const t   = useTranslations('hero')
@@ -69,24 +69,26 @@ export default function HomePage() {
         {/* Parallax background */}
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={HERO_BG} alt="" className="w-full h-full object-cover object-center scale-105" />
+          <img src={HERO_BG} alt="" className="w-full h-full object-cover object-[center_30%] scale-105" />
         </motion.div>
+        {/* Primary cinematic overlay — lightened so banner is clearly visible */}
         <motion.div
           style={{ opacity: bgOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-[#001030]/80 via-[#001030]/70 to-[#001030]/95"
+          className="absolute inset-0 bg-gradient-to-b from-[#001030]/50 via-[#001030]/40 to-[#001030]/90"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#001030]/40 via-transparent to-[#001030]/20" />
+        {/* Top darkening to protect readability under navbar */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/60 to-transparent" />
 
         {/* Top spacer — minimum height ensures content clears the fixed navbar */}
         <div className="flex-1" style={{ minHeight: 'clamp(88px, 14vh, 160px)' }} />
 
         {/* Hero content */}
-        <div className="relative z-10 text-center text-white px-6 max-w-5xl w-full mx-auto pb-12">
+        <div className="relative z-10 text-center text-white px-5 sm:px-6 max-w-5xl w-full mx-auto pb-10 sm:pb-12">
 
           {/* Badge */}
           <motion.div
             {...anim(0.05)}
-            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/70 text-[10px] font-bold px-5 py-2 rounded-full tracking-[0.2em] uppercase mb-10"
+            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/70 text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full tracking-[0.15em] sm:tracking-[0.2em] uppercase mb-8 sm:mb-10"
           >
             <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
             {t('badge')}
@@ -95,19 +97,19 @@ export default function HomePage() {
           {/* Headline */}
           <motion.h1
             {...anim(0.12)}
-            className="text-[clamp(2.8rem,8vw,5.5rem)] font-extrabold leading-[1.04] mb-5"
+            className="text-[clamp(1.8rem,5vw,4.5rem)] font-extrabold leading-[1.15] mb-4 sm:mb-5"
           >
             {t('title')}
             <span className="block text-accent mt-1">{t('titleAccent')}</span>
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p {...anim(0.22)} className="text-white/55 text-base md:text-lg max-w-xl mx-auto mb-12 leading-relaxed">
+          <motion.p {...anim(0.22)} className="text-white/55 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-10 sm:mb-12 leading-relaxed px-2 sm:px-0">
             {t('subtitle')}
           </motion.p>
 
           {/* CTAs */}
-          <motion.div {...anim(0.3)} className="flex flex-col sm:flex-row gap-3 justify-center mb-16">
+          <motion.div {...anim(0.3)} className="flex flex-col sm:flex-row gap-3 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
             <Link href={`/${locale}/projects`} className="btn-accent text-sm justify-center">
               {t('ctaProjects')} <Arrow className="w-4 h-4" />
             </Link>
@@ -122,11 +124,11 @@ export default function HomePage() {
             className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden max-w-2xl mx-auto border border-white/10"
           >
             {stats.map((s) => (
-              <div key={s.label} className="bg-white/5 hover:bg-white/10 transition-colors duration-300 py-5 px-4 text-center group">
-                <div className="text-2xl md:text-3xl font-extrabold text-accent mb-1 group-hover:scale-105 transition-transform duration-200">
+              <div key={s.label} className="bg-white/5 hover:bg-white/10 transition-colors duration-300 py-4 sm:py-5 px-3 sm:px-4 text-center group">
+                <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-accent mb-1 group-hover:scale-105 transition-transform duration-200">
                   {s.val}
                 </div>
-                <div className="text-white/45 text-[10px] tracking-wide leading-snug font-medium">{s.label}</div>
+                <div className="text-white/45 text-[9px] sm:text-[10px] tracking-wide leading-snug font-medium">{s.label}</div>
               </div>
             ))}
           </motion.div>
@@ -160,14 +162,14 @@ export default function HomePage() {
       </section>
 
       {/* ── CATEGORIES GRID ───────────────────────────── */}
-      <section className="py-20 md:py-28 bg-[#f8f9fc]">
+      <section className="py-14 sm:py-20 md:py-28 bg-[#f8f9fc]">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-12 md:mb-16"
+            className="mb-8 sm:mb-12 md:mb-16"
           >
             <span className="section-label">{ts('gridLabel')}</span>
             <h2 className="section-title">{ts('gridTitle')}</h2>
@@ -185,7 +187,8 @@ export default function HomePage() {
                 className={`card-project group ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
               >
                 <Link href={`/${locale}/projects`}>
-                  <div className={`relative overflow-hidden rounded-2xl ${i === 0 ? 'aspect-square md:aspect-auto md:h-full min-h-[200px] md:min-h-[400px]' : 'aspect-[4/3]'}`}>
+                  {/* Mobile: uniform aspect-[4/3] for all cards. Desktop: first card auto-height to fill row-span-2 */}
+                  <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i === 0 ? 'md:aspect-auto md:h-full md:min-h-[400px]' : ''}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={cat.coverImage}
@@ -195,14 +198,14 @@ export default function HomePage() {
                     <div className="absolute inset-0 img-overlay" />
                     <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div className="absolute bottom-0 inset-x-0 p-4 md:p-5">
-                      <div className="chip-white mb-2 w-fit">
+                    <div className="absolute bottom-0 inset-x-0 p-3 md:p-5">
+                      <div className="chip-white mb-1.5 w-fit text-[9px] md:text-[10px]">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <h3 className={`font-extrabold text-white leading-tight text-shadow-dark ${i === 0 ? 'text-xl md:text-2xl' : 'text-sm md:text-base'}`}>
+                      <h3 className={`font-extrabold text-white leading-tight text-shadow-dark ${i === 0 ? 'text-sm md:text-xl lg:text-2xl' : 'text-xs md:text-sm lg:text-base'}`}>
                         {categoryLabels[cat.id] ?? cat.id}
                       </h3>
-                      <div className="flex items-center gap-1 mt-2 text-accent text-[11px] font-bold tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                      <div className="flex items-center gap-1 mt-1.5 text-accent text-[10px] font-bold tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
                         {ts('viewProjects')} <Arrow className="w-3 h-3" />
                       </div>
                     </div>
@@ -227,10 +230,10 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS BAND ────────────────────────────────── */}
-      <section className="py-20 bg-primary overflow-hidden relative">
+      <section className="py-14 sm:py-20 bg-primary overflow-hidden relative">
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 25% 50%, #7030A0 0%, transparent 60%), radial-gradient(circle at 75% 50%, #00B09B 0%, transparent 60%)' }} />
         <div className="container-custom relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
             {statsValues.map((s, i) => (
               <motion.div
                 key={i}
@@ -243,7 +246,7 @@ export default function HomePage() {
                 <div className="stat-value text-accent mb-2">
                   {s.value}{s.suffix}
                 </div>
-                <div className="text-white/45 text-xs font-semibold tracking-[0.12em] uppercase">
+                <div className="text-white/45 text-[10px] sm:text-xs font-semibold tracking-[0.06em] sm:tracking-[0.12em] uppercase leading-snug">
                   {statLabels[i]}
                 </div>
               </motion.div>
@@ -253,9 +256,9 @@ export default function HomePage() {
       </section>
 
       {/* ── ABOUT STRIP ───────────────────────────────── */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 sm:py-20 md:py-28">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -281,31 +284,31 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="relative"
+              className="relative pb-6 sm:pb-8"
             >
-              <div className="grid grid-cols-2 gap-3">
-                <div className="aspect-square rounded-2xl overflow-hidden">
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
+                <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/projects/civil/img1.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
-                <div className="aspect-square rounded-2xl overflow-hidden mt-6">
+                <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden mt-4 sm:mt-6">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/projects/landscape/img2.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
-                <div className="aspect-square rounded-2xl overflow-hidden -mt-6">
+                <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden -mt-4 sm:-mt-6">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/projects/steel/img2.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
-                <div className="aspect-square rounded-2xl overflow-hidden">
+                <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/projects/roads/img1.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
               </div>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -start-4 bg-primary text-white rounded-2xl px-5 py-4 shadow-2xl">
-                <div className="text-accent text-3xl font-extrabold leading-none">{ta('yearsVal')}</div>
-                <div className="text-white/60 text-xs font-semibold mt-1">{ta('yearsLabel')}</div>
+              {/* Floating badge — use start-2 on mobile to prevent clipping */}
+              <div className="absolute -bottom-2 start-2 sm:-bottom-4 sm:-start-4 bg-primary text-white rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 shadow-2xl">
+                <div className="text-accent text-2xl sm:text-3xl font-extrabold leading-none">{ta('yearsVal')}</div>
+                <div className="text-white/60 text-[11px] sm:text-xs font-semibold mt-1">{ta('yearsLabel')}</div>
               </div>
             </motion.div>
           </div>
@@ -313,7 +316,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA BAND ──────────────────────────────────── */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/projects/landscape/img5.jpg"

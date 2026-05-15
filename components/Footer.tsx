@@ -24,16 +24,16 @@ export default function Footer() {
     <footer className="bg-[#010e2e] text-white">
       <div className="h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40" />
 
-      <div className="container-custom py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <div className="container-custom py-12 md:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8">
 
-          {/* Brand */}
-          <div className="lg:col-span-5">
-            <div className="mb-5">
+          {/* Brand — full width on mobile, half on sm, 5/12 on lg */}
+          <div className="sm:col-span-2 lg:col-span-5">
+            <div className="mb-4 sm:mb-5">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-mark.svg" alt="Midan Alemar" className="h-16 w-auto object-contain" />
+              <img src="/logo-mark.svg" alt="Midan Alemar" className="h-14 sm:h-16 w-auto object-contain" />
             </div>
-            <p className="text-white/50 text-sm leading-loose mb-7 max-w-xs">{t('tagline')}</p>
+            <p className="text-white/50 text-sm leading-loose mb-5 sm:mb-7 max-w-sm">{t('tagline')}</p>
             <div className="flex flex-wrap gap-2">
               {certifications.map((cert, i) => (
                 <span key={i} className="border border-white/15 text-white/45 text-[10px] font-semibold px-3 py-1.5 rounded tracking-wide hover:border-accent/40 hover:text-accent/70 transition-colors cursor-default">
@@ -45,11 +45,11 @@ export default function Footer() {
 
           {/* Nav */}
           <div className="lg:col-span-3">
-            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/35 mb-5">{t('navTitle')}</h4>
-            <ul className="space-y-3">
+            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/35 mb-4 sm:mb-5">{t('navTitle')}</h4>
+            <ul className="space-y-2.5 sm:space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-white/50 hover:text-accent text-sm transition-colors duration-200">
+                  <Link href={link.href} className="text-white/50 hover:text-accent text-sm transition-colors duration-200 py-0.5 block">
                     {link.label}
                   </Link>
                 </li>
@@ -59,8 +59,8 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-4">
-            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/35 mb-5">{t('contactTitle')}</h4>
-            <ul className="space-y-4">
+            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/35 mb-4 sm:mb-5">{t('contactTitle')}</h4>
+            <ul className="space-y-3 sm:space-y-4">
               <li>
                 <a
                   href={companyInfo.mapsUrl}
@@ -73,21 +73,23 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors">
+                <a href={`tel:${companyInfo.phoneTel}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors py-0.5">
                   <HiPhone className="w-4 h-4 text-accent shrink-0" />
-                  <span dir="ltr">{companyInfo.phone}</span>
+                  <span className="text-white/30 text-[11px] font-semibold shrink-0">الجوال:</span>
+                  <span dir="ltr" className="font-medium">{companyInfo.phoneDisplay}</span>
                 </a>
               </li>
               <li>
-                <a href={`tel:${companyInfo.phoneLandline}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors">
+                <a href={`tel:${companyInfo.phoneLandlineTel}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors py-0.5">
                   <HiPhone className="w-4 h-4 text-accent/60 shrink-0" />
-                  <span dir="ltr">{companyInfo.phoneLandline}</span>
+                  <span className="text-white/30 text-[11px] font-semibold shrink-0">الأرضي:</span>
+                  <span dir="ltr" className="font-medium">{companyInfo.phoneLandlineDisplay}</span>
                 </a>
               </li>
               <li>
-                <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors">
+                <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors py-0.5">
                   <HiMail className="w-4 h-4 text-accent shrink-0" />
-                  <span dir="ltr">{companyInfo.email}</span>
+                  <span dir="ltr" className="break-all">{companyInfo.email}</span>
                 </a>
               </li>
             </ul>
@@ -96,7 +98,7 @@ export default function Footer() {
               href={companyInfo.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 mt-6 px-4 py-2.5 rounded-xl bg-[#25D366]/12 border border-[#25D366]/22 text-[#25D366] text-[13px] font-semibold hover:bg-[#25D366]/22 hover:border-[#25D366]/40 transition-all duration-200"
+              className="inline-flex items-center gap-2.5 mt-5 sm:mt-6 px-4 py-2.5 rounded-xl bg-[#25D366]/12 border border-[#25D366]/22 text-[#25D366] text-[13px] font-semibold hover:bg-[#25D366]/22 hover:border-[#25D366]/40 transition-all duration-200"
             >
               <FaWhatsapp className="w-4 h-4" />
               WhatsApp
@@ -106,9 +108,9 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/8">
-        <div className="container-custom py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/28">
+        <div className="container-custom py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-xs text-white/28 text-center sm:text-start">
           <p>© {new Date().getFullYear()} ميدان الإعمار للمقاولات. {t('copyright')}</p>
-          <p>D-U-N-S: #{companyInfo.duns}</p>
+          <p className="shrink-0" dir="ltr">D-U-N-S: #{companyInfo.duns}</p>
         </div>
       </div>
     </footer>

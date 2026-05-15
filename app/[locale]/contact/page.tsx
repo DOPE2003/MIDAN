@@ -43,15 +43,15 @@ export default function ContactPage() {
     {
       Icon: HiPhone,
       label: t('phoneMobile'),
-      value: companyInfo.phone,
-      href: `tel:${companyInfo.phone}`,
+      value: companyInfo.phoneDisplay,
+      href: `tel:${companyInfo.phoneTel}`,
       ltr: true,
     },
     {
       Icon: HiPhone,
       label: t('phoneLandline'),
-      value: companyInfo.phoneLandline,
-      href: `tel:${companyInfo.phoneLandline}`,
+      value: companyInfo.phoneLandlineDisplay,
+      href: `tel:${companyInfo.phoneLandlineTel}`,
       ltr: true,
     },
     {

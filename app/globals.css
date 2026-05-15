@@ -32,6 +32,23 @@ body {
 @layer base {
   h1, h2, h3, h4, h5 { line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
   p { line-height: 1.8; }
+
+  /* Arabic/RTL typography — Cairo needs 0 letter-spacing to keep characters connected */
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5 {
+    letter-spacing: 0;
+    line-height: 1.45;
+    word-spacing: 0.04em;
+  }
+
+  [dir="rtl"] p {
+    line-height: 2;
+    word-spacing: 0.06em;
+    letter-spacing: 0;
+  }
 }
 
 @layer components {
@@ -64,13 +81,29 @@ body {
   }
 
   .section-title {
-    @apply text-[2rem] md:text-[2.75rem] font-extrabold text-primary leading-[1.1] mb-4;
+    @apply text-[1.7rem] sm:text-[2rem] md:text-[2.75rem] font-extrabold text-primary leading-[1.15] mb-4;
     letter-spacing: -0.02em;
   }
 
   .section-title-white {
-    @apply text-[2rem] md:text-[2.75rem] font-extrabold text-white leading-[1.1] mb-4;
+    @apply text-[1.7rem] sm:text-[2rem] md:text-[2.75rem] font-extrabold text-white leading-[1.15] mb-4;
     letter-spacing: -0.02em;
+  }
+
+  /* RTL overrides for section utilities */
+  [dir="rtl"] .section-title,
+  [dir="rtl"] .section-title-white {
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+
+  [dir="rtl"] .section-label {
+    letter-spacing: 0.06em;
+    word-spacing: 0.05em;
+  }
+
+  [dir="rtl"] .stat-value {
+    letter-spacing: 0;
   }
 
   .section-body    { @apply text-gray-500 text-base leading-relaxed; }
@@ -101,7 +134,7 @@ body {
   }
 
   /* Stat number */
-  .stat-value { @apply text-[3rem] md:text-[3.5rem] font-extrabold leading-none; letter-spacing: -0.03em; }
+  .stat-value { @apply text-[2.5rem] sm:text-[3rem] md:text-[3.5rem] font-extrabold leading-none; letter-spacing: -0.03em; }
 }
 
 @layer utilities {
@@ -131,4 +164,38 @@ body {
   z-index: 9999;
   background: rgba(0,0,0,0.95);
   backdrop-filter: blur(12px);
+}
+
+/* ── Mobile polish ──────────────────────────────────────── */
+
+/* Prevent text overflow on small screens */
+h1, h2, h3, h4, h5, p, span, a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Ensure images never overflow their containers */
+img { max-width: 100%; }
+
+/* Touch-friendly minimum tap targets */
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-accent,
+  .btn-outline-white,
+  .btn-ghost-white {
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  /* Tighten section spacing on mobile */
+  .container-custom { padding-left: 1.1rem; padding-right: 1.1rem; }
+}
+
+/* RTL: ensure numbers inside Arabic content keep LTR direction */
+[dir="rtl"] [dir="ltr"] { direction: ltr; unicode-bidi: embed; }
+
+/* Smooth font rendering for Arabic */
+[dir="rtl"] * {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }

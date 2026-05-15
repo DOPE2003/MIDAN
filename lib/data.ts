@@ -165,12 +165,16 @@ export const companyInfo = {
   nameEn:        'Midan Alemar Contracting Co.',
   founded:       2013,
   duns:          '67-269-8009',
-  phone:         '+966 59 9702 243',
-  phoneLandline: '+966 11 4337 732',
+  phone:         '0559007725',
+  phoneLandline: '0114337732',
+  phoneDisplay:  '055 900 7725',
+  phoneLandlineDisplay: '011 433 7732',
+  phoneTel:      '+966559007725',
+  phoneLandlineTel: '+966114337732',
   email:         'projects@midangrup.com',
   addressEn:     'Eastern Ring Rd, Al Ezdihar Dist., Riyadh — KSA',
   mapsUrl:       'https://maps.google.com/?q=Al+Ezdihar+Dist.,+Eastern+Ring+Road,+Riyadh,+Saudi+Arabia',
-  whatsapp:      'https://wa.me/966599702243',
+  whatsapp:      'https://wa.me/966559007725',
 }
 
 export const certifications = [
