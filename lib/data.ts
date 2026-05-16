@@ -1,5 +1,17 @@
 // Structural data only — all translatable text lives in messages/{locale}.json
 
+// ── Project Role System ──────────────────────────────────────────────────────
+// projectRole drives badge styling; the display text lives in messages/{locale}.json
+// To override a label/description, update the project entry here + matching locale files.
+
+export type ProjectRole =
+  | 'Main Contractor'
+  | 'Subcontractor'
+  | 'Lead Designer'
+  | 'Consultant'
+  | 'Development Partner'
+
+// ── Categories ───────────────────────────────────────────────────────────────
 export const categories = [
   {
     id: 'civil',
@@ -74,6 +86,7 @@ export const projects = [
   {
     id: 'neom',
     categoryId: 'finishing' as CategoryId,
+    projectRole: 'Subcontractor' as ProjectRole,
     value: 41_000_000,
     year: 2023,
     featured: true,
@@ -83,6 +96,7 @@ export const projects = [
   {
     id: 'ksu',
     categoryId: 'civil' as CategoryId,
+    projectRole: 'Main Contractor' as ProjectRole,
     value: 40_000_000,
     year: 2022,
     featured: true,
@@ -92,6 +106,7 @@ export const projects = [
   {
     id: 'aramco',
     categoryId: 'infrastructure' as CategoryId,
+    projectRole: 'Main Contractor' as ProjectRole,
     value: 40_000_000,
     year: 2022,
     featured: true,
@@ -101,6 +116,7 @@ export const projects = [
   {
     id: 'sipchem',
     categoryId: 'steel' as CategoryId,
+    projectRole: 'Main Contractor' as ProjectRole,
     value: 34_000_000,
     year: 2021,
     featured: true,
@@ -110,6 +126,7 @@ export const projects = [
   {
     id: 'amwaj',
     categoryId: 'landscape' as CategoryId,
+    projectRole: 'Main Contractor' as ProjectRole,
     value: 30_000_000,
     year: 2021,
     featured: true,
@@ -128,6 +145,7 @@ export const projects = [
   {
     id: 'roads-network',
     categoryId: 'roads' as CategoryId,
+    projectRole: 'Main Contractor' as ProjectRole,
     value: 25_000_000,
     year: 2022,
     featured: false,
@@ -137,6 +155,7 @@ export const projects = [
   {
     id: 'mosque-complex',
     categoryId: 'mosque' as CategoryId,
+    projectRole: 'Main Contractor' as ProjectRole,
     value: 20_000_000,
     year: 2023,
     featured: false,

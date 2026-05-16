@@ -157,13 +157,16 @@ body {
 /* LTR icon flip */
 [dir="ltr"] .flip-icon { transform: scaleX(-1); }
 
-/* Modal backdrop */
+/* Modal backdrop — position:fixed + overscroll:contain prevents page-behind scroll on iOS */
 .modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 9999;
   background: rgba(0,0,0,0.95);
   backdrop-filter: blur(12px);
+  overscroll-behavior: contain;
+  /* iOS Safari: prevent rubber-band scroll from bleeding to the page underneath */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Mobile polish ──────────────────────────────────────── */

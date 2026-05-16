@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { projects } from '@/lib/data'
+import RoleBadge from '@/components/RoleBadge'
 import {
   HiArrowLeft, HiArrowRight, HiLocationMarker, HiClock,
   HiTag, HiBriefcase, HiX, HiChevronLeft, HiChevronRight, HiUser,
@@ -17,8 +18,27 @@ type ProjectItemData = {
   duration: string
   category: string
   role: string
+  roleDesc: string
   desc: string
   scope: string[]
+}
+
+// iOS Safari requires position:fixed to reliably lock body scroll.
+// We capture scrollY before locking so we can restore it on unlock.
+function lockBodyScroll(ref: React.MutableRefObject<number>) {
+  ref.current = window.scrollY
+  document.body.style.cssText +=
+    `;position:fixed;top:-${ref.current}px;left:0;right:0;overflow:hidden;`
+}
+function unlockBodyScroll(ref: React.MutableRefObject<number>) {
+  const y = ref.current
+  document.body.style.cssText = document.body.style.cssText
+    .replace(/position:[^;]+;/g, '')
+    .replace(/top:[^;]+;/g, '')
+    .replace(/left:[^;]+;/g, '')
+    .replace(/right:[^;]+;/g, '')
+    .replace(/overflow:[^;]+;/g, '')
+  window.scrollTo(0, y)
 }
 
 export default function ProjectDetail({ projectId }: { projectId: string }) {
@@ -36,30 +56,30 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
   const [lightboxIndex, setLightboxIndex] = useState(0)
   const [activeSection, setActiveSection] = useState('overview')
 
-  const heroRef    = useRef<HTMLDivElement>(null)
+  const heroRef     = useRef<HTMLDivElement>(null)
   const overviewRef = useRef<HTMLElement>(null)
   const galleryRef  = useRef<HTMLElement>(null)
   const scopeRef    = useRef<HTMLElement>(null)
+  const scrollYRef  = useRef(0)
 
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
 
   if (!project) return null
 
-  // Related: same category, filled up with featured others
-  const sameCategory  = projects.filter(p => p.id !== projectId && p.categoryId === project.categoryId)
-  const featuredOther = projects.filter(p => p.id !== projectId && p.featured && p.categoryId !== project.categoryId)
+  const sameCategory   = projects.filter(p => p.id !== projectId && p.categoryId === project.categoryId)
+  const featuredOther  = projects.filter(p => p.id !== projectId && p.featured && p.categoryId !== project.categoryId)
   const relatedProjects = [...sameCategory, ...featuredOther].slice(0, 3)
 
   const openLightbox = (idx: number) => {
     setLightboxIndex(idx)
     setLightboxOpen(true)
-    document.body.style.overflow = 'hidden'
+    lockBodyScroll(scrollYRef)
   }
 
   const closeLightbox = useCallback(() => {
     setLightboxOpen(false)
-    document.body.style.overflow = ''
+    unlockBodyScroll(scrollYRef)
   }, [])
 
   const prevImg = useCallback(() => {
@@ -73,13 +93,16 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!lightboxOpen) return
-      if (e.key === 'Escape') closeLightbox()
-      if (e.key === 'ArrowLeft')  isRTL ? nextImg() : prevImg()
-      if (e.key === 'ArrowRight') isRTL ? prevImg() : nextImg()
+      if (e.key === 'Escape')      closeLightbox()
+      if (e.key === 'ArrowLeft')   isRTL ? nextImg() : prevImg()
+      if (e.key === 'ArrowRight')  isRTL ? prevImg() : nextImg()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [lightboxOpen, closeLightbox, prevImg, nextImg, isRTL])
+
+  // Ensure body scroll is restored if component unmounts while lightbox is open
+  useEffect(() => () => { unlockBodyScroll(scrollYRef) }, [])
 
   // Intersection observer — highlights active sidebar nav item
   useEffect(() => {
@@ -102,8 +125,8 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
-  const sarValue   = `SAR ${(project.value / 1_000_000).toFixed(0)}M`
-  const BackArrow  = isRTL ? HiArrowRight : HiArrowLeft
+  const sarValue  = `SAR ${(project.value / 1_000_000).toFixed(0)}M`
+  const BackArrow = isRTL ? HiArrowRight : HiArrowLeft
 
   const homeLabel     = locale === 'ar' ? 'الرئيسية' : locale === 'ur' ? 'ہوم' : 'Home'
   const projLabel     = locale === 'ar' ? 'المشاريع' : locale === 'ur' ? 'منصوبے' : 'Projects'
@@ -112,11 +135,10 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
   const featuredLabel = locale === 'ar' ? 'مشروع مميز' : locale === 'ur' ? 'نمایاں' : 'Featured'
 
   const sidebarFacts = [
-    { Icon: HiUser,           label: tp('client'),         value: data.client },
-    { Icon: HiLocationMarker, label: tp('location'),        value: data.location },
-    { Icon: HiClock,          label: tp('duration'),        value: data.duration },
-    { Icon: HiTag,            label: tp('category'),        value: data.category },
-    { Icon: HiBriefcase,      label: tp('contractorRole'),  value: data.role },
+    { Icon: HiUser,           label: tp('client'),        value: data.client    },
+    { Icon: HiLocationMarker, label: tp('location'),       value: data.location  },
+    { Icon: HiClock,          label: tp('duration'),       value: data.duration  },
+    { Icon: HiTag,            label: tp('category'),       value: data.category  },
   ]
 
   const navSections = [
@@ -164,11 +186,18 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            {/* Badges */}
+            {/* Badges row */}
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-accent/20 border border-accent/40 text-accent">
                 {data.category}
               </span>
+              {/* Role badge — most important credential */}
+              <RoleBadge
+                role={project.projectRole}
+                label={data.role}
+                variant="dark"
+                size="sm"
+              />
               <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-white/55">
                 {project.year}
               </span>
@@ -181,19 +210,24 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
 
             {/* Title */}
             <h1
-              className="text-white font-extrabold leading-[1.04] mb-7 max-w-3xl"
+              className="text-white font-extrabold leading-[1.04] mb-4 max-w-3xl"
               style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)', letterSpacing: '-0.025em' }}
             >
               {data.title}
             </h1>
 
+            {/* Role description — one-line credential under title */}
+            <p className="text-white/40 text-sm mb-7 max-w-xl font-medium leading-snug">
+              {data.roleDesc}
+            </p>
+
             {/* Stats strip */}
             <div className="flex flex-wrap items-end gap-6 md:gap-10">
               {[
-                { label: tp('client'),        value: data.client,    accent: false },
-                { label: tp('contractValue'), value: sarValue,       accent: true  },
-                { label: tp('duration'),      value: data.duration,  accent: false },
-                { label: tp('location'),      value: data.location,  accent: false },
+                { label: tp('client'),        value: data.client,   accent: false },
+                { label: tp('contractValue'), value: sarValue,      accent: true  },
+                { label: tp('duration'),      value: data.duration, accent: false },
+                { label: tp('location'),      value: data.location, accent: false },
               ].map(({ label, value, accent }, i) => (
                 <div key={i} className="flex items-start gap-3">
                   {i > 0 && <div className="w-px h-10 bg-white/12 self-stretch hidden sm:block" />}
@@ -226,14 +260,17 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
 
       {/* ── MOBILE QUICK FACTS ──────────────────────────── */}
       <div className="lg:hidden bg-[#040a18] border-b border-white/5">
-        <div className="overflow-x-auto no-scrollbar">
+        <div
+          className="overflow-x-auto no-scrollbar"
+          style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+        >
           <div className="flex divide-x divide-white/8 w-max">
             {[
-              { label: tp('contractValue'), value: sarValue,     accent: true  },
-              { label: tp('client'),        value: data.client                 },
-              { label: tp('duration'),      value: data.duration               },
-              { label: tp('location'),      value: data.location               },
-              { label: tp('contractorRole'), value: data.role                  },
+              { label: tp('contractValue'),  value: sarValue,     accent: true  },
+              { label: tp('client'),         value: data.client                 },
+              { label: tp('duration'),       value: data.duration               },
+              { label: tp('location'),       value: data.location               },
+              { label: tp('contractorRole'), value: data.role                   },
             ].map(({ label, value, accent }) => (
               <div key={label} className="px-5 py-4 shrink-0">
                 <div className="text-[9px] font-bold text-white/25 tracking-widest uppercase mb-1">{label}</div>
@@ -245,18 +282,14 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
       </div>
 
       {/* ── CONTENT + SIDEBAR ───────────────────────────── */}
-      <div className="container-custom py-16 md:py-24">
+      <div className="container-custom py-14 md:py-24">
         <div className="lg:grid lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] lg:gap-14 xl:gap-20">
 
           {/* ── Main content ── */}
-          <div className="space-y-24">
+          <div className="space-y-20 md:space-y-24">
 
             {/* OVERVIEW */}
-            <section
-              id="overview"
-              ref={overviewRef}
-              style={{ scrollMarginTop: '7rem' }}
-            >
+            <section id="overview" ref={overviewRef} style={{ scrollMarginTop: '7rem' }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -267,18 +300,28 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                   <span className="w-10 h-0.5 bg-accent rounded-full" />
                   <span className="text-accent text-[10px] font-bold tracking-widest uppercase">{tp('overview')}</span>
                 </div>
-                <p className="text-gray-800 text-lg md:text-xl leading-[1.75] font-medium max-w-2xl">
+                <p className="text-gray-800 text-lg md:text-xl leading-[1.75] font-medium max-w-2xl mb-8">
                   {data.desc}
                 </p>
+
+                {/* Role credential card */}
+                <div className="border border-gray-100 bg-gray-50/70 rounded-2xl p-5 md:p-6 flex flex-col sm:flex-row sm:items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/8 flex items-center justify-center shrink-0">
+                    <HiBriefcase className="w-5 h-5 text-primary/60" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2.5 mb-1.5">
+                      <span className="text-[10px] font-bold text-gray-400 tracking-widest uppercase">{tp('contractorRole')}</span>
+                      <RoleBadge role={project.projectRole} label={data.role} size="xs" />
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">{data.roleDesc}</p>
+                  </div>
+                </div>
               </motion.div>
             </section>
 
             {/* GALLERY */}
-            <section
-              id="gallery"
-              ref={galleryRef}
-              style={{ scrollMarginTop: '7rem' }}
-            >
+            <section id="gallery" ref={galleryRef} style={{ scrollMarginTop: '7rem' }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -350,11 +393,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             </section>
 
             {/* SCOPE OF WORK */}
-            <section
-              id="scope"
-              ref={scopeRef}
-              style={{ scrollMarginTop: '7rem' }}
-            >
+            <section id="scope" ref={scopeRef} style={{ scrollMarginTop: '7rem' }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -412,7 +451,19 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                 </div>
               </div>
 
-              {/* Facts */}
+              {/* Role card */}
+              <div className="bg-gray-50 border border-gray-100 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-gray-400 text-[9px] font-bold tracking-widest uppercase mb-3">
+                  <HiBriefcase className="w-3.5 h-3.5" />
+                  {tp('contractorRole')}
+                </div>
+                <div className="mb-2">
+                  <RoleBadge role={project.projectRole} label={data.role} size="sm" />
+                </div>
+                <p className="text-gray-500 text-[11px] leading-relaxed mt-1.5">{data.roleDesc}</p>
+              </div>
+
+              {/* Other facts */}
               <div className="bg-gray-50 border border-gray-100 rounded-2xl overflow-hidden">
                 {sidebarFacts.map(({ Icon, label, value }, i) => (
                   <div
@@ -501,7 +552,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {relatedProjects.map((rp, i) => {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const rpData = t.raw(`items.${rp.id}` as any) as { title: string; location: string }
+                const rpData = t.raw(`items.${rp.id}` as any) as { title: string; location: string; role: string }
                 const rpCat  = tpCats(`categories.${rp.categoryId}`)
                 return (
                   <motion.div
@@ -520,10 +571,11 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#040a18]/85 via-[#040a18]/15 to-transparent" />
-                        <div className="absolute top-3 start-3">
+                        <div className="absolute top-3 start-3 flex items-center gap-1.5">
                           <span className="bg-black/50 backdrop-blur-sm border border-white/12 text-white/70 text-[10px] font-bold px-2.5 py-1 rounded-full">
                             {rpCat}
                           </span>
+                          <RoleBadge role={rp.projectRole} label={rpData.role} variant="dark" size="xs" />
                         </div>
                         <div className="absolute bottom-4 start-4 end-4 flex items-center justify-between">
                           <span className="text-accent font-extrabold text-[15px]">
@@ -563,6 +615,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
             className="modal-backdrop flex flex-col"
+            style={{ overscrollBehavior: 'contain', touchAction: 'none' }}
             onClick={closeLightbox}
           >
             {/* Header */}
@@ -598,7 +651,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ duration: 0.28 }}
                   className="max-w-full max-h-full rounded-xl object-contain shadow-2xl"
-                  style={{ maxHeight: 'calc(100vh - 200px)' }}
+                  style={{ maxHeight: 'calc(100dvh - 160px)' }}
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   {...({} as any)}
                 />
@@ -628,6 +681,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             {project.images.length > 1 && (
               <div
                 className="flex justify-center gap-2 px-4 pb-5 overflow-x-auto no-scrollbar shrink-0"
+                style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-x' } as React.CSSProperties}
                 onClick={e => e.stopPropagation()}
               >
                 {project.images.map((img, idx) => (

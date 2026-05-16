@@ -1,29 +1,48 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { projects, statsValues } from '@/lib/data'
+import RoleBadge from '@/components/RoleBadge'
 import {
   HiLocationMarker, HiX, HiChevronLeft, HiChevronRight,
   HiCalendar, HiCurrencyDollar, HiClock, HiClipboardList,
-  HiArrowRight,
+  HiArrowRight, HiBriefcase,
 } from 'react-icons/hi'
 
 type Project = typeof projects[number]
 
 const CATEGORY_FILTER_ALL = 'all'
 
+// iOS-safe scroll lock: position:fixed preserves layout; restores scroll on unlock
+function lockScroll(savedY: React.MutableRefObject<number>) {
+  savedY.current = window.scrollY
+  document.body.style.cssText +=
+    `;position:fixed;top:-${savedY.current}px;left:0;right:0;overflow:hidden;`
+}
+function unlockScroll(savedY: React.MutableRefObject<number>) {
+  document.body.style.cssText = document.body.style.cssText
+    .replace(/position:[^;]+;/g, '')
+    .replace(/top:[^;]+;/g, '')
+    .replace(/left:[^;]+;/g, '')
+    .replace(/right:[^;]+;/g, '')
+    .replace(/overflow:[^;]+;/g, '')
+  window.scrollTo(0, savedY.current)
+}
+
 export default function ProjectsPage() {
-  const t  = useTranslations('projects')
-  const tp = useTranslations('pages.projects')
-  const ts = useTranslations('stats')
+  const t   = useTranslations('projects')
+  const tp  = useTranslations('pages.projects')
+  const tpd = useTranslations('pages.projectDetail')
+  const ts  = useTranslations('stats')
   const locale = useLocale()
 
-  const [activeFilter, setActiveFilter] = useState(CATEGORY_FILTER_ALL)
+  const [activeFilter,    setActiveFilter]    = useState(CATEGORY_FILTER_ALL)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [imageIndex, setImageIndex] = useState(0)
+  const [imageIndex,      setImageIndex]      = useState(0)
+  const scrollYRef = useRef(0)
 
   const statLabels = ts.raw('statLabels') as string[]
 
@@ -36,12 +55,12 @@ export default function ProjectsPage() {
   const openModal = (project: Project) => {
     setSelectedProject(project)
     setImageIndex(0)
-    document.body.style.overflow = 'hidden'
+    lockScroll(scrollYRef)
   }
 
   const closeModal = useCallback(() => {
     setSelectedProject(null)
-    document.body.style.overflow = ''
+    unlockScroll(scrollYRef)
   }, [])
 
   const prevImage = useCallback(() => {
@@ -57,13 +76,16 @@ export default function ProjectsPage() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!selectedProject) return
-      if (e.key === 'Escape') closeModal()
-      if (e.key === 'ArrowLeft') prevImage()
-      if (e.key === 'ArrowRight') nextImage()
+      if (e.key === 'Escape')      closeModal()
+      if (e.key === 'ArrowLeft')   prevImage()
+      if (e.key === 'ArrowRight')  nextImage()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [selectedProject, closeModal, prevImage, nextImage])
+
+  // Clean up scroll lock if component unmounts while modal is open
+  useEffect(() => () => { unlockScroll(scrollYRef) }, [])
 
   return (
     <div className="min-h-screen bg-white">
@@ -77,7 +99,10 @@ export default function ProjectsPage() {
             transition={{ duration: 0.55 }}
           >
             <span className="section-label">{tp('header.breadcrumb')}</span>
-            <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-white leading-[1.1] mb-3" style={{ letterSpacing: '-0.02em' }}>
+            <h1
+              className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-white leading-[1.1] mb-3"
+              style={{ letterSpacing: '-0.02em' }}
+            >
               {tp('header.title')}
             </h1>
             <p className="text-white/40 text-sm md:text-base max-w-xl">{tp('header.subtitle')}</p>
@@ -145,9 +170,14 @@ export default function ProjectsPage() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           >
             {filtered.map((project, i) => {
-              const title    = t(`items.${project.id}.title`)
-              const location = t(`items.${project.id}.location`)
-              const duration = t(`items.${project.id}.duration`)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const title    = t(`items.${project.id}.title` as any)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const location = t(`items.${project.id}.location` as any)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const duration = t(`items.${project.id}.duration` as any)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              const role     = t(`items.${project.id}.role` as any)
               const category = tp(`categories.${project.categoryId}`)
 
               return (
@@ -172,8 +202,8 @@ export default function ProjectsPage() {
                     <div className="absolute inset-0 img-overlay" />
 
                     {/* Category chip */}
-                    <div className="absolute top-4 start-4">
-                      <span className="chip-white">{category}</span>
+                    <div className="absolute top-3 start-3">
+                      <span className="chip-white text-[9px]">{category}</span>
                     </div>
 
                     {/* View Gallery overlay */}
@@ -186,9 +216,14 @@ export default function ProjectsPage() {
 
                   {/* Card body */}
                   <div className="p-5">
-                    <h3 className="font-extrabold text-gray-900 text-base leading-snug mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-2">
-                      {title}
-                    </h3>
+                    {/* Title + role badge row */}
+                    <div className="mb-2.5">
+                      <h3 className="font-extrabold text-gray-900 text-base leading-snug mb-2 group-hover:text-primary transition-colors duration-200 line-clamp-2">
+                        {title}
+                      </h3>
+                      <RoleBadge role={project.projectRole} label={role} size="xs" />
+                    </div>
+
                     <div className="flex items-center justify-between text-[12px] text-gray-400">
                       <div className="flex items-center gap-1.5">
                         <HiLocationMarker className="w-3.5 h-3.5 text-accent shrink-0" />
@@ -199,6 +234,7 @@ export default function ProjectsPage() {
                         <span>{project.year}</span>
                       </div>
                     </div>
+
                     <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
                       <div className="text-primary font-extrabold text-base">
                         SAR {(project.value / 1_000_000).toFixed(0)}M
@@ -235,12 +271,21 @@ export default function ProjectsPage() {
       {/* ── GALLERY MODAL ─────────────────────────────── */}
       <AnimatePresence>
         {selectedProject && (() => {
-          const title    = t(`items.${selectedProject.id}.title`)
-          const location = t(`items.${selectedProject.id}.location`)
-          const duration = t(`items.${selectedProject.id}.duration`)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const title    = t(`items.${selectedProject.id}.title`    as any)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const location = t(`items.${selectedProject.id}.location` as any)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const duration = t(`items.${selectedProject.id}.duration` as any)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const role     = t(`items.${selectedProject.id}.role`     as any)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const roleDesc = t(`items.${selectedProject.id}.roleDesc` as any)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const desc     = t(`items.${selectedProject.id}.desc`     as any)
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const scopeRaw = t.raw(`items.${selectedProject.id}.scope` as any) as string[]
           const category = tp(`categories.${selectedProject.categoryId}`)
-          const desc     = t(`items.${selectedProject.id}.desc`)
-          const scopeRaw = t.raw(`items.${selectedProject.id}.scope`) as string[]
 
           return (
             <motion.div
@@ -250,14 +295,15 @@ export default function ProjectsPage() {
               transition={{ duration: 0.25 }}
               className="modal-backdrop flex flex-col"
               onClick={closeModal}
+              style={{ overscrollBehavior: 'contain' }}
             >
               {/* Header bar */}
               <div
-                className="flex items-center justify-between px-5 md:px-8 py-4 border-b border-white/10 shrink-0"
+                className="flex items-center justify-between px-4 md:px-8 py-3.5 border-b border-white/10 shrink-0"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex items-center gap-3 min-w-0">
-                  <span className="chip-white shrink-0">{category}</span>
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="chip-white shrink-0 text-[9px]">{category}</span>
                   <h2 className="text-white font-extrabold text-sm md:text-base truncate">
                     {title}
                   </h2>
@@ -271,13 +317,19 @@ export default function ProjectsPage() {
                 </button>
               </div>
 
-              {/* Main area */}
+              {/*
+                Mobile: outer div scrolls vertically as one unit.
+                Desktop (lg): outer is overflow-hidden; details panel scrolls independently.
+              */}
               <div
-                className="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0"
+                className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden lg:min-h-0"
+                style={{ overflowY: 'auto', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Image viewer */}
-                <div className="relative flex-1 flex items-center justify-center bg-black/40 min-h-[40vh] lg:min-h-0">
+                {/* Image viewer — fixed height on mobile, flex-1 on desktop */}
+                <div className="relative shrink-0 lg:flex-1 lg:shrink flex items-center justify-center bg-black/50"
+                  style={{ minHeight: '52vmin' }}
+                >
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={imageIndex}
@@ -298,14 +350,14 @@ export default function ProjectsPage() {
                     <>
                       <button
                         onClick={prevImage}
-                        className="absolute start-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-all hover:scale-110"
+                        className="absolute start-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/55 hover:bg-black/80 text-white flex items-center justify-center transition-all hover:scale-110"
                         aria-label="Previous image"
                       >
                         <HiChevronLeft className="w-5 h-5" />
                       </button>
                       <button
                         onClick={nextImage}
-                        className="absolute end-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-all hover:scale-110"
+                        className="absolute end-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/55 hover:bg-black/80 text-white flex items-center justify-center transition-all hover:scale-110"
                         aria-label="Next image"
                       >
                         <HiChevronRight className="w-5 h-5" />
@@ -314,14 +366,33 @@ export default function ProjectsPage() {
                   )}
 
                   {/* Counter */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-[11px] font-bold px-4 py-1.5 rounded-full tracking-wide">
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/65 text-white text-[11px] font-bold px-4 py-1.5 rounded-full tracking-wide">
                     {imageIndex + 1} / {selectedProject.images.length}
                   </div>
                 </div>
 
-                {/* Details panel */}
-                <div className="w-full lg:w-80 xl:w-96 bg-[#0a0f1e] border-t lg:border-t-0 lg:border-s border-white/10 overflow-y-auto shrink-0">
-                  <div className="p-6 space-y-6">
+                {/* Details panel — no overflow on mobile (parent scrolls); lg gets its own scroll */}
+                <div className="w-full lg:w-80 xl:w-96 bg-[#0a0f1e] border-t border-white/8 lg:border-t-0 lg:border-s lg:border-white/10 shrink-0 lg:overflow-y-auto"
+                  style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+                >
+                  <div className="p-5 md:p-6 space-y-5">
+
+                    {/* Role badge + description — most prominent fact */}
+                    <div className="bg-white/5 rounded-xl p-4 border border-white/8">
+                      <div className="flex items-center gap-2 text-white/40 text-[10px] font-bold tracking-wider uppercase mb-3">
+                        <HiBriefcase className="w-3.5 h-3.5 shrink-0" />
+                        {tpd('contractorRole')}
+                      </div>
+                      <div className="mb-2">
+                        <RoleBadge
+                          role={selectedProject.projectRole}
+                          label={role}
+                          variant="dark"
+                          size="sm"
+                        />
+                      </div>
+                      <p className="text-white/50 text-[12px] leading-relaxed mt-2">{roleDesc}</p>
+                    </div>
 
                     {/* Key figures */}
                     <div className="grid grid-cols-2 gap-3">
@@ -377,14 +448,16 @@ export default function ProjectsPage() {
                     {/* Thumbnail strip */}
                     {selectedProject.images.length > 1 && (
                       <div>
-                        <div className="text-white/40 text-[10px] font-bold tracking-wider uppercase mb-3">All Photos</div>
+                        <div className="text-white/40 text-[10px] font-bold tracking-wider uppercase mb-3">
+                          {tpd('allPhotos')}
+                        </div>
                         <div className="flex gap-2 flex-wrap">
                           {selectedProject.images.map((img, idx) => (
                             <button
                               key={idx}
                               onClick={() => setImageIndex(idx)}
                               className={`w-14 h-14 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                                idx === imageIndex ? 'border-accent' : 'border-white/10 hover:border-white/30'
+                                idx === imageIndex ? 'border-accent scale-105' : 'border-white/10 hover:border-white/30'
                               }`}
                             >
                               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -394,6 +467,16 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                     )}
+
+                    {/* View full detail link */}
+                    <Link
+                      href={`/${locale}/projects/${selectedProject.id}`}
+                      onClick={closeModal}
+                      className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-[#00988a] text-white font-bold py-3 rounded-xl text-sm transition-all duration-200 hover:shadow-lg"
+                    >
+                      Full Project Details
+                      <HiArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
               </div>

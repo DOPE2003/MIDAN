@@ -169,7 +169,8 @@
           "MEP coordination and finishing integration",
           "Quality assurance to NEOM's exacting standards"
         ],
-        "role": "Finishing Sub-Contractor"
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as subcontractor responsible for all premium interior and exterior finishing works within the NEOM development."
       },
       "ksu": {
         "title": "KSU Learning & Training Center",
@@ -185,7 +186,8 @@
           "Architectural concrete and blockwork",
           "External works and site finishes"
         ],
-        "role": "Main Contractor"
+        "role": "Main Contractor",
+        "roleDesc": "Handled full project execution and delivery as main contractor, from deep foundations to final architectural handover."
       },
       "aramco": {
         "title": "Saudi Aramco — Ajyad Project",
@@ -201,7 +203,8 @@
           "Stormwater and sewage drainage",
           "Landscaping and external works"
         ],
-        "role": "Main Contractor"
+        "role": "Main Contractor",
+        "roleDesc": "Delivered the complete infrastructure package as main contractor to Saudi Aramco's world-class quality standards."
       },
       "sipchem": {
         "title": "SIPCHEM — EVA Production Unit",
@@ -217,7 +220,8 @@
           "Pipe racks and process structures",
           "Secondary steel and grating"
         ],
-        "role": "Steel Erection Contractor"
+        "role": "Main Contractor",
+        "roleDesc": "Took full responsibility for structural steel erection, equipment platforms, pipe racks, and all secondary steelwork."
       },
       "amwaj": {
         "title": "Amwaj Half Moon Bay Resort",
@@ -233,7 +237,8 @@
           "Premium hardscape and terracing",
           "Soft landscaping with automated irrigation"
         ],
-        "role": "Landscape Contractor"
+        "role": "Main Contractor",
+        "roleDesc": "Led the full landscape and water-feature scope as main contractor across the entire five-star resort grounds."
       },
       "roads-network": {
         "title": "Industrial Zone Road Network",
@@ -249,7 +254,8 @@
           "Kerb, gutter and drainage installation",
           "Line marking and road signage"
         ],
-        "role": "Main Contractor"
+        "role": "Main Contractor",
+        "roleDesc": "Executed complete road network delivery from earthworks and sub-base preparation through asphalt paving, drainage, and signage."
       },
       "mosque-complex": {
         "title": "Residential Complex Mosque & Kitchen",
@@ -265,7 +271,8 @@
           "Acoustic treatment and A/V systems",
           "Commercial kitchen design and fit-out"
         ],
-        "role": "Main Contractor"
+        "role": "Main Contractor",
+        "roleDesc": "Handled full mosque and commercial kitchen construction and fit-out as main contractor."
       }
     }
   },
@@ -472,7 +479,8 @@
       "contractValue": "Contract Value",
       "duration": "Duration",
       "location": "Location",
-      "scope": "Scope of Work"
+      "scope": "Scope of Work",
+      "allPhotos": "All Photos"
     },
     "equipment": {
       "header": {
