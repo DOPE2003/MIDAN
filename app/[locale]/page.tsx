@@ -77,9 +77,9 @@ export default function HomePage() {
         </motion.div>
         <motion.div
           style={{ opacity: bgOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-[#001030]/50 via-[#001030]/40 to-[#001030]/90"
+          className="absolute inset-0 bg-gradient-to-b from-[#001030]/60 via-[#001030]/55 to-[#001030]/92"
         />
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/60 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/70 to-transparent" />
 
         <div className="flex-1" style={{ minHeight: 'clamp(88px, 14vh, 160px)' }} />
 
@@ -103,12 +103,7 @@ export default function HomePage() {
 
           <motion.p
             {...anim(0.22)}
-            className="text-white font-black text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0"
-            style={{
-              lineHeight: '1.9',
-              textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,1)',
-              WebkitTextStroke: '0.3px rgba(255,255,255,0.15)',
-            }}
+            className="text-white/90 font-medium text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0 leading-relaxed"
           >
             {t('subtitle')}
           </motion.p>
@@ -131,10 +126,9 @@ export default function HomePage() {
                 <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-accent mb-1 group-hover:scale-105 transition-transform duration-200">
                   {s.val}
                 </div>
-                <div
-                  className="text-white font-black text-[10px] sm:text-[11px] leading-snug"
-                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)', WebkitTextStroke: '0.3px rgba(255,255,255,0.2)' } as never}
-                >{s.label}</div>
+                <div className="text-white/75 font-medium text-[9px] sm:text-[10px] leading-tight mt-0.5">
+                  {s.label}
+                </div>
               </div>
             ))}
           </motion.div>
@@ -307,7 +301,7 @@ export default function HomePage() {
                 <div className="stat-value text-accent mb-2">
                   {s.value}{s.suffix}
                 </div>
-                <div className="text-white font-black text-xs sm:text-sm leading-snug">
+                <div className="text-white/80 font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
                   {statLabels[i]}
                 </div>
               </motion.div>

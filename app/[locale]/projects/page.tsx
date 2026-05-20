@@ -119,7 +119,7 @@ export default function ProjectsPage() {
                 <div className="text-2xl md:text-3xl font-extrabold text-accent leading-none mb-1">
                   {s.value}{s.suffix}
                 </div>
-                <div className="text-white/35 text-[10px] tracking-wide mt-1 font-medium">{statLabels[i]}</div>
+                <div className="text-white/35 text-[9px] sm:text-[10px] leading-tight mt-1 font-medium">{statLabels[i]}</div>
               </div>
             ))}
           </motion.div>
