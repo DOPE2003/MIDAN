@@ -75,11 +75,14 @@ export default function HomePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={HERO_BG} alt="" className="w-full h-full object-cover object-[center_30%] scale-105" />
         </motion.div>
+        {/* Primary overlay — ~25% darker than before */}
         <motion.div
           style={{ opacity: bgOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-[#001030]/60 via-[#001030]/55 to-[#001030]/92"
+          className="absolute inset-0 bg-gradient-to-b from-[#001030]/75 via-[#001030]/70 to-[#001030]/96"
         />
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/70 to-transparent" />
+        {/* Secondary layer: focused vignette behind content */}
+        <div className="absolute inset-0 bg-[#001030]/25" />
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/80 to-transparent" />
 
         <div className="flex-1" style={{ minHeight: 'clamp(88px, 14vh, 160px)' }} />
 
@@ -103,7 +106,7 @@ export default function HomePage() {
 
           <motion.p
             {...anim(0.22)}
-            className="text-white/90 font-medium text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0 leading-relaxed"
+            className="text-white font-medium text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0 leading-relaxed"
           >
             {t('subtitle')}
           </motion.p>
