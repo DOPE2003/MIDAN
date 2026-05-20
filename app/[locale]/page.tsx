@@ -316,7 +316,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 5. CLIENTS ────────────────────────────────────── */}
-      <section className="py-14 sm:py-20 md:py-24 bg-white">
+      <section className="py-14 sm:py-20 md:py-24 bg-[#f8f9fc]">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -330,32 +330,26 @@ export default function HomePage() {
             <p className="section-body max-w-lg mx-auto">{tcl('body')}</p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
-            {clientIds.map((id, i) => {
-              const client = clientItems[id]
-              if (!client) return null
-              return (
-                <motion.div
-                  key={id}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative border border-gray-100 hover:border-accent/30 rounded-xl px-4 py-5 sm:px-5 sm:py-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white hover:bg-primary cursor-default overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative z-10">
-                    <div className="w-8 h-0.5 bg-accent/30 group-hover:bg-accent/60 mx-auto mb-3 transition-colors duration-300 rounded-full" />
-                    <div className="font-bold text-gray-900 group-hover:text-white text-sm sm:text-base leading-snug mb-1.5 transition-colors duration-300">
-                      {client.name}
-                    </div>
-                    <div className="text-gray-400 group-hover:text-white/55 text-[10px] leading-snug uppercase transition-colors duration-300">
-                      {client.sector}
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto">
+            {clientIds.map((id, i) => (
+              <motion.div
+                key={id}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="group bg-white border border-gray-100 hover:border-accent/25 rounded-2xl p-5 sm:p-6 flex items-center justify-center transition-all duration-350 hover:shadow-md hover:-translate-y-0.5 cursor-default overflow-hidden"
+                style={{ minHeight: '90px' }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/logos/${id}.svg`}
+                  alt={id}
+                  className="h-8 sm:h-10 w-auto max-w-full object-contain opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-350"
+                  style={{ color: '#002060' }}
+                />
+              </motion.div>
+            ))}
           </div>
 
           <motion.div
@@ -365,7 +359,7 @@ export default function HomePage() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-8 sm:mt-10 text-center"
           >
-            <span className="inline-flex items-center gap-2 border border-gray-100 text-gray-400 text-xs font-semibold px-5 py-2.5 rounded-full">
+            <span className="inline-flex items-center gap-2 border border-gray-200 text-gray-400 text-xs font-semibold px-5 py-2.5 rounded-full bg-white">
               <span className="w-1.5 h-1.5 bg-accent rounded-full" />
               {tcl('footnote')}
             </span>

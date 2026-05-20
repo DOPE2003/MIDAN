@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 56" fill="none">
+  <rect x="12" y="22" width="4" height="20" fill="currentColor" rx="1"/>
+  <polygon points="16,22 30,22 22,32" fill="currentColor"/>
+  <text x="90" y="38" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="currentColor" text-anchor="middle">KINAN</text>
+</svg>

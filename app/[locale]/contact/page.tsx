@@ -6,7 +6,7 @@ import { companyInfo, certifications } from '@/lib/data'
 import {
   HiLocationMarker, HiPhone, HiMail, HiClock,
   HiCheckCircle, HiShieldCheck, HiArrowRight,
-  HiExternalLink,
+  HiExternalLink, HiDeviceMobile,
 } from 'react-icons/hi'
 import { FaWhatsapp } from 'react-icons/fa'
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
       external: true,
     },
     {
-      Icon: HiPhone,
+      Icon: HiDeviceMobile,
       label: t('phoneMobile'),
       value: companyInfo.phoneDisplay,
       href: `tel:${companyInfo.phoneTel}`,

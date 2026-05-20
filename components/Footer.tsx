@@ -80,7 +80,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href={`tel:${companyInfo.phoneLandlineTel}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors py-0.5">
-                  <HiPhone className="w-4 h-4 text-accent/60 shrink-0" />
+                  <HiPhone className="w-4 h-4 text-accent shrink-0" />
                   <span dir="ltr" className="font-medium">{companyInfo.phoneLandlineDisplay}</span>
                 </a>
               </li>

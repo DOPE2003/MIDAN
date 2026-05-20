@@ -126,6 +126,29 @@ export default function ProjectsPage() {
         </div>
       </div>
 
+      {/* ── GENERAL NOTES ─────────────────────────────── */}
+      <div className="bg-[#06101f] border-b border-white/8">
+        <div className="container-custom py-6 md:py-7">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+            <span className="text-accent text-[10px] font-bold uppercase shrink-0" style={{ letterSpacing: '0.15em' }}>
+              {locale === 'ar' ? 'ملاحظات عامة' : 'General Notes'}
+            </span>
+            <div className="h-px bg-white/10 hidden sm:block flex-1" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-white/50 text-xs leading-relaxed">
+              {(locale === 'ar'
+                ? ['لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.', 'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.']
+                : ['Every project has a distinct scope of work tailored to client requirements.', 'Projects were executed under both main contracting and subcontracting models.']
+              ).map((note, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="text-accent mt-0.5 shrink-0">•</span>
+                  <span>{note}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ── FILTER TABS ───────────────────────────────── */}
       <div className="sticky top-[56px] z-30 bg-white border-b border-gray-100 shadow-sm">
         <div className="container-custom">
