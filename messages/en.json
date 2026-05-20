@@ -901,6 +901,10 @@
       "herfy": {
         "name": "Herfy",
         "sector": "Food & Retail"
+      },
+      "riyadhmunicipality": {
+        "name": "Riyadh Municipality",
+        "sector": "Government"
       }
     }
   },

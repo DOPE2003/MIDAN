@@ -931,6 +931,10 @@
       "herfy": {
         "name": "هرفي",
         "sector": "القطاع الغذائي"
+      },
+      "riyadhmunicipality": {
+        "name": "أمانة الرياض",
+        "sector": "حكومي"
       }
     }
   },

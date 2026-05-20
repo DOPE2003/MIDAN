@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import { HiArrowRight, HiArrowLeft, HiPhone, HiChevronDown } from 'react-icons/hi'
-import { categories, certifications, statsValues, clientIds } from '@/lib/data'
+import { categories, certifications, statsValues, clientIds, clientPngIds } from '@/lib/data'
 
 const anim = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -316,8 +316,9 @@ export default function HomePage() {
       </section>
 
       {/* ── 5. CLIENTS ────────────────────────────────────── */}
-      <section className="py-14 sm:py-20 md:py-24 bg-[#f8f9fc]">
-        <div className="container-custom">
+      <section className="py-14 sm:py-20 md:py-24 bg-[#040c1e] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(ellipse at 30% 50%, #7030A0 0%, transparent 55%), radial-gradient(ellipse at 70% 50%, #00B09B 0%, transparent 55%)' }} />
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -326,30 +327,38 @@ export default function HomePage() {
             className="text-center mb-10 sm:mb-14"
           >
             <span className="section-label mx-auto">{tcl('label')}</span>
-            <h2 className="section-title">{tcl('title')}</h2>
-            <p className="section-body max-w-lg mx-auto">{tcl('body')}</p>
+            <h2 className="section-title-white">{tcl('title')}</h2>
+            <p className="text-white/45 text-base leading-relaxed max-w-lg mx-auto">{tcl('body')}</p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-5 max-w-4xl mx-auto">
-            {clientIds.map((id, i) => (
-              <motion.div
-                key={id}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-white border border-gray-100 hover:border-accent/25 rounded-2xl p-5 sm:p-6 flex items-center justify-center transition-all duration-350 hover:shadow-md hover:-translate-y-0.5 cursor-default overflow-hidden"
-                style={{ minHeight: '90px' }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/logos/${id}.svg`}
-                  alt={id}
-                  className="h-8 sm:h-10 w-auto max-w-full object-contain opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-350"
-                  style={{ color: '#002060' }}
-                />
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto">
+            {clientIds.map((id, i) => {
+              const ext = clientPngIds.has(id) ? 'png' : 'svg'
+              const clientData = clientItems[id]
+              return (
+                <motion.div
+                  key={id}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="group bg-white/4 border border-white/8 hover:bg-white/8 hover:border-accent/25 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-0.5 cursor-default overflow-hidden"
+                  style={{ minHeight: '100px' }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/logos/${id}.${ext}`}
+                    alt={clientData?.name ?? id}
+                    className="h-7 sm:h-9 w-auto max-w-full object-contain brightness-0 invert opacity-40 group-hover:opacity-85 transition-all duration-300"
+                  />
+                  {clientData && (
+                    <span className="text-white/35 group-hover:text-white/60 text-[9px] sm:text-[10px] font-semibold text-center leading-tight transition-colors duration-300 line-clamp-1">
+                      {clientData.name}
+                    </span>
+                  )}
+                </motion.div>
+              )
+            })}
           </div>
 
           <motion.div
@@ -359,7 +368,7 @@ export default function HomePage() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-8 sm:mt-10 text-center"
           >
-            <span className="inline-flex items-center gap-2 border border-gray-200 text-gray-400 text-xs font-semibold px-5 py-2.5 rounded-full bg-white">
+            <span className="inline-flex items-center gap-2 border border-white/12 text-white/35 text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
               <span className="w-1.5 h-1.5 bg-accent rounded-full" />
               {tcl('footnote')}
             </span>

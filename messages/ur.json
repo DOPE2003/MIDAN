@@ -931,6 +931,10 @@
       "herfy": {
         "name": "ہرفی",
         "sector": "فوڈ اینڈ ریٹیل"
+      },
+      "riyadhmunicipality": {
+        "name": "ریاض میونسپلٹی",
+        "sector": "حکومتی"
       }
     }
   },

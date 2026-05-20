@@ -482,7 +482,9 @@ export const projects = [
 
 ] as const
 
-export const clientIds = ['neom', 'arabian', 'kinan', 'alfanar', 'riyadhcables', 'sipchem', 'hassan', 'herfy'] as const
+export const clientIds = ['neom', 'arabian', 'kinan', 'alfanar', 'riyadhcables', 'sipchem', 'hassan', 'herfy', 'riyadhmunicipality'] as const
+
+export const clientPngIds = new Set(['kinan', 'hassan'])
 
 export const statsValues = [
   { value: 80,  suffix: '+' },
