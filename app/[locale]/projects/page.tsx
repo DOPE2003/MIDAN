@@ -100,8 +100,7 @@ export default function ProjectsPage() {
           >
             <span className="section-label">{tp('header.breadcrumb')}</span>
             <h1
-              className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-white leading-[1.1] mb-3"
-              style={{ letterSpacing: '-0.02em' }}
+              className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-white leading-[1.1] mb-3 tracking-[-0.02em]"
             >
               {tp('header.title')}
             </h1>
@@ -237,7 +236,7 @@ export default function ProjectsPage() {
 
                     <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
                       <div className="text-primary font-extrabold text-base">
-                        SAR {(project.value / 1_000_000).toFixed(0)}M
+                        SAR {(() => { const m = project.value / 1_000_000; return m % 1 === 0 ? m.toFixed(0) : m.toFixed(2) })()}M
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="flex items-center gap-1 text-gray-400 text-[11px]">
@@ -285,6 +284,9 @@ export default function ProjectsPage() {
           const desc     = t(`items.${selectedProject.id}.desc`     as any)
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const scopeRaw = t.raw(`items.${selectedProject.id}.scope` as any) as string[]
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const itemRaw  = t.raw(`items.${selectedProject.id}` as any) as { breakdown?: { label: string; sublabel: string }[] }
+          const breakdown = itemRaw.breakdown
           const category = tp(`categories.${selectedProject.categoryId}`)
 
           return (
@@ -402,7 +404,7 @@ export default function ProjectsPage() {
                           {tp('contractValue')}
                         </div>
                         <div className="text-accent font-extrabold text-lg leading-none">
-                          SAR {(selectedProject.value / 1_000_000).toFixed(0)}M
+                          SAR {(() => { const m = selectedProject.value / 1_000_000; return m % 1 === 0 ? m.toFixed(0) : m.toFixed(2) })()}M
                         </div>
                       </div>
                       <div className="bg-white/5 rounded-xl p-4">
@@ -415,6 +417,29 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Contract breakdown — multi-package projects */}
+                    {breakdown && breakdown.length > 0 && (
+                      <div className="space-y-2">
+                        <div className="text-white/40 text-[10px] font-bold tracking-wider uppercase mb-1">
+                          Contract Breakdown
+                        </div>
+                        {breakdown.map((pkg, i) => {
+                          const pkgMil = (selectedProject as { breakdown?: { value: number }[] }).breakdown![i].value / 1_000_000
+                          const pkgVal = pkgMil % 1 === 0 ? pkgMil.toFixed(0) : pkgMil.toFixed(2)
+                          return (
+                            <div key={i} className="flex items-start gap-2.5 bg-white/5 border border-white/8 rounded-xl px-3 py-2.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                              <div className="flex-1 min-w-0">
+                                <div className="text-white/85 text-[12px] font-bold leading-snug">{pkg.label}</div>
+                                <div className="text-white/35 text-[10px] mt-0.5">{pkg.sublabel}</div>
+                              </div>
+                              <div className="text-accent font-extrabold text-[13px] shrink-0 ms-1">SAR {pkgVal}M</div>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )}
 
                     <div className="bg-white/5 rounded-xl p-4">
                       <div className="flex items-center gap-1.5 text-white/40 text-[10px] font-bold tracking-wider uppercase mb-2">

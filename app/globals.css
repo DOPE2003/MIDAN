@@ -39,15 +39,20 @@ body {
   [dir="rtl"] h3,
   [dir="rtl"] h4,
   [dir="rtl"] h5 {
-    letter-spacing: 0;
-    line-height: 1.45;
+    letter-spacing: 0 !important;
+    line-height: 1.5 !important;
     word-spacing: 0.04em;
   }
 
   [dir="rtl"] p {
-    line-height: 2;
+    line-height: 2.1;
     word-spacing: 0.06em;
-    letter-spacing: 0;
+    letter-spacing: 0 !important;
+  }
+
+  /* Strip ALL Tailwind tracking utilities + arbitrary tracking values in RTL */
+  [dir="rtl"] [class*="tracking-"] {
+    letter-spacing: 0 !important;
   }
 }
 
@@ -98,8 +103,9 @@ body {
   }
 
   [dir="rtl"] .section-label {
-    letter-spacing: 0.06em;
+    letter-spacing: 0 !important;
     word-spacing: 0.05em;
+    margin-bottom: 1rem;
   }
 
   [dir="rtl"] .stat-value {
@@ -138,7 +144,14 @@ body {
 }
 
 @layer utilities {
-  .text-shadow-dark  { text-shadow: 0 2px 24px rgba(0,0,0,0.6); }
+  .text-shadow-dark   { text-shadow: 0 2px 24px rgba(0,0,0,0.6); }
+  /* Stronger shadow for hero headings against busy backgrounds */
+  .text-shadow-strong {
+    text-shadow:
+      0 2px 8px rgba(0,0,0,0.9),
+      0 4px 32px rgba(0,0,0,0.7),
+      0 1px 2px rgba(0,0,0,1);
+  }
   .img-overlay { background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, transparent 100%); }
   .img-overlay-mid { background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%); }
 
@@ -188,11 +201,19 @@ img { max-width: 100%; }
   .btn-ghost-white {
     min-height: 48px;
     justify-content: center;
+    width: 100%;
   }
 
   /* Tighten section spacing on mobile */
   .container-custom { padding-left: 1.1rem; padding-right: 1.1rem; }
+
+  /* Hero heading — slightly smaller on very small phones */
+  h1.hero-title { font-size: 2.15rem; }
 }
+
+/* bg-white/8 Tailwind doesn't ship by default — define manually */
+.bg-white\/8 { background-color: rgba(255,255,255,0.08); }
+.border-white\/12 { border-color: rgba(255,255,255,0.12); }
 
 /* RTL: ensure numbers inside Arabic content keep LTR direction */
 [dir="rtl"] [dir="ltr"] { direction: ltr; unicode-bidi: embed; }

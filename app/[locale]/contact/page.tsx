@@ -89,8 +89,8 @@ export default function ContactPage() {
               <span className="text-accent text-[10px] font-bold tracking-[0.2em] uppercase">{t('header.breadcrumb')}</span>
             </div>
             <h1
-              className="font-extrabold text-white leading-[1.08] mb-4"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.25rem)', letterSpacing: '-0.025em' }}
+              className="font-extrabold text-white leading-[1.08] mb-4 tracking-[-0.025em]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3.25rem)' }}
             >
               {t('header.title')}
             </h1>
@@ -104,7 +104,7 @@ export default function ContactPage() {
 
         {/* Section label */}
         <motion.div {...fadeUpView(0)} className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-[-0.02em]">
             {t('infoTitle')}
           </h2>
           <div className="w-10 h-0.5 bg-accent rounded-full" />

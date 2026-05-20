@@ -54,7 +54,7 @@ export default function AboutPage() {
             className="max-w-2xl"
           >
             <span className="section-label">{t('header.breadcrumb')}</span>
-            <h1 className="text-[clamp(2.2rem,5vw,3.8rem)] font-extrabold text-white leading-[1.1] mb-4" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-[clamp(2.2rem,5vw,3.8rem)] font-extrabold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
               {t('header.title')}
             </h1>
             <p className="text-white/45 text-base leading-relaxed">{t('header.subtitle')}</p>

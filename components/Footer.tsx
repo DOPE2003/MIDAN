@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl'
 import { companyInfo, certifications } from '@/lib/data'
-import { HiLocationMarker, HiPhone, HiMail } from 'react-icons/hi'
+import { HiLocationMarker, HiPhone, HiMail, HiDeviceMobile } from 'react-icons/hi'
 import { FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link'
 
@@ -74,15 +74,13 @@ export default function Footer() {
               </li>
               <li>
                 <a href={`tel:${companyInfo.phoneTel}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors py-0.5">
-                  <HiPhone className="w-4 h-4 text-accent shrink-0" />
-                  <span className="text-white/30 text-[11px] font-semibold shrink-0">الجوال:</span>
+                  <HiDeviceMobile className="w-4 h-4 text-accent shrink-0" />
                   <span dir="ltr" className="font-medium">{companyInfo.phoneDisplay}</span>
                 </a>
               </li>
               <li>
                 <a href={`tel:${companyInfo.phoneLandlineTel}`} className="flex items-center gap-3 text-white/50 hover:text-accent text-sm transition-colors py-0.5">
                   <HiPhone className="w-4 h-4 text-accent/60 shrink-0" />
-                  <span className="text-white/30 text-[11px] font-semibold shrink-0">الأرضي:</span>
                   <span dir="ltr" className="font-medium">{companyInfo.phoneLandlineDisplay}</span>
                 </a>
               </li>

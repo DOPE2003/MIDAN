@@ -155,124 +155,665 @@
     "currency": "SAR",
     "filterAll": "All Projects",
     "items": {
-      "neom": {
-        "title": "NEOM NRC26 Project",
-        "client": "NEOM Company",
-        "location": "NEOM, Saudi Arabia",
+      "neom-nrc26": {
+        "title": "NEOM Residence Community – NRC26",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "ALFANAR Company",
+        "location": "Sharma – NEOM – KSA",
+        "duration": "24 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for full civil and infrastructure works at NEOM's NRC26 residential community — delivering both the civil & finishing package (SAR 41M) and the infrastructure package (SAR 7M).",
+        "desc": "Comprehensive civil, finishing, and infrastructure works for NEOM's NRC26 residential community in Sharma. A landmark project combining high-spec civil structures with complete infrastructure networks across the development.",
+        "scope": [
+          "Full reinforced concrete civil works",
+          "Interior and exterior finishing to NEOM specifications",
+          "Infrastructure networks including roads, utilities, and drainage",
+          "MEP rough-in and coordination works",
+          "Quality assurance to NEOM's exacting international standards"
+        ],
+        "breakdown": [
+          {
+            "label": "Civil & Finishing",
+            "sublabel": "Sharma – NEOM"
+          },
+          {
+            "label": "Infrastructure Works",
+            "sublabel": "NEOM Site"
+          }
+        ]
+      },
+      "neom-nrc17-civil": {
+        "title": "NEOM Residence Community – NRC17",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "ALFANAR Company",
+        "location": "Shegree – NEOM – KSA",
+        "duration": "24 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for civil and finishing works at NEOM's NRC17 residential community.",
+        "desc": "Civil and finishing works for NEOM's NRC17 residential community in Shegree. Delivered to world-class NEOM specifications covering structural works and complete finishing.",
+        "scope": [
+          "Reinforced concrete structural works",
+          "Interior and exterior finishing works",
+          "Coordination with NEOM engineering standards",
+          "Site infrastructure and utilities"
+        ]
+      },
+      "mithaq": {
+        "title": "MITHAQ – Commercial Offices (6 Floors) – King Abdullah Road",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "Al-Rujeib Holding Company",
+        "location": "King Abdullah Rd – Riyadh – KSA",
+        "duration": "7 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for full civil works on a 6-floor commercial office building on King Abdullah Road.",
+        "desc": "Full civil works for a 6-floor commercial office building on King Abdullah Road, Riyadh. Delivered on a fast-track schedule for Al-Rujeib Holding Company.",
+        "scope": [
+          "Foundation and structural concrete works",
+          "6-floor superstructure construction",
+          "Façade and external works",
+          "Interior civil finishes"
+        ]
+      },
+      "zawiat-almezar": {
+        "title": "Zawiat Almezar – Huttin District (Offices & Restaurants)",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "King Saud University",
+        "location": "Huttin – Riyadh – KSA",
+        "duration": "7 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for a full-scope development of offices and restaurants in Huttin District.",
+        "desc": "Full-scope construction of a mixed-use commercial development featuring offices and restaurants in the prestigious Huttin District. Delivered as a complete turnkey package for King Saud University.",
+        "scope": [
+          "Civil and structural works",
+          "Architectural finishing",
+          "MEP installations",
+          "External works and landscaping",
+          "Full project delivery"
+        ]
+      },
+      "sipchem": {
+        "title": "SIPCHEM – Civil, Finishing & Steel Works",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "Saudi International Petrochemical Co.",
+        "location": "Riyadh & Hail – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for civil, finishing, and steel works across two SIPCHEM industrial facilities — the TMF factory in Riyadh's 2nd Industrial Area (SAR 22M) and the EVA film factory in Hail (SAR 34M).",
+        "desc": "Multi-site works for Saudi International Petrochemical Company encompassing civil concrete works, steel fabrication, and finishing across two major industrial facilities: the Tools Manufacturing Facility in Riyadh and the Ethanol Vinyl Acetate film factory in Hail.",
+        "scope": [
+          "Reinforced concrete works",
+          "Steel erection and fabrication",
+          "Industrial finishing works",
+          "MEP and infrastructure works",
+          "Quality compliance to petrochemical industry standards"
+        ],
+        "breakdown": [
+          {
+            "label": "Hail – EVA Factory",
+            "sublabel": "Ethanol Vinyl Acetate Production"
+          },
+          {
+            "label": "Riyadh – TMF Factory",
+            "sublabel": "Tools Manufacturing Facilities"
+          }
+        ]
+      },
+      "ksu-ltc": {
+        "title": "KSU – Long Term Care Center (LTC)",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "King Saud University",
+        "location": "KSU – Riyadh – KSA",
+        "duration": "7 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for civil works and CFRP structural reinforcement systems at the KSU Long Term Care Center.",
+        "desc": "Civil works and advanced CFRP (Carbon Fiber Reinforced Polymer) structural reinforcement for King Saud University's Long Term Care Center. A technically demanding project requiring precision execution and strict compliance with university facility standards.",
+        "scope": [
+          "Civil and reinforced concrete works",
+          "CFRP structural reinforcement installation",
+          "Structural assessment and remediation",
+          "Quality compliance to KSU facility standards"
+        ]
+      },
+      "saout1": {
+        "title": "Al-Nahda Philanthropic Society – SAOUT 1 Tower",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "Al-Nahda Philanthropic Society for Women",
+        "location": "Salahuddin Rd – Riyadh – KSA",
         "duration": "18 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor delivering a full turnkey civil package for SAOUT 1 Tower.",
+        "desc": "Turnkey civil works for the SAOUT 1 Tower on Salahuddin Road in Riyadh, delivered for Al-Nahda Philanthropic Society for Women. A complete structural project executed to the highest standards.",
+        "scope": [
+          "Full structural concrete works",
+          "Foundation and basement construction",
+          "Tower superstructure delivery",
+          "Turnkey civil package"
+        ]
+      },
+      "kinan-strip-mall": {
+        "title": "KINAN Strip Mall – PANDA Supermarket",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "KINAN Co.",
+        "location": "King Salman Rd – Riyadh – KSA",
+        "duration": "7 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for full works on the KINAN Strip Mall and PANDA Supermarket development.",
+        "desc": "Full civil and finishing works for the KINAN Strip Mall development featuring a PANDA Supermarket anchor tenant on King Salman Road, Riyadh. Delivered on a fast-track schedule.",
+        "scope": [
+          "Civil and structural works",
+          "Retail finishing and fit-out",
+          "MEP rough-in works",
+          "External works and site development"
+        ]
+      },
+      "khamis-substation": {
+        "title": "KHAMIS South Substation – Khamis Mushait",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "Saudi Electrical Co. (SEC)",
+        "location": "Khamis Mushait – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for civil works at the Khamis South electrical substation.",
+        "desc": "Civil works for the Khamis South electrical substation in Khamis Mushait, serving the Saudi Electrical Company network. Executed to strict SEC engineering and safety standards.",
+        "scope": [
+          "Civil and concrete works",
+          "Substation building construction",
+          "Foundation and structural works",
+          "Site preparation and drainage"
+        ]
+      },
+      "jmc-substation": {
+        "title": "JMC Substation – Jizan Medical City",
+        "category": "Civil Works",
+        "categorySlug": "civil",
+        "client": "Saudi Electrical Co. (SEC)",
+        "location": "Jazan – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for civil works at the Jizan Medical City electrical substation.",
+        "desc": "Civil works for the Jizan Medical City electrical substation, delivered for Saudi Electrical Company. Works executed to strict SEC engineering and safety standards.",
+        "scope": [
+          "Civil and concrete works",
+          "Substation building construction",
+          "Foundation and structural works",
+          "Site preparation and drainage"
+        ]
+      },
+      "yoowalk-mall": {
+        "title": "YooWalk Mall – Al Madinah (Arabian Centers)",
+        "category": "Infrastructure Works",
+        "categorySlug": "infrastructure",
+        "client": "Arabian Centers",
+        "location": "Al Madinah – KSA",
+        "duration": "4 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for site backfilling and all necessary infrastructure works at YooWalk Mall in Al Madinah.",
+        "desc": "Site backfilling and comprehensive infrastructure works for the YooWalk Mall project in Al Madinah, commissioned by Arabian Centers — one of Saudi Arabia's leading retail operators.",
+        "scope": [
+          "Full site backfilling operations",
+          "Earthworks and compaction",
+          "Sub-base preparation",
+          "Drainage and utility works",
+          "All necessary site infrastructure"
+        ]
+      },
+      "riyadh-stormwater-37": {
+        "title": "Riyadh East Stormwater Pipeline – Contract #37",
+        "category": "Infrastructure Works",
+        "categorySlug": "infrastructure",
+        "client": "National Water Co. (NWC)",
+        "location": "Riyadh – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for the eastern Riyadh stormwater pipeline, Contract #37.",
+        "desc": "Major stormwater drainage pipeline for eastern Riyadh covering water pipelines, reinforced concrete basins, and all associated civil works for the National Water Company.",
+        "scope": [
+          "Stormwater pipeline installation",
+          "Reinforced concrete basin construction",
+          "Trench excavation and backfilling",
+          "Manhole and access chamber works",
+          "Final surface reinstatement"
+        ]
+      },
+      "sweet-water-16": {
+        "title": "Sweet Water Pipeline – Contract #16 (Stage 1)",
+        "category": "Infrastructure Works",
+        "categorySlug": "infrastructure",
+        "client": "National Water Co. (NWC)",
+        "location": "Riyadh – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for Stage 1 of the sweet water pipeline, Contract #16.",
+        "desc": "Stage 1 potable water pipeline works including full pipeline installation and all necessary associated works for the National Water Company's Riyadh water network expansion.",
+        "scope": [
+          "Water pipeline installation",
+          "Trench excavation and backfilling",
+          "Pipe jointing and pressure testing",
+          "Valve chamber and connection works",
+          "Surface reinstatement"
+        ]
+      },
+      "sweet-water-15": {
+        "title": "Sweet Water Pipeline – Contract #15 (Stage 1)",
+        "category": "Infrastructure Works",
+        "categorySlug": "infrastructure",
+        "client": "National Water Co. (NWC)",
+        "location": "Riyadh – KSA",
+        "duration": "24 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for Stage 1 of the sweet water pipeline, Contract #15, including site backfilling.",
+        "desc": "Stage 1 potable water pipeline with site backfilling and all necessary works for the National Water Company's Riyadh network. A 24-month pipeline infrastructure project.",
+        "scope": [
+          "Water pipeline installation",
+          "Site backfilling operations",
+          "Trench excavation and reinstatement",
+          "Valve chambers and connections",
+          "All necessary infrastructure works"
+        ]
+      },
+      "water-pipeline-2": {
+        "title": "Water Pipeline – Contract #2",
+        "category": "Infrastructure Works",
+        "categorySlug": "infrastructure",
+        "client": "National Water Co. (NWC)",
+        "location": "Riyadh – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for water pipeline and concrete basin works, Contract #2.",
+        "desc": "Water pipeline installation including concrete basins and all necessary civil works for the National Water Company's infrastructure network in Riyadh.",
+        "scope": [
+          "Water pipeline installation",
+          "Reinforced concrete basin construction",
+          "Trench excavation and backfilling",
+          "Pressure testing and commissioning",
+          "Surface reinstatement"
+        ]
+      },
+      "neom-nrc19-finishing": {
+        "title": "NEOM Residence Community – NRC19 (Finishing)",
         "category": "Finishing Works",
         "categorySlug": "finishing",
-        "desc": "Premium interior and exterior finishing works within the NEOM global development — one of the most technically demanding finishing projects in the Kingdom, delivering world-class specifications across residential and hospitality units.",
+        "client": "ALFANAR Company",
+        "location": "Shegree – NEOM – KSA",
+        "duration": "24 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for all finishing works at NEOM's NRC19 residential community.",
+        "desc": "Premium finishing works for NEOM's NRC19 residential community in Shegree, delivering world-class interior and exterior finishes to NEOM's exacting international specifications.",
         "scope": [
           "Premium flooring and wall cladding systems",
           "High-specification ceiling and joinery works",
-          "MEP coordination and finishing integration",
-          "Quality assurance to NEOM's exacting standards"
-        ],
+          "MEP finishing and coordination",
+          "External finishing and cladding",
+          "Quality assurance to NEOM standards"
+        ]
+      },
+      "aramco-ajyad": {
+        "title": "ARAMCO Ajyad – Dhahran",
+        "category": "Finishing Works",
+        "categorySlug": "finishing",
+        "client": "ARAMCO",
+        "location": "Dhahran – KSA",
+        "duration": "10 Months",
         "role": "Subcontractor",
-        "roleDesc": "Engaged as subcontractor responsible for all premium interior and exterior finishing works within the NEOM development."
-      },
-      "ksu": {
-        "title": "KSU Learning & Training Center",
-        "client": "King Saud University",
-        "location": "Riyadh",
-        "duration": "24 Months",
-        "category": "Civil Works",
-        "categorySlug": "civil",
-        "desc": "Complete civil works and structural construction of the Learning & Training Center at King Saud University — a landmark facility combining advanced structural engineering with contemporary architecture.",
+        "roleDesc": "Engaged as Subcontractor for comprehensive finishing works at the ARAMCO Ajyad development in Dhahran.",
+        "desc": "High-specification finishing works for ARAMCO's prestigious Ajyad development in Dhahran — one of the most demanding finishing projects in the Eastern Province, executed to Saudi Aramco's world-class quality standards.",
         "scope": [
-          "Deep foundation and pile system",
-          "Multi-storey reinforced concrete structure",
-          "Architectural concrete and blockwork",
-          "External works and site finishes"
-        ],
-        "role": "Main Contractor",
-        "roleDesc": "Handled full project execution and delivery as main contractor, from deep foundations to final architectural handover."
-      },
-      "aramco": {
-        "title": "Saudi Aramco — Ajyad Project",
-        "client": "Saudi Aramco",
-        "location": "Riyadh",
-        "duration": "20 Months",
-        "category": "Infrastructure Works",
-        "categorySlug": "infrastructure",
-        "desc": "Comprehensive infrastructure package for a major industrial site — covering internal road networks, utility trenching, drainage, and all external civil works to Aramco's world-class quality standards.",
-        "scope": [
-          "Internal road and parking networks",
-          "Utility corridors and manhole systems",
-          "Stormwater and sewage drainage",
-          "Landscaping and external works"
-        ],
-        "role": "Main Contractor",
-        "roleDesc": "Delivered the complete infrastructure package as main contractor to Saudi Aramco's world-class quality standards."
-      },
-      "sipchem": {
-        "title": "SIPCHEM — EVA Production Unit",
-        "client": "Sipchem Co.",
-        "location": "Jubail Industrial City",
-        "duration": "22 Months",
-        "category": "Steel Erection Works",
-        "categorySlug": "steel",
-        "desc": "Erection of a complete heavy-steel industrial production facility for Sipchem's EVA unit in Jubail — including main structural steelwork, equipment platforms, pipe racks, and safety-critical secondary steel.",
-        "scope": [
-          "Heavy structural steel erection",
-          "Equipment support platforms",
-          "Pipe racks and process structures",
-          "Secondary steel and grating"
-        ],
-        "role": "Main Contractor",
-        "roleDesc": "Took full responsibility for structural steel erection, equipment platforms, pipe racks, and all secondary steelwork."
+          "Premium interior finishing works",
+          "Flooring systems and wall treatments",
+          "Ceiling systems and partitions",
+          "Joinery and specialist finishes",
+          "MEP finishing integration"
+        ]
       },
       "amwaj": {
-        "title": "Amwaj Half Moon Bay Resort",
-        "client": "Amwaj Group",
-        "location": "Al Khobar",
-        "duration": "16 Months",
-        "category": "Landscape Works",
-        "categorySlug": "landscape",
-        "desc": "Full landscape and water-feature package for a five-star resort — including infinity pools, interactive fountains, ornamental planting, hardscape terraces, and automated irrigation across the entire resort grounds.",
+        "title": "AMWAJ – Half Moon, Khobar",
+        "category": "Finishing Works",
+        "categorySlug": "finishing",
+        "client": "Amwaj Capital",
+        "location": "Half Moon – Khobar – KSA",
+        "duration": "8 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for finishing and MEP works at the prestigious AMWAJ Half Moon development.",
+        "desc": "Finishing and MEP works for the AMWAJ luxury residential development at Half Moon Bay, Khobar. A premium project combining sophisticated interior finishing with complete MEP system integration.",
         "scope": [
-          "Infinity and feature pool construction",
-          "Fountain and water-channel systems",
-          "Premium hardscape and terracing",
-          "Soft landscaping with automated irrigation"
-        ],
-        "role": "Main Contractor",
-        "roleDesc": "Led the full landscape and water-feature scope as main contractor across the entire five-star resort grounds."
+          "Premium interior finishing works",
+          "MEP installation and finishing",
+          "Flooring, wall, and ceiling systems",
+          "Joinery and specialist finishes",
+          "Quality handover to Amwaj Capital"
+        ]
       },
-      "roads-network": {
-        "title": "Industrial Zone Road Network",
-        "client": "Saudi Industrial Development",
-        "location": "Jubail Industrial City",
+      "etre-store": {
+        "title": "ETRE Store – Panorama Mall (Luxury Market)",
+        "category": "Finishing Works",
+        "categorySlug": "finishing",
+        "client": "Bin Dawood Co.",
+        "location": "Riyadh – KSA",
+        "duration": "6 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for luxury fit-out of the ETRE Store at Panorama Mall.",
+        "desc": "Luxury retail fit-out for the ETRE Store at Panorama Mall, featuring award-winning Italian design by Joseph Zirono and furniture from GBAM Italy. A prestige retail interior project for Bin Dawood Company.",
+        "scope": [
+          "Luxury retail fit-out and finishing",
+          "Italian design implementation (Joseph Zirono)",
+          "Premium Italian furniture installation (GBAM)",
+          "Specialist lighting and display systems",
+          "High-end flooring and wall treatments"
+        ]
+      },
+      "neom-nc1": {
+        "title": "NEOM High Density – NC1 (PEB Buildings)",
+        "category": "Steel Erection Works",
+        "categorySlug": "steel",
+        "client": "ALFANAR Company",
+        "location": "Sharma – NEOM – KSA",
+        "duration": "24 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for supply and erection of Pre-Engineered Buildings (PEB) at NEOM's NC1 high-density development.",
+        "desc": "Supply and erection of Pre-Engineered Metal Buildings (PEB) for NEOM's NC1 high-density development in Sharma. Works executed to NEOM's stringent engineering and quality standards.",
+        "scope": [
+          "PEB structure fabrication",
+          "Steel erection and assembly",
+          "Foundation and anchor bolt works",
+          "Roofing and cladding systems",
+          "NEOM engineering compliance"
+        ]
+      },
+      "riyadh-cables": {
+        "title": "New Expansion – Riyadh Cables Factory",
+        "category": "Steel Erection Works",
+        "categorySlug": "steel",
+        "client": "Riyadh Cables Co.",
+        "location": "2nd Industrial Area – Riyadh – KSA",
+        "duration": "9 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for steel structure erection works in the new factory expansion.",
+        "desc": "Steel erection works for the new expansion of Riyadh Cables Factory in the 2nd Industrial Area, Riyadh. Industrial steel fabrication and erection for one of Saudi Arabia's leading cable manufacturers.",
+        "scope": [
+          "Structural steel fabrication",
+          "Steel erection and assembly",
+          "Industrial building envelope",
+          "Crane runway and mezzanine structures",
+          "Final inspection and handover"
+        ]
+      },
+      "arasco-silos": {
+        "title": "ARASCO Silos & Millers – Al Kharj",
+        "category": "Steel Erection Works",
+        "categorySlug": "steel",
+        "client": "Arabian Agriculture Services Co. (ARASCO)",
+        "location": "Al Kharj – KSA",
         "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for construction of grain silos and milling facilities.",
+        "desc": "Construction of grain storage silos and milling facilities for ARASCO's agricultural operations in Al Kharj. Specialized steel and civil works for large-capacity poultry feed production infrastructure.",
+        "scope": [
+          "Grain silo construction and erection",
+          "Milling facility steel structures",
+          "Foundation and civil works",
+          "Conveyor and support structure installation",
+          "Industrial handover and commissioning"
+        ]
+      },
+      "arar-airport": {
+        "title": "ARAR Airport – Roads & Asphalt",
         "category": "Roads & Asphalt Works",
         "categorySlug": "roads",
-        "desc": "Complete road network construction for a major industrial zone — from earthworks and sub-base preparation to multilayer asphalt paving, kerbing, drainage, line marking, and road signage.",
+        "client": "ARAR Airport Authority",
+        "location": "ARAR – KSA",
+        "duration": "4 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for asphalt paving and road marking works at Arar Airport.",
+        "desc": "Asphalt paving and road marking works at Arar Airport, including apron and taxiway surfaces with precision marking to aviation standards.",
         "scope": [
-          "Earthworks and sub-base preparation",
-          "Multilayer asphalt paving",
-          "Kerb, gutter and drainage installation",
-          "Line marking and road signage"
-        ],
-        "role": "Main Contractor",
-        "roleDesc": "Executed complete road network delivery from earthworks and sub-base preparation through asphalt paving, drainage, and signage."
+          "Asphalt paving works",
+          "Road marking and striping",
+          "Surface preparation and priming",
+          "Aviation-standard line marking",
+          "Quality compliance to airport specifications"
+        ]
       },
-      "mosque-complex": {
-        "title": "Residential Complex Mosque & Kitchen",
-        "client": "Confidential — Major Developer",
-        "location": "Riyadh",
-        "duration": "10 Months",
-        "category": "Mosque & Kitchen Works",
-        "categorySlug": "mosque",
-        "desc": "Specialized construction and fit-out of a grand mosque and central kitchen facility within a large residential compound — from structural works through to decorative Islamic finishes, acoustic systems, and full commercial kitchen installation.",
+      "roads-shamasia": {
+        "title": "Roads in Shamasia",
+        "category": "Roads & Asphalt Works",
+        "categorySlug": "roads",
+        "client": "",
+        "location": "Shamasia – KSA",
+        "duration": "3 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for asphalt paving and road marking in the Shamasia area.",
+        "desc": "Asphalt paving and road marking works in the Shamasia area, Riyadh. Fast-track road works covering full surface paving and precision line marking.",
         "scope": [
-          "Mosque structural and architectural works",
-          "Decorative Islamic finish and lighting",
-          "Acoustic treatment and A/V systems",
-          "Commercial kitchen design and fit-out"
-        ],
+          "Asphalt paving and laying",
+          "Road marking and striping",
+          "Sub-base preparation",
+          "Kerb and edge works",
+          "Surface quality inspection"
+        ]
+      },
+      "road-khalidiyah": {
+        "title": "Road Project – Al Khalidiyah Farm",
+        "category": "Roads & Asphalt Works",
+        "categorySlug": "roads",
+        "client": "Al Khalidiyah Farm",
+        "location": "Al Muzahmiyah – KSA",
+        "duration": "3 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for asphalt road works at Al Khalidiyah Farm.",
+        "desc": "Asphalt road construction at Al Khalidiyah Farm in Al Muzahmiyah. Agricultural estate road works covering base preparation and full asphalt surfacing.",
+        "scope": [
+          "Asphalt paving works",
+          "Sub-base and base course installation",
+          "Surface leveling and compaction",
+          "Edge and drainage works"
+        ]
+      },
+      "neom-nrc17-kitchen": {
+        "title": "NEOM Residence Community – NRC17 (Kitchen)",
+        "category": "Mosque & Kitchen",
+        "categorySlug": "mosque",
+        "client": "ALFANAR Company",
+        "location": "Sharma & Shegree – NEOM – KSA",
+        "duration": "8 Months",
         "role": "Main Contractor",
-        "roleDesc": "Handled full mosque and commercial kitchen construction and fit-out as main contractor."
+        "roleDesc": "Engaged as Main Contractor for kitchen facility works at two NEOM NRC17 sites.",
+        "desc": "Design, supply, and installation of commercial kitchen facilities at NEOM's NRC17 residential communities across two sites — Sharma and Shegree. Executed to NEOM's world-class specifications.",
+        "scope": [
+          "Commercial kitchen design and installation",
+          "Mechanical and plumbing works",
+          "Kitchen equipment supply and fitting",
+          "Ventilation and extraction systems",
+          "Works at two sites (Sharma & Shegree)"
+        ]
+      },
+      "neom-nrc19-mosque": {
+        "title": "NEOM Residence Community – NRC19 (Mosque)",
+        "category": "Mosque & Kitchen",
+        "categorySlug": "mosque",
+        "client": "ALFANAR Company",
+        "location": "NEOM – KSA",
+        "duration": "6 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for supply and complete installation of mosque works at NEOM's NRC19 community.",
+        "desc": "Supply and complete installation of mosque facilities at NEOM's NRC19 residential community. Full mosque works executed to the highest standards of craftsmanship and NEOM specification compliance.",
+        "scope": [
+          "Mosque structural and civil works",
+          "Interior mosque finishing and cladding",
+          "Prayer hall flooring and wall finishes",
+          "Minaret and architectural elements",
+          "MEP and audio system installation"
+        ]
+      },
+      "intercontinental-pool": {
+        "title": "Endless Pool – InterContinental Hotel",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Intercontinental Hotel",
+        "location": "Riyadh – KSA",
+        "duration": "6 Months",
+        "role": "Main Contractor",
+        "roleDesc": "Engaged as Main Contractor for the supply and installation of a full-option Endless Pool system at the InterContinental Hotel.",
+        "desc": "Luxury Endless Pool installation at the InterContinental Hotel Riyadh. A specialized aquatic feature project using Endless Pool technology, providing the hotel's guests with a premium swimming experience.",
+        "scope": [
+          "Endless Pool system supply and installation",
+          "Pool structure and waterproofing",
+          "Hydraulic and filtration systems",
+          "Surrounding hardscape works",
+          "Pool equipment and controls commissioning"
+        ]
+      },
+      "alwadi-park": {
+        "title": "Al Wadi Park – Jeddah",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Aramco",
+        "location": "Jeddah – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for landscape, hardscape, and water features at Al Wadi Park.",
+        "desc": "Comprehensive landscape, hardscape, and water feature works at Al Wadi Park in Jeddah for Saudi Aramco. A landmark park project combining natural planting, structured hardscape, and signature water features.",
+        "scope": [
+          "Landscape and softscape works",
+          "Hardscape and paving systems",
+          "Water features and fountains",
+          "Irrigation system installation",
+          "Site furniture and amenities"
+        ]
+      },
+      "alnakhil-village": {
+        "title": "Al Nakhil Village – Jubail",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Royal Commission for Jubail & Yanbu",
+        "location": "Jubail – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for landscape, hardscape, and water features at Al Nakhil Village.",
+        "desc": "Landscape, hardscape, and water feature works at Al Nakhil Village in Jubail Industrial City, commissioned by the Royal Commission for Jubail and Yanbu.",
+        "scope": [
+          "Landscape and planting works",
+          "Hardscape and paving",
+          "Water features and water elements",
+          "Irrigation and drainage systems",
+          "Site amenities and furniture"
+        ]
+      },
+      "hizam-park": {
+        "title": "Hizam Public Park – Special Fountains & Up Nozzles",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Riyadh Region Authority",
+        "location": "Riyadh – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for the design and installation of special fountains and UP nozzle systems at Hizam Public Park.",
+        "desc": "Specialized fountain and water feature systems at Hizam Public Park, Riyadh. Features custom-designed fountains with UP nozzle technology commissioned by the Riyadh Region Authority.",
+        "scope": [
+          "Special fountain system design and installation",
+          "UP nozzle feature installation",
+          "Hydraulic and pump systems",
+          "Control and automation systems",
+          "Landscape and hardscape integration"
+        ]
+      },
+      "masharif-fountains": {
+        "title": "Masharif Hills – Special Pools & Fountains",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Masharif Hills Co. – Kinan",
+        "location": "Riyadh – KSA",
+        "duration": "9 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for special pool and fountain feature systems at the Masharif Hills residential district.",
+        "desc": "Specialized pool and fountain systems for the Masharif Hills residential district in Riyadh, featuring water walls, decorative pool systems, and fountain elements commissioned by Kinan Company.",
+        "scope": [
+          "Special pool system installation",
+          "Water wall feature construction",
+          "Fountain system design and installation",
+          "Hydraulic and filtration systems",
+          "Control and automation works"
+        ]
+      },
+      "masharif-park": {
+        "title": "Masharif Hills Park – Al Narjis, Riyadh",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Kinan Co.",
+        "location": "Al Narjis District – Riyadh – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for landscape, hardscape, and water features at Masharif Hills Park.",
+        "desc": "Landscape, hardscape, and water feature works for Masharif Hills Park in the Al Narjis District of Riyadh, commissioned by Kinan Company.",
+        "scope": [
+          "Landscape and planting works",
+          "Hardscape and paving systems",
+          "Water features and elements",
+          "Irrigation and drainage",
+          "Site furniture and lighting"
+        ]
+      },
+      "khuzama-park": {
+        "title": "Khuzama Public Park – Special Fountains & Up Nozzles",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Riyadh Region Authority",
+        "location": "Riyadh – KSA",
+        "duration": "12 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for the design and installation of special fountains using floating pump technology.",
+        "desc": "Specialized fountain system using floating pump technology at Khuzama Public Park, Riyadh. Custom water features designed and installed for the Riyadh Region Authority.",
+        "scope": [
+          "Special fountain system installation",
+          "Floating pump system installation",
+          "UP nozzle feature installation",
+          "Hydraulic system works",
+          "Control and automation systems"
+        ]
+      },
+      "rawdah-park": {
+        "title": "Rawdah Park – Rawdah District, Riyadh",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Riyadh Municipality",
+        "location": "Rawdah District – Riyadh – KSA",
+        "duration": "9 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for landscape and hardscape works at Rawdah Park.",
+        "desc": "Landscape and hardscape feature works at Rawdah Park in the Rawdah District of Riyadh, commissioned by Riyadh Municipality.",
+        "scope": [
+          "Landscape and softscape works",
+          "Hardscape paving and elements",
+          "Irrigation system installation",
+          "Site furniture and amenities",
+          "Park pathway and access works"
+        ]
+      },
+      "dana-park": {
+        "title": "Dana Park – King Abdullah District, Riyadh",
+        "category": "Landscape & Hardscape Features",
+        "categorySlug": "landscape",
+        "client": "Riyadh Municipality",
+        "location": "King Abdullah District – Riyadh – KSA",
+        "duration": "9 Months",
+        "role": "Subcontractor",
+        "roleDesc": "Engaged as Subcontractor for landscape and hardscape works at Dana Park.",
+        "desc": "Landscape and hardscape feature works at Dana Park in the King Abdullah District, Riyadh. Delivered for Riyadh Municipality as part of the city's public parks development program.",
+        "scope": [
+          "Landscape and softscape works",
+          "Hardscape paving and elements",
+          "Irrigation system installation",
+          "Site furniture and amenities",
+          "Park pathway and access works"
+        ]
       }
     }
   },
@@ -283,7 +824,7 @@
       "Projects Completed",
       "Skilled Workforce",
       "Years of Experience",
-      "SAR Business Volume"
+      "SAR"
     ]
   },
   "why": {
@@ -464,12 +1005,12 @@
       },
       "categories": {
         "civil": "Civil Works",
-        "infrastructure": "Infrastructure",
+        "infrastructure": "Infrastructure Works",
         "finishing": "Finishing Works",
-        "steel": "Steel Erection",
-        "roads": "Roads & Asphalt",
+        "steel": "Steel Erection Works",
+        "roads": "Roads & Asphalt Works",
         "mosque": "Mosque & Kitchen",
-        "landscape": "Landscape Works"
+        "landscape": "Landscape & Hardscape Features"
       },
       "viewGallery": "View Gallery",
       "sarM": "SAR {value}M",
@@ -569,7 +1110,8 @@
       "photos": "photos",
       "openGallery": "View",
       "allPhotos": "All Photos",
-      "onThisPage": "On This Page"
+      "onThisPage": "On This Page",
+      "contractBreakdown": "Contract Breakdown"
     }
   }
 }

@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 import { HiArrowRight, HiArrowLeft, HiPhone, HiChevronDown } from 'react-icons/hi'
-import { categories, certifications, statsValues } from '@/lib/data'
+import { categories, certifications, statsValues, clientIds } from '@/lib/data'
 
 const anim = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -20,8 +20,8 @@ export default function HomePage() {
   const ts  = useTranslations('services')
   const ta  = useTranslations('about')
   const tc  = useTranslations('cta')
-  const tn  = useTranslations('nav')
   const tst = useTranslations('stats')
+  const tcl = useTranslations('clients')
   const locale = useLocale()
   const isRTL  = locale !== 'en'
   const Arrow  = isRTL ? HiArrowLeft : HiArrowRight
@@ -50,18 +50,22 @@ export default function HomePage() {
     landscape:      ts('items.landscape.title'),
   }
 
+  const clientItems = tcl.raw('items') as Record<string, { name: string; sector: string }>
+
+  const notes = isRTL
+    ? [
+        'لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.',
+        'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.',
+      ]
+    : [
+        'Every project has a distinct scope of work tailored to client requirements.',
+        'Projects were executed under both main contracting and subcontracting models.',
+      ]
+
   return (
     <div>
 
-      {/* ── HERO ──────────────────────────────────────── */}
-      {/*
-        Three-row flex layout:
-          1. top spacer (flex-1, min-h = navbar height) — ensures hero content
-             never bleeds into the transparent navbar region
-          2. hero content (auto height, centered horizontally)
-          3. bottom spacer (flex-1) + absolute overlays
-        Result: content is vertically centered but always below the navbar.
-      */}
+      {/* ── 1. HERO ───────────────────────────────────────── */}
       <section
         ref={heroRef}
         className="relative min-h-screen flex flex-col overflow-hidden"
@@ -71,30 +75,24 @@ export default function HomePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={HERO_BG} alt="" className="w-full h-full object-cover object-[center_30%] scale-105" />
         </motion.div>
-        {/* Primary cinematic overlay — lightened so banner is clearly visible */}
         <motion.div
           style={{ opacity: bgOpacity }}
           className="absolute inset-0 bg-gradient-to-b from-[#001030]/50 via-[#001030]/40 to-[#001030]/90"
         />
-        {/* Top darkening to protect readability under navbar */}
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/60 to-transparent" />
 
-        {/* Top spacer — minimum height ensures content clears the fixed navbar */}
         <div className="flex-1" style={{ minHeight: 'clamp(88px, 14vh, 160px)' }} />
 
-        {/* Hero content */}
         <div className="relative z-10 text-center text-white px-5 sm:px-6 max-w-5xl w-full mx-auto pb-10 sm:pb-12">
 
-          {/* Badge */}
           <motion.div
             {...anim(0.05)}
-            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/70 text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full tracking-[0.15em] sm:tracking-[0.2em] uppercase mb-8 sm:mb-10"
+            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/70 text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full uppercase mb-8 sm:mb-10"
           >
             <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
             {t('badge')}
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             {...anim(0.12)}
             className="text-[clamp(1.8rem,5vw,4.5rem)] font-extrabold leading-[1.15] mb-4 sm:mb-5"
@@ -103,12 +101,18 @@ export default function HomePage() {
             <span className="block text-accent mt-1">{t('titleAccent')}</span>
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p {...anim(0.22)} className="text-white/55 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-10 sm:mb-12 leading-relaxed px-2 sm:px-0">
+          <motion.p
+            {...anim(0.22)}
+            className="text-white font-black text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0"
+            style={{
+              lineHeight: '1.9',
+              textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,1)',
+              WebkitTextStroke: '0.3px rgba(255,255,255,0.15)',
+            }}
+          >
             {t('subtitle')}
           </motion.p>
 
-          {/* CTAs */}
           <motion.div {...anim(0.3)} className="flex flex-col sm:flex-row gap-3 justify-center mb-12 sm:mb-16 px-4 sm:px-0">
             <Link href={`/${locale}/projects`} className="btn-accent text-sm justify-center">
               {t('ctaProjects')} <Arrow className="w-4 h-4" />
@@ -118,7 +122,6 @@ export default function HomePage() {
             </Link>
           </motion.div>
 
-          {/* Stats row */}
           <motion.div
             {...anim(0.4)}
             className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden max-w-2xl mx-auto border border-white/10"
@@ -128,15 +131,16 @@ export default function HomePage() {
                 <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-accent mb-1 group-hover:scale-105 transition-transform duration-200">
                   {s.val}
                 </div>
-                <div className="text-white/45 text-[9px] sm:text-[10px] tracking-wide leading-snug font-medium">{s.label}</div>
+                <div
+                  className="text-white font-black text-[10px] sm:text-[11px] leading-snug"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.9)', WebkitTextStroke: '0.3px rgba(255,255,255,0.2)' } as never}
+                >{s.label}</div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Bottom spacer + absolute overlays */}
         <div className="flex-1 relative" style={{ minHeight: '4rem' }}>
-          {/* Scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
@@ -149,113 +153,18 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
 
-          {/* Cert strip */}
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
             className="absolute bottom-8 end-8 hidden xl:flex items-center gap-4"
           >
             {certifications.map((c) => (
-              <span key={c} className="text-white/20 text-[9px] font-bold tracking-widest">{c}</span>
+              <span key={c} className="text-white/20 text-[9px] font-bold">{c}</span>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* ── CATEGORIES GRID ───────────────────────────── */}
-      <section className="py-14 sm:py-20 md:py-28 bg-[#f8f9fc]">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-8 sm:mb-12 md:mb-16"
-          >
-            <span className="section-label">{ts('gridLabel')}</span>
-            <h2 className="section-title">{ts('gridTitle')}</h2>
-            <p className="section-body max-w-lg">{ts('gridBody')}</p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {categories.map((cat, i) => (
-              <motion.div
-                key={cat.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                className={`card-project group ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
-              >
-                <Link href={`/${locale}/projects`}>
-                  {/* Mobile: uniform aspect-[4/3] for all cards. Desktop: first card auto-height to fill row-span-2 */}
-                  <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i === 0 ? 'md:aspect-auto md:h-full md:min-h-[400px]' : ''}`}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={cat.coverImage}
-                      alt={categoryLabels[cat.id] ?? cat.id}
-                      className="card-img absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 img-overlay" />
-                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="absolute bottom-0 inset-x-0 p-3 md:p-5">
-                      <div className="chip-white mb-1.5 w-fit text-[9px] md:text-[10px]">
-                        {String(i + 1).padStart(2, '0')}
-                      </div>
-                      <h3 className={`font-extrabold text-white leading-tight text-shadow-dark ${i === 0 ? 'text-sm md:text-xl lg:text-2xl' : 'text-xs md:text-sm lg:text-base'}`}>
-                        {categoryLabels[cat.id] ?? cat.id}
-                      </h3>
-                      <div className="flex items-center gap-1 mt-1.5 text-accent text-[10px] font-bold tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-                        {ts('viewProjects')} <Arrow className="w-3 h-3" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-10 text-center"
-          >
-            <Link href={`/${locale}/projects`} className="btn-primary inline-flex">
-              {ts('viewAll')} <Arrow className="w-4 h-4" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── STATS BAND ────────────────────────────────── */}
-      <section className="py-14 sm:py-20 bg-primary overflow-hidden relative">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 25% 50%, #7030A0 0%, transparent 60%), radial-gradient(circle at 75% 50%, #00B09B 0%, transparent 60%)' }} />
-        <div className="container-custom relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
-            {statsValues.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.6 }}
-                className="text-center"
-              >
-                <div className="stat-value text-accent mb-2">
-                  {s.value}{s.suffix}
-                </div>
-                <div className="text-white/45 text-[10px] sm:text-xs font-semibold tracking-[0.06em] sm:tracking-[0.12em] uppercase leading-snug">
-                  {statLabels[i]}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ABOUT STRIP ───────────────────────────────── */}
+      {/* ── 2. ABOUT STRIP ────────────────────────────────── */}
       <section className="py-14 sm:py-20 md:py-28">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-center">
@@ -305,17 +214,208 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Floating badge — use start-2 on mobile to prevent clipping */}
               <div className="absolute -bottom-2 start-2 sm:-bottom-4 sm:-start-4 bg-primary text-white rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 shadow-2xl">
                 <div className="text-accent text-2xl sm:text-3xl font-extrabold leading-none">{ta('yearsVal')}</div>
-                <div className="text-white/60 text-[11px] sm:text-xs font-semibold mt-1">{ta('yearsLabel')}</div>
+                <div className="text-white font-black text-xs sm:text-sm mt-1">{ta('yearsLabel')}</div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── CTA BAND ──────────────────────────────────── */}
+      {/* ── 3. SERVICES / CATEGORIES GRID ────────────────── */}
+      <section className="py-14 sm:py-20 md:py-28 bg-[#f8f9fc]">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 sm:mb-12 md:mb-16"
+          >
+            <span className="section-label">{ts('gridLabel')}</span>
+            <h2 className="section-title">{ts('gridTitle')}</h2>
+            <p className="section-body max-w-lg">{ts('gridBody')}</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {categories.map((cat, i) => (
+              <motion.div
+                key={cat.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className={`card-project group ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+              >
+                <Link href={`/${locale}/projects`}>
+                  <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i === 0 ? 'md:aspect-auto md:h-full md:min-h-[400px]' : ''}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cat.coverImage}
+                      alt={categoryLabels[cat.id] ?? cat.id}
+                      className="card-img absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 img-overlay" />
+                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="absolute bottom-0 inset-x-0 p-3 md:p-5">
+                      <div className="chip-white mb-1.5 w-fit text-[9px] md:text-[10px]">
+                        {String(i + 1).padStart(2, '0')}
+                      </div>
+                      <h3 className={`font-extrabold text-white leading-tight text-shadow-dark ${i === 0 ? 'text-sm md:text-xl lg:text-2xl' : 'text-xs md:text-sm lg:text-base'}`}>
+                        {categoryLabels[cat.id] ?? cat.id}
+                      </h3>
+                      <div className="flex items-center gap-1 mt-1.5 text-accent text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+                        {ts('viewProjects')} <Arrow className="w-3 h-3" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-10 text-center"
+          >
+            <Link href={`/${locale}/projects`} className="btn-primary inline-flex">
+              {ts('viewAll')} <Arrow className="w-4 h-4" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── 4. STATS / PROJECTS SHOWCASE ─────────────────── */}
+      <section className="py-14 sm:py-20 bg-primary overflow-hidden relative">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 25% 50%, #7030A0 0%, transparent 60%), radial-gradient(circle at 75% 50%, #00B09B 0%, transparent 60%)' }} />
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
+            {statsValues.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.6 }}
+                className="text-center"
+              >
+                <div className="stat-value text-accent mb-2">
+                  {s.value}{s.suffix}
+                </div>
+                <div className="text-white font-black text-xs sm:text-sm leading-snug">
+                  {statLabels[i]}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. CLIENTS ────────────────────────────────────── */}
+      <section className="py-14 sm:py-20 md:py-24 bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10 sm:mb-14"
+          >
+            <span className="section-label mx-auto">{tcl('label')}</span>
+            <h2 className="section-title">{tcl('title')}</h2>
+            <p className="section-body max-w-lg mx-auto">{tcl('body')}</p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
+            {clientIds.map((id, i) => {
+              const client = clientItems[id]
+              if (!client) return null
+              return (
+                <motion.div
+                  key={id}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative border border-gray-100 hover:border-accent/30 rounded-xl px-4 py-5 sm:px-5 sm:py-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white hover:bg-primary cursor-default overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="relative z-10">
+                    <div className="w-8 h-0.5 bg-accent/30 group-hover:bg-accent/60 mx-auto mb-3 transition-colors duration-300 rounded-full" />
+                    <div className="font-bold text-gray-900 group-hover:text-white text-sm sm:text-base leading-snug mb-1.5 transition-colors duration-300">
+                      {client.name}
+                    </div>
+                    <div className="text-gray-400 group-hover:text-white/55 text-[10px] leading-snug uppercase transition-colors duration-300">
+                      {client.sector}
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-8 sm:mt-10 text-center"
+          >
+            <span className="inline-flex items-center gap-2 border border-gray-100 text-gray-400 text-xs font-semibold px-5 py-2.5 rounded-full">
+              <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+              {tcl('footnote')}
+            </span>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── 6. GENERAL NOTES ──────────────────────────────── */}
+      <section className="py-14 sm:py-20 md:py-24 bg-[#080e20] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(ellipse at 20% 50%, #7030A0 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, #00B09B 0%, transparent 55%)' }} />
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-10 sm:mb-14"
+          >
+            <span className="section-label mx-auto block text-center">
+              {isRTL ? 'ملاحظات عامة' : 'General Notes'}
+            </span>
+            <h2 className="section-title-white">
+              {isRTL ? 'ملاحظات حول منهجية العمل' : 'Notes on Our Project Methodology'}
+            </h2>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
+            {notes.map((note, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm px-6 py-6 sm:px-7 sm:py-7 hover:border-accent/30 hover:bg-white/8 transition-all duration-300 group"
+              >
+                <div className="absolute top-5 start-6 w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center">
+                  <span className="text-accent text-[10px] font-extrabold">{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <p className="text-white/75 text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white/90 transition-colors duration-300">
+                  {note}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. CTA BAND ───────────────────────────────────── */}
       <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

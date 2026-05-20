@@ -121,7 +121,7 @@ export default function ServicesPage() {
             className="flex flex-col md:flex-row items-center justify-between gap-6"
           >
             <div>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-2" style={{ letterSpacing: '-0.02em' }}>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-2 tracking-[-0.02em]">
                 {t('ctaTitle')}
               </h2>
               <p className="text-gray-500 text-sm max-w-md">

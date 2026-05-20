@@ -11,6 +11,8 @@ import {
   HiTag, HiBriefcase, HiX, HiChevronLeft, HiChevronRight, HiUser,
 } from 'react-icons/hi'
 
+type BreakdownItem = { label: string; sublabel: string }
+
 type ProjectItemData = {
   title: string
   client: string
@@ -21,6 +23,7 @@ type ProjectItemData = {
   roleDesc: string
   desc: string
   scope: string[]
+  breakdown?: BreakdownItem[]
 }
 
 // iOS Safari requires position:fixed to reliably lock body scroll.
@@ -125,7 +128,8 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
-  const sarValue  = `SAR ${(project.value / 1_000_000).toFixed(0)}M`
+  const sarMil = project.value / 1_000_000
+  const sarValue = `SAR ${sarMil % 1 === 0 ? sarMil.toFixed(0) : sarMil.toFixed(2)}M`
   const BackArrow = isRTL ? HiArrowRight : HiArrowLeft
 
   const homeLabel     = locale === 'ar' ? 'الرئيسية' : locale === 'ur' ? 'ہوم' : 'Home'
@@ -210,8 +214,8 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
 
             {/* Title */}
             <h1
-              className="text-white font-extrabold leading-[1.04] mb-4 max-w-3xl"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)', letterSpacing: '-0.025em' }}
+              className="text-white font-extrabold leading-[1.04] mb-4 max-w-3xl tracking-[-0.025em]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}
             >
               {data.title}
             </h1>
@@ -303,6 +307,40 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                 <p className="text-gray-800 text-lg md:text-xl leading-[1.75] font-medium max-w-2xl mb-8">
                   {data.desc}
                 </p>
+
+                {/* Contract breakdown — inline for projects with multiple packages */}
+                {data.breakdown && data.breakdown.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-8"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="w-6 h-0.5 bg-accent/40 rounded-full" />
+                      <span className="text-gray-400 text-[10px] font-bold tracking-widest uppercase">{tp('contractBreakdown')}</span>
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {data.breakdown.map((pkg, i) => {
+                        const pkgMil = (project as { breakdown?: { value: number }[] }).breakdown![i].value / 1_000_000
+                        const pkgVal = pkgMil % 1 === 0 ? pkgMil.toFixed(0) : pkgMil.toFixed(2)
+                        return (
+                          <div key={i} className="flex items-start gap-3.5 rounded-2xl border border-gray-100 bg-gray-50/60 p-4 hover:border-accent/20 hover:bg-accent/[0.02] transition-all duration-300">
+                            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                              <span className="text-accent font-extrabold text-xs">{String(i + 1).padStart(2, '0')}</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="text-gray-800 font-bold text-[13px] leading-snug mb-0.5">{pkg.label}</div>
+                              <div className="text-gray-400 text-[11px]">{pkg.sublabel}</div>
+                            </div>
+                            <div className="text-accent font-extrabold text-base shrink-0">SAR {pkgVal}M</div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </motion.div>
+                )}
 
                 {/* Role credential card */}
                 <div className="border border-gray-100 bg-gray-50/70 rounded-2xl p-5 md:p-6 flex flex-col sm:flex-row sm:items-start gap-4">
@@ -446,6 +484,27 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                   {tp('contractValue')}
                 </div>
                 <div className="text-accent font-extrabold text-[2rem] leading-none mb-3">{sarValue}</div>
+
+                {/* Contract breakdown — shown when project has multiple packages */}
+                {data.breakdown && data.breakdown.length > 0 && (
+                  <div className="mb-3 space-y-2">
+                    {data.breakdown.map((pkg, i) => {
+                      const pkgMil = (project as { breakdown?: { value: number }[] }).breakdown![i].value / 1_000_000
+                      const pkgVal = pkgMil % 1 === 0 ? pkgMil.toFixed(0) : pkgMil.toFixed(2)
+                      return (
+                        <div key={i} className="flex items-start gap-2.5 bg-white/6 rounded-xl px-3 py-2.5 border border-white/8">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                          <div className="min-w-0">
+                            <div className="text-white/80 text-[12px] font-bold leading-tight">{pkg.label}</div>
+                            <div className="text-white/35 text-[10px] mt-0.5">{pkg.sublabel}</div>
+                          </div>
+                          <div className="ms-auto text-accent font-extrabold text-[13px] shrink-0">SAR {pkgVal}M</div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+
                 <div className="text-white/28 text-[11px] pt-3 border-t border-white/8">
                   {project.year} · {data.duration}
                 </div>
@@ -533,7 +592,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                   <span className="w-10 h-0.5 bg-accent rounded-full" />
                   <span className="text-accent text-[10px] font-bold tracking-widest uppercase">{tp('related')}</span>
                 </div>
-                <h2 className="text-white font-extrabold text-2xl md:text-3xl" style={{ letterSpacing: '-0.02em' }}>
+                <h2 className="text-white font-extrabold text-2xl md:text-3xl tracking-[-0.02em]">
                   {moreLabel}
                 </h2>
               </div>
@@ -579,7 +638,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                         </div>
                         <div className="absolute bottom-4 start-4 end-4 flex items-center justify-between">
                           <span className="text-accent font-extrabold text-[15px]">
-                            SAR {(rp.value / 1_000_000).toFixed(0)}M
+                            SAR {(() => { const m = rp.value / 1_000_000; return m % 1 === 0 ? m.toFixed(0) : m.toFixed(2) })()}M
                           </span>
                           <span className="text-white/0 group-hover:text-white/60 transition-colors duration-300 text-[11px] font-bold flex items-center gap-1">
                             {tp('viewProject')}
