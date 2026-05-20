@@ -56,10 +56,12 @@ export default function HomePage() {
     ? [
         'لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.',
         'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.',
+        'جميع وثائق المشاريع متوفرة في قاعدة بياناتنا وتُقدَّم عند الطلب.',
       ]
     : [
         'Every project has a distinct scope of work tailored to client requirements.',
         'Projects were executed under both main contracting and subcontracting models.',
+        'All project documents are available in our database and can be provided upon request.',
       ]
 
   return (
@@ -395,7 +397,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {notes.map((note, i) => (
               <motion.div
                 key={i}
