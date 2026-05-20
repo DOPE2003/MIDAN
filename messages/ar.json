@@ -25,7 +25,7 @@
     "statYears": "عاماً من الخبرة",
     "statCert": "معتمدون دولياً",
     "statProjectsVal": "+80",
-    "statTeamVal": "338",
+    "statTeamVal": "+330",
     "statYearsVal": "+12",
     "statCertVal": "ISO",
     "scroll": "للأسفل"
@@ -1030,7 +1030,7 @@
     "projects": {
       "header": {
         "breadcrumb": "مشاريعنا",
-        "title": "محفظة مشاريعنا",
+        "title": "معرض مشاريعنا",
         "subtitle": "أكثر من 80 مشروع منجز بنجاح في سبعة تخصصات إنشائية"
       },
       "categories": {
