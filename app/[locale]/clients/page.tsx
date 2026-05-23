@@ -41,19 +41,19 @@ export default function ClientsPage() {
                 initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.08 + i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-white/4 border border-white/8 hover:bg-white/8 hover:border-accent/25 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-0.5 cursor-default overflow-hidden"
+                className="group bg-white hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-default overflow-hidden"
                 style={{ minHeight: '110px' }}
               >
                 <img
                   src={`/logos/${id}.${ext}`}
                   alt={client.name}
-                  className="h-8 sm:h-10 w-auto max-w-full object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-300"
+                  className="h-9 sm:h-11 w-auto max-w-full object-contain"
                 />
                 <div className="text-center">
-                  <div className="text-white/50 group-hover:text-white/75 text-[10px] sm:text-xs font-semibold leading-tight transition-colors duration-300 line-clamp-1">
+                  <div className="text-gray-500 group-hover:text-gray-700 text-[10px] sm:text-xs font-semibold leading-tight transition-colors duration-300 line-clamp-1">
                     {client.name}
                   </div>
-                  <div className="text-white/25 group-hover:text-accent/60 text-[9px] uppercase tracking-wide mt-0.5 transition-colors duration-300">
+                  <div className="text-gray-300 group-hover:text-accent text-[9px] uppercase tracking-wide mt-0.5 transition-colors duration-300">
                     {client.sector}
                   </div>
                 </div>

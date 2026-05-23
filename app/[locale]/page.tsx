@@ -344,17 +344,17 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="group bg-white/4 border border-white/8 hover:bg-white/8 hover:border-accent/25 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-0.5 cursor-default overflow-hidden"
+                  className="group bg-white hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-default overflow-hidden"
                   style={{ minHeight: '100px' }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/logos/${id}.${ext}`}
                     alt={clientData?.name ?? id}
-                    className="h-7 sm:h-9 w-auto max-w-full object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-300"
+                    className="h-8 sm:h-10 w-auto max-w-full object-contain"
                   />
                   {clientData && (
-                    <span className="text-white/35 group-hover:text-white/60 text-[9px] sm:text-[10px] font-semibold text-center leading-tight transition-colors duration-300 line-clamp-1">
+                    <span className="text-gray-400 group-hover:text-gray-600 text-[9px] sm:text-[10px] font-semibold text-center leading-tight transition-colors duration-300 line-clamp-1">
                       {clientData.name}
                     </span>
                   )}
