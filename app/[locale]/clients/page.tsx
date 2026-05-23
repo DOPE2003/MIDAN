@@ -5,9 +5,8 @@ import { useTranslations } from 'next-intl'
 import { clientIds, clientPngIds } from '@/lib/data'
 
 const logoScale: Record<string, number> = {
-  sipchem:            2.5,
-  riyadhcables:       2.2,
-  riyadhmunicipality: 1.2,
+  sipchem:      2.5,
+  riyadhcables: 2.2,
 }
 
 export default function ClientsPage() {
