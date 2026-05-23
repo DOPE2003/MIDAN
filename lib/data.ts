@@ -484,7 +484,7 @@ export const projects = [
 
 export const clientIds = ['neom', 'arabian', 'kinan', 'alfanar', 'riyadhcables', 'sipchem', 'hassan', 'herfy', 'riyadhmunicipality'] as const
 
-export const clientPngIds = new Set(['kinan', 'hassan'])
+export const clientPngIds = new Set<string>([])
 
 export const statsValues = [
   { value: 80,  suffix: '+' },

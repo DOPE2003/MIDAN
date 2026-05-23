@@ -47,7 +47,7 @@ export default function ClientsPage() {
                 <img
                   src={`/logos/${id}.${ext}`}
                   alt={client.name}
-                  className="h-8 sm:h-10 w-auto max-w-full object-contain brightness-0 invert opacity-40 group-hover:opacity-85 transition-all duration-300"
+                  className="h-8 sm:h-10 w-auto max-w-full object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-300"
                 />
                 <div className="text-center">
                   <div className="text-white/50 group-hover:text-white/75 text-[10px] sm:text-xs font-semibold leading-tight transition-colors duration-300 line-clamp-1">

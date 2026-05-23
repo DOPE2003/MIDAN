@@ -351,7 +351,7 @@ export default function HomePage() {
                   <img
                     src={`/logos/${id}.${ext}`}
                     alt={clientData?.name ?? id}
-                    className="h-7 sm:h-9 w-auto max-w-full object-contain brightness-0 invert opacity-40 group-hover:opacity-85 transition-all duration-300"
+                    className="h-7 sm:h-9 w-auto max-w-full object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-300"
                   />
                   {clientData && (
                     <span className="text-white/35 group-hover:text-white/60 text-[9px] sm:text-[10px] font-semibold text-center leading-tight transition-colors duration-300 line-clamp-1">
