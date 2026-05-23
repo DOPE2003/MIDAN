@@ -4,6 +4,13 @@ import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { clientIds, clientPngIds } from '@/lib/data'
 
+const logoScale: Record<string, number> = {
+  sipchem:            2.5,
+  riyadhcables:       2.2,
+  riyadhmunicipality: 1.7,
+  neom:               1.3,
+}
+
 export default function ClientsPage() {
   const t = useTranslations('clients')
   const items = t.raw('items') as Record<string, { name: string; sector: string }>
@@ -44,11 +51,14 @@ export default function ClientsPage() {
                 className="group bg-white hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-default overflow-hidden"
                 style={{ minHeight: '110px' }}
               >
-                <img
-                  src={`/logos/${id}.${ext}`}
-                  alt={client.name}
-                  className="h-9 sm:h-11 w-auto max-w-full object-contain"
-                />
+                <div className="h-12 sm:h-14 w-full flex items-center justify-center overflow-hidden">
+                  <img
+                    src={`/logos/${id}.${ext}`}
+                    alt={client.name}
+                    className="max-h-full w-auto max-w-full object-contain"
+                    style={logoScale[id] ? { transform: `scale(${logoScale[id]})` } : undefined}
+                  />
+                </div>
                 <div className="text-center">
                   <div className="text-gray-500 group-hover:text-gray-700 text-[10px] sm:text-xs font-semibold leading-tight transition-colors duration-300 line-clamp-1">
                     {client.name}

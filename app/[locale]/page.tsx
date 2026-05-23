@@ -7,6 +7,13 @@ import Link from 'next/link'
 import { HiArrowRight, HiArrowLeft, HiPhone, HiChevronDown } from 'react-icons/hi'
 import { categories, certifications, statsValues, clientIds, clientPngIds } from '@/lib/data'
 
+const logoScale: Record<string, number> = {
+  sipchem:            2.5,
+  riyadhcables:       2.2,
+  riyadhmunicipality: 1.7,
+  neom:               1.3,
+}
+
 const anim = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -347,12 +354,15 @@ export default function HomePage() {
                   className="group bg-white hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-default overflow-hidden"
                   style={{ minHeight: '100px' }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/logos/${id}.${ext}`}
-                    alt={clientData?.name ?? id}
-                    className="h-8 sm:h-10 w-auto max-w-full object-contain"
-                  />
+                  <div className="h-12 sm:h-14 w-full flex items-center justify-center overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/logos/${id}.${ext}`}
+                      alt={clientData?.name ?? id}
+                      className="max-h-full w-auto max-w-full object-contain"
+                      style={logoScale[id] ? { transform: `scale(${logoScale[id]})` } : undefined}
+                    />
+                  </div>
                   {clientData && (
                     <span className="text-gray-400 group-hover:text-gray-600 text-[9px] sm:text-[10px] font-semibold text-center leading-tight transition-colors duration-300 line-clamp-1">
                       {clientData.name}
