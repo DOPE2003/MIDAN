@@ -10,8 +10,7 @@ import { categories, certifications, statsValues, clientIds, clientPngIds } from
 const logoScale: Record<string, number> = {
   sipchem:            2.5,
   riyadhcables:       2.2,
-  riyadhmunicipality: 1.7,
-  neom:               1.3,
+  riyadhmunicipality: 1.2,
 }
 
 const anim = (delay = 0) => ({

@@ -7,8 +7,7 @@ import { clientIds, clientPngIds } from '@/lib/data'
 const logoScale: Record<string, number> = {
   sipchem:            2.5,
   riyadhcables:       2.2,
-  riyadhmunicipality: 1.7,
-  neom:               1.3,
+  riyadhmunicipality: 1.2,
 }
 
 export default function ClientsPage() {
