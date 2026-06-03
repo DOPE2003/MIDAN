@@ -204,15 +204,15 @@ export default function HomePage() {
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                 <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/projects/civil/img1.jpg" alt="" className="w-full h-full object-cover" />
+                  <img src="/projects/civil/neom-nrc26/img-05.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden mt-4 sm:mt-6">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/projects/landscape/img2.jpg" alt="" className="w-full h-full object-cover" />
+                  <img src="/projects/civil/neom-nrc26/img-03.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden -mt-4 sm:-mt-6">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/projects/steel/img2.jpg" alt="" className="w-full h-full object-cover" />
+                  <img src="/projects/steel/neom-nc1/img-09.jpg" alt="" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -254,7 +254,7 @@ export default function HomePage() {
                 transition={{ delay: i * 0.06, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 className={`card-project group ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
               >
-                <Link href={`/${locale}/projects`}>
+                <Link href={`/${locale}/projects?category=${cat.id}`}>
                   <div className={`relative overflow-hidden rounded-2xl aspect-[4/3] ${i === 0 ? 'md:aspect-auto md:h-full md:min-h-[400px]' : ''}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -269,7 +269,7 @@ export default function HomePage() {
                       <div className="chip-white mb-1.5 w-fit text-[9px] md:text-[10px]">
                         {String(i + 1).padStart(2, '0')}
                       </div>
-                      <h3 className={`font-extrabold text-white leading-tight text-shadow-dark ${i === 0 ? 'text-sm md:text-xl lg:text-2xl' : 'text-xs md:text-sm lg:text-base'}`}>
+                      <h3 className="font-extrabold text-white text-xs md:text-sm leading-tight text-shadow-dark line-clamp-2">
                         {categoryLabels[cat.id] ?? cat.id}
                       </h3>
                       <div className="flex items-center gap-1 mt-1.5 text-accent text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">

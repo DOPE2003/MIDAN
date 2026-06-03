@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback, useEffect, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
@@ -38,15 +39,29 @@ export default function ProjectsPage() {
   const tpd = useTranslations('pages.projectDetail')
   const ts  = useTranslations('stats')
   const locale = useLocale()
+  const searchParams = useSearchParams()
 
-  const [activeFilter,    setActiveFilter]    = useState(CATEGORY_FILTER_ALL)
+  const categoryKeys = ['civil', 'infrastructure', 'finishing', 'steel', 'roads', 'mosque', 'landscape'] as const
+
+  const [activeFilter,    setActiveFilter]    = useState(() => {
+    const cat = searchParams.get('category')
+    return cat && (categoryKeys as readonly string[]).includes(cat) ? cat : CATEGORY_FILTER_ALL
+  })
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [imageIndex,      setImageIndex]      = useState(0)
   const scrollYRef = useRef(0)
 
   const statLabels = ts.raw('statLabels') as string[]
 
-  const categoryKeys = ['civil', 'infrastructure', 'finishing', 'steel', 'roads', 'mosque', 'landscape'] as const
+  // Sync filter when navigating back to this page with a different ?category= param
+  useEffect(() => {
+    const cat = searchParams.get('category')
+    if (cat && (categoryKeys as readonly string[]).includes(cat)) {
+      setActiveFilter(cat)
+    } else if (!cat) {
+      setActiveFilter(CATEGORY_FILTER_ALL)
+    }
+  }, [searchParams])
 
   const filtered = activeFilter === CATEGORY_FILTER_ALL
     ? projects
