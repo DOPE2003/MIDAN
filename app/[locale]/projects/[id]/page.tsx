@@ -24,7 +24,7 @@ export async function generateMetadata({ params: { locale, id } }: Props) {
       description: item.desc,
       images: [{ url: project.coverImage, width: 1200, height: 630, alt: item.title }],
       type: 'article',
-      locale: locale === 'ar' ? 'ar_SA' : locale === 'ur' ? 'ur_PK' : 'en_US',
+      locale: locale === 'ar' ? 'ar_SA' : 'en_US',
     },
     twitter: {
       card: 'summary_large_image',

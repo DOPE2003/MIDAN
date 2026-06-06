@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cairo, Inter, Noto_Nastaliq_Urdu } from 'next/font/google'
+import { Cairo, Inter } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -24,12 +24,6 @@ const inter = Inter({
   display: 'swap',
 })
 
-const nastaliq = Noto_Nastaliq_Urdu({
-  subsets: ['arabic'],
-  weight: ['400', '700'],
-  variable: '--font-nastaliq',
-  display: 'swap',
-})
 
 export async function generateMetadata({
   params,
@@ -40,11 +34,11 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('description'),
-    alternates: { languages: { ar: '/ar', en: '/en', ur: '/ur' } },
+    alternates: { languages: { ar: '/ar', en: '/en' } },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      locale: params.locale === 'ar' ? 'ar_SA' : params.locale === 'ur' ? 'ur_PK' : 'en_US',
+      locale: params.locale === 'ar' ? 'ar_SA' : 'en_US',
       type: 'website',
     },
   }
@@ -67,9 +61,7 @@ export default async function LocaleLayout({
   const isRTL = locale !== 'en'
 
   const fontClass =
-    locale === 'ur'
-      ? `${nastaliq.variable} font-nastaliq`
-      : locale === 'en'
+    locale === 'en'
       ? `${inter.variable} font-inter`
       : `${cairo.variable} font-cairo`
 
@@ -78,7 +70,6 @@ export default async function LocaleLayout({
       <head>
         <link rel="alternate" hrefLang="ar" href="/ar" />
         <link rel="alternate" hrefLang="en" href="/en" />
-        <link rel="alternate" hrefLang="ur" href="/ur" />
         <link rel="alternate" hrefLang="x-default" href="/ar" />
       </head>
       <body className="antialiased">

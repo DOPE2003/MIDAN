@@ -34,8 +34,6 @@ export default function ContactPage() {
       label: t('addressTitle'),
       value: locale === 'ar'
         ? 'الطريق الدائري الشرقي، حي الازدهار، الرياض'
-        : locale === 'ur'
-        ? 'ایسٹرن رنگ روڈ، الازدهار ضلع، ریاض'
         : 'Eastern Ring Rd, Al Ezdihar Dist., Riyadh',
       href: companyInfo.mapsUrl,
       external: true,
@@ -137,10 +135,10 @@ export default function ContactPage() {
                     <div className="flex items-center gap-1 mt-2 text-accent/50 text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <HiExternalLink className="w-3 h-3" />
                       {external
-                        ? (locale === 'ar' ? 'فتح الخريطة' : locale === 'ur' ? 'نقشہ کھولیں' : 'Open Maps')
+                        ? (locale === 'ar' ? 'فتح الخريطة' : 'Open Maps')
                         : href.startsWith('mailto')
-                          ? (locale === 'ar' ? 'إرسال بريد' : locale === 'ur' ? 'ای میل کریں' : 'Send Email')
-                          : (locale === 'ar' ? 'اتصال' : locale === 'ur' ? 'کال کریں' : 'Call')}
+                          ? (locale === 'ar' ? 'إرسال بريد' : 'Send Email')
+                          : (locale === 'ar' ? 'اتصال' : 'Call')}
                     </div>
                   )}
                 </div>
@@ -197,7 +195,7 @@ export default function ContactPage() {
           <div className="flex items-center gap-2 mb-6">
             <HiShieldCheck className="w-4 h-4 text-accent" />
             <span className="text-[10px] font-bold text-white/30 tracking-[0.2em] uppercase">
-              {locale === 'ar' ? 'الشهادات والاعتمادات' : locale === 'ur' ? 'سرٹیفیکیشن اور اعتماد' : 'Certifications & Accreditations'}
+              {locale === 'ar' ? 'الشهادات والاعتمادات' : 'Certifications & Accreditations'}
             </span>
           </div>
           <div className="flex flex-wrap gap-3">

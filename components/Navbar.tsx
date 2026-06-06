@@ -8,7 +8,7 @@ import { routing } from '@/i18n/routing'
 import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
 import Link from 'next/link'
 
-const LOCALE_LABELS: Record<string, string> = { ar: 'AR', en: 'EN', ur: 'اردو' }
+const LOCALE_LABELS: Record<string, string> = { ar: 'AR', en: 'EN' }
 
 export default function Navbar() {
   const t = useTranslations('nav')
