@@ -57,17 +57,24 @@ export default function HomePage() {
 
   const clientItems = tcl.raw('items') as Record<string, { name: string; sector: string }>
 
-  const notes = isRTL
-    ? [
-        'لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.',
-        'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.',
-        'جميع وثائق المشاريع متوفرة في قاعدة بياناتنا وتُقدَّم عند الطلب.',
-      ]
-    : [
-        'Every project has a distinct scope of work tailored to client requirements.',
-        'Projects were executed under both main contracting and subcontracting models.',
-        'All project documents are available in our database and can be provided upon request.',
-      ]
+  const notes =
+    locale === 'ar'
+      ? [
+          'لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.',
+          'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.',
+          'جميع وثائق المشاريع متوفرة في قاعدة بياناتنا وتُقدَّم عند الطلب.',
+        ]
+      : locale === 'ur'
+      ? [
+          'ہر منصوبے کا کام کا دائرہ گاہک کی ضروریات کے مطابق ہوتا ہے۔',
+          'منصوبے مرکزی ٹھیکیدار اور ذیلی ٹھیکیدار دونوں کی حیثیت سے انجام دیے گئے۔',
+          'تمام منصوبوں کی دستاویزات ہمارے ڈیٹا بیس میں موجود ہیں اور درخواست پر فراہم کی جا سکتی ہیں۔',
+        ]
+      : [
+          'Every project has a distinct scope of work tailored to client requirements.',
+          'Projects were executed under both main contracting and subcontracting models.',
+          'All project documents are available in our database and can be provided upon request.',
+        ]
 
   return (
     <div>
@@ -398,10 +405,10 @@ export default function HomePage() {
             className="text-center mb-10 sm:mb-14"
           >
             <span className="section-label mx-auto block text-center">
-              {isRTL ? 'ملاحظات عامة' : 'General Notes'}
+              {locale === 'ar' ? 'ملاحظات عامة' : locale === 'ur' ? 'عمومی نوٹس' : 'General Notes'}
             </span>
             <h2 className="section-title-white">
-              {isRTL ? 'ملاحظات حول منهجية العمل' : 'Notes on Our Project Methodology'}
+              {locale === 'ar' ? 'ملاحظات حول منهجية العمل' : locale === 'ur' ? 'ہمارے منصوبوں کے طریقہ کار پر نوٹس' : 'Notes on Our Project Methodology'}
             </h2>
           </motion.div>
 

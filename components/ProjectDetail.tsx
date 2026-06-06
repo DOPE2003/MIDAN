@@ -132,11 +132,11 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
   const sarValue = `SAR ${sarMil % 1 === 0 ? sarMil.toFixed(0) : sarMil.toFixed(2)}M`
   const BackArrow = isRTL ? HiArrowRight : HiArrowLeft
 
-  const homeLabel     = locale === 'ar' ? 'الرئيسية' : 'Home'
-  const projLabel     = locale === 'ar' ? 'المشاريع' : 'Projects'
-  const moreLabel     = locale === 'ar' ? 'مشاريع أخرى' : 'More Projects'
-  const allProjLabel  = locale === 'ar' ? 'كل المشاريع' : 'All Projects'
-  const featuredLabel = locale === 'ar' ? 'مشروع مميز' : 'Featured'
+  const homeLabel     = locale === 'ar' ? 'الرئيسية' : locale === 'ur' ? 'ہوم' : 'Home'
+  const projLabel     = locale === 'ar' ? 'المشاريع' : locale === 'ur' ? 'منصوبے' : 'Projects'
+  const moreLabel     = locale === 'ar' ? 'مشاريع أخرى' : locale === 'ur' ? 'مزید منصوبے' : 'More Projects'
+  const allProjLabel  = locale === 'ar' ? 'كل المشاريع' : locale === 'ur' ? 'تمام منصوبے' : 'All Projects'
+  const featuredLabel = locale === 'ar' ? 'مشروع مميز' : locale === 'ur' ? 'نمایاں' : 'Featured'
 
   const sidebarFacts = [
     { Icon: HiUser,           label: tp('client'),        value: data.client    },

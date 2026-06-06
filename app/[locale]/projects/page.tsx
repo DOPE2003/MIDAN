@@ -130,12 +130,14 @@ export default function ProjectsPage() {
             className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 bg-white/5 border border-white/10 rounded-xl px-5 py-4"
           >
             <span className="text-accent text-[10px] font-bold uppercase shrink-0" style={{ letterSpacing: '0.15em' }}>
-              {locale === 'ar' ? 'ملاحظات عامة' : 'General Notes'}
+              {locale === 'ar' ? 'ملاحظات عامة' : locale === 'ur' ? 'عمومی نوٹس' : 'General Notes'}
             </span>
             <div className="h-px bg-white/10 hidden sm:block w-4 shrink-0" />
             <div className="flex flex-col gap-2 text-white/50 text-xs leading-relaxed">
               {(locale === 'ar'
                 ? ['لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.', 'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.', 'جميع وثائق المشاريع متوفرة في قاعدة بياناتنا وتُقدَّم عند الطلب.']
+                : locale === 'ur'
+                ? ['ہر منصوبے کا کام کا دائرہ گاہک کی ضروریات کے مطابق ہوتا ہے۔', 'منصوبے مرکزی ٹھیکیدار اور ذیلی ٹھیکیدار دونوں کی حیثیت سے انجام دیے گئے۔', 'تمام منصوبوں کی دستاویزات ہمارے ڈیٹا بیس میں موجود ہیں اور درخواست پر فراہم کی جا سکتی ہیں۔']
                 : ['Every project has a distinct scope of work tailored to client requirements.', 'Projects were executed under both main contracting and subcontracting models.', 'All project documents are available in our database and can be provided upon request.']
               ).map((note, i) => (
                 <div key={i} className="flex items-start gap-2">
