@@ -33,8 +33,7 @@ export default function HomePage() {
 
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const bgY       = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
 
   const stats = [
     { val: t('statProjectsVal'), label: t('statProjects') },
@@ -89,13 +88,11 @@ export default function HomePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={HERO_BG} alt="" className="w-full h-full object-cover object-[center_30%] scale-105" />
         </motion.div>
-        {/* Primary overlay */}
-        <motion.div
-          style={{ opacity: bgOpacity }}
-          className="absolute inset-0 bg-gradient-to-b from-[#001030]/75 via-[#001030]/70 to-[#001030]/96"
+        {/* Brand gradient overlay */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(135deg, rgb(112 48 160) 0%, rgb(0 32 96 / 50%) 50%, rgb(0 176 155) 100%)' }}
         />
-        {/* Uniform base layer */}
-        <div className="absolute inset-0 bg-[#001030]/25" />
         {/* Bottom-up darkening — makes stats + buttons area deeply readable */}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#001030]/80 via-[#001030]/50 to-transparent" />
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/80 to-transparent" />
@@ -106,7 +103,7 @@ export default function HomePage() {
 
           <motion.div
             {...anim(0.05)}
-            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/70 text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full uppercase mb-8 sm:mb-10"
+            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/85 text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full uppercase mb-8 sm:mb-10"
           >
             <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
             {t('badge')}
@@ -145,7 +142,7 @@ export default function HomePage() {
                 <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-accent mb-1 group-hover:scale-105 transition-transform duration-200">
                   {s.val}
                 </div>
-                <div className="text-white/75 font-medium text-[9px] sm:text-[10px] leading-tight mt-0.5">
+                <div className="text-white/90 font-medium text-[9px] sm:text-[10px] leading-tight mt-0.5">
                   {s.label}
                 </div>
               </div>
@@ -320,7 +317,7 @@ export default function HomePage() {
                 <div className="stat-value text-accent mb-2">
                   {s.value}{s.suffix}
                 </div>
-                <div className="text-white/80 font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
+                <div className="text-white/90 font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
                   {statLabels[i]}
                 </div>
               </motion.div>
@@ -342,7 +339,7 @@ export default function HomePage() {
           >
             <span className="section-label mx-auto">{tcl('label')}</span>
             <h2 className="section-title-white">{tcl('title')}</h2>
-            <p className="text-white/45 text-base leading-relaxed max-w-lg mx-auto">{tcl('body')}</p>
+            <p className="text-white/85 text-base leading-relaxed max-w-lg mx-auto">{tcl('body')}</p>
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto">
@@ -385,7 +382,7 @@ export default function HomePage() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-8 sm:mt-10 text-center"
           >
-            <span className="inline-flex items-center gap-2 border border-white/12 text-white/35 text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
+            <span className="inline-flex items-center gap-2 border border-white/12 text-white/80 text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
               <span className="w-1.5 h-1.5 bg-accent rounded-full" />
               {tcl('footnote')}
             </span>
@@ -425,7 +422,7 @@ export default function HomePage() {
                 <div className="absolute top-5 start-6 w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center">
                   <span className="text-accent text-[10px] font-extrabold">{String(i + 1).padStart(2, '0')}</span>
                 </div>
-                <p className="text-white/75 text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white/90 transition-colors duration-300">
+                <p className="text-white/90 text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white transition-colors duration-300">
                   {note}
                 </p>
               </motion.div>
@@ -453,7 +450,7 @@ export default function HomePage() {
             >
               <span className="section-label">{tc('homeLabel')}</span>
               <h2 className="section-title-white mb-4">{tc('title')}</h2>
-              <p className="text-white/55 text-base mb-8 leading-relaxed">{tc('body')}</p>
+              <p className="text-white/85 text-base mb-8 leading-relaxed">{tc('body')}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href={`/${locale}/contact`} className="btn-accent">
                   {tc('ctaButton')} <Arrow className="w-4 h-4" />

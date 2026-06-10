@@ -94,7 +94,7 @@ export default function ContactPage() {
             >
               {t('header.title')}
             </h1>
-            <p className="text-white/40 text-[15px] leading-relaxed max-w-lg">{t('header.subtitle')}</p>
+            <p className="text-white/85 text-[15px] leading-relaxed max-w-lg">{t('header.subtitle')}</p>
           </motion.div>
         </div>
       </div>
@@ -127,9 +127,9 @@ export default function ContactPage() {
                   }`} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[9px] font-bold text-white/30 tracking-[0.2em] uppercase mb-1.5">{label}</div>
+                  <div className="text-[9px] font-bold text-white/65 tracking-[0.2em] uppercase mb-1.5">{label}</div>
                   <div className={`font-semibold text-[15px] leading-snug transition-colors duration-300 ${
-                    href ? 'text-white/80 group-hover:text-accent' : 'text-white/60'
+                    href ? 'text-white/90 group-hover:text-accent' : 'text-white/85'
                   }`}>
                     {ltr ? <span dir="ltr">{value}</span> : value}
                   </div>
@@ -181,7 +181,7 @@ export default function ContactPage() {
             href={companyInfo.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-white/5 border border-white/10 text-white/65 font-bold text-sm hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-200 group"
+            className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-white/5 border border-white/10 text-white/85 font-bold text-sm hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-200 group"
           >
             <HiLocationMarker className="w-5 h-5 text-accent shrink-0" />
             <span>{t('mapsCta')}</span>
@@ -196,7 +196,7 @@ export default function ContactPage() {
         >
           <div className="flex items-center gap-2 mb-6">
             <HiShieldCheck className="w-4 h-4 text-accent" />
-            <span className="text-[10px] font-bold text-white/30 tracking-[0.2em] uppercase">
+            <span className="text-[10px] font-bold text-white/65 tracking-[0.2em] uppercase">
               {locale === 'ar' ? 'الشهادات والاعتمادات' : locale === 'ur' ? 'سرٹیفیکیشن اور اعتماد' : 'Certifications & Accreditations'}
             </span>
           </div>
@@ -204,12 +204,12 @@ export default function ContactPage() {
             {certifications.map((c) => (
               <div key={c} className="flex items-center gap-2.5 bg-white/4 border border-white/8 rounded-xl px-4 py-2.5">
                 <HiCheckCircle className="w-3.5 h-3.5 text-accent/70 shrink-0" />
-                <span className="text-white/55 text-[13px] font-semibold">{c}</span>
+                <span className="text-white/85 text-[13px] font-semibold">{c}</span>
               </div>
             ))}
             <div className="flex items-center gap-2.5 bg-white/4 border border-white/8 rounded-xl px-4 py-2.5">
               <HiCheckCircle className="w-3.5 h-3.5 text-accent/70 shrink-0" />
-              <span className="text-white/55 text-[13px] font-semibold" dir="ltr">D-U-N-S: #{companyInfo.duns}</span>
+              <span className="text-white/85 text-[13px] font-semibold" dir="ltr">D-U-N-S: #{companyInfo.duns}</span>
             </div>
           </div>
         </motion.div>

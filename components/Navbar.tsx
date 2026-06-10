@@ -80,7 +80,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-3.5 py-2 text-[13px] font-semibold transition-colors duration-200 rounded-lg tracking-wide ${
                   active
-                    ? isSolid ? 'text-primary' : 'text-white'
+                    ? 'text-accent'
                     : isSolid
                     ? 'text-gray-500 hover:text-primary hover:bg-gray-50'
                     : 'text-white/75 hover:text-white hover:bg-white/10'
