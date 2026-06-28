@@ -106,8 +106,10 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-white">
 
       {/* ── PAGE HERO ─────────────────────────────────── */}
-      <div className="bg-[#080e20] pt-28 pb-14 md:pt-32 md:pb-16">
-        <div className="container-custom">
+      <div className="relative bg-brand-gradient pt-28 pb-14 md:pt-32 md:pb-16 overflow-hidden">
+        {/* Fade bottom edge into white so the next section feels connected, not cut */}
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-b from-transparent to-white" />
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -199,6 +201,9 @@ export default function ProjectsPage() {
       </div>
 
       {/* ── PROJECT GRID ──────────────────────────────── */}
+      <div className="relative overflow-hidden">
+        {/* Fade bottom edge into the footer's purple so it doesn't cut hard */}
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#4D297D] pointer-events-none z-20" />
       <div className="container-custom py-12 md:py-16">
         <AnimatePresence mode="popLayout">
           <motion.div
@@ -306,6 +311,7 @@ export default function ProjectsPage() {
             No projects in this category yet.
           </div>
         )}
+      </div>
       </div>
 
       {/* ── GALLERY MODAL ─────────────────────────────── */}

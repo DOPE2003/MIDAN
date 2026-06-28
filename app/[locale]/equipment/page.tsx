@@ -22,7 +22,7 @@ export default function EquipmentPage() {
   const grandTotal = totals.reduce((a, b) => a + b, 0)
 
   return (
-    <div className="min-h-screen bg-[#040a18]">
+    <div className="min-h-screen bg-white">
 
       {/* ── PAGE HERO ─────────────────────────────────── */}
       <div className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden">
@@ -30,9 +30,11 @@ export default function EquipmentPage() {
         <img
           src="/projects/steel/img1.jpg"
           alt="Equipment background"
-          className="absolute inset-0 w-full h-full object-cover opacity-15"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#040a18]/80 to-[#040a18]" />
+        <div className="bg-brand-gradient-overlay" />
+        {/* Fade bottom edge into white so the next section feels connected, not cut */}
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-b from-transparent to-white" />
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -73,7 +75,10 @@ export default function EquipmentPage() {
       </div>
 
       {/* ── EQUIPMENT CATEGORIES ──────────────────────── */}
-      <div className="container-custom pb-20 md:pb-28">
+      <div className="relative overflow-hidden">
+        {/* Fade bottom edge into the footer's purple so it doesn't cut hard */}
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#4D297D] pointer-events-none z-20" />
+      <div className="container-custom pb-20 md:pb-28 min-h-[70vh] flex flex-col justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
           {equipment.map((cat, i) => (
             <motion.div
@@ -143,6 +148,7 @@ export default function EquipmentPage() {
             </motion.div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   )

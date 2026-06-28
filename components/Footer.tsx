@@ -21,7 +21,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-[#010e2e] text-white">
+    <footer className="bg-brand-gradient text-white">
       <div className="h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-40" />
 
       <div className="container-custom py-12 md:py-16">
@@ -33,10 +33,10 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo-mark.svg" alt="Midan Alemar" className="h-14 sm:h-16 w-auto object-contain" />
             </div>
-            <p className="text-white/85 text-sm leading-loose mb-5 sm:mb-7 max-w-sm">{t('tagline')}</p>
+            <p className="text-white text-sm leading-loose mb-5 sm:mb-7 max-w-sm">{t('tagline')}</p>
             <div className="flex flex-wrap gap-2">
               {certifications.map((cert, i) => (
-                <span key={i} className="border border-white/15 text-white/80 text-[10px] font-semibold px-3 py-1.5 rounded tracking-wide hover:border-accent/40 hover:text-accent/70 transition-colors cursor-default">
+                <span key={i} className="border border-white/15 text-white text-[10px] font-semibold px-3 py-1.5 rounded tracking-wide hover:border-accent/40 hover:text-accent/70 transition-colors cursor-default">
                   {cert}
                 </span>
               ))}
@@ -45,11 +45,11 @@ export default function Footer() {
 
           {/* Nav */}
           <div className="lg:col-span-3">
-            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/70 mb-4 sm:mb-5">{t('navTitle')}</h4>
+            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white mb-4 sm:mb-5">{t('navTitle')}</h4>
             <ul className="space-y-2.5 sm:space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-white/85 hover:text-accent text-sm transition-colors duration-200 py-0.5 block">
+                  <Link href={link.href} className="text-white hover:text-accent text-sm transition-colors duration-200 py-0.5 block">
                     {link.label}
                   </Link>
                 </li>
@@ -59,33 +59,33 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-4">
-            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/70 mb-4 sm:mb-5">{t('contactTitle')}</h4>
+            <h4 className="text-[10px] font-bold tracking-[0.15em] uppercase text-white mb-4 sm:mb-5">{t('contactTitle')}</h4>
             <ul className="space-y-3 sm:space-y-4">
               <li>
                 <a
                   href={companyInfo.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-white/85 hover:text-accent text-sm transition-colors group"
+                  className="flex items-start gap-3 text-white hover:text-accent text-sm transition-colors group"
                 >
                   <HiLocationMarker className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                   <span className="leading-relaxed group-hover:underline underline-offset-2">{t('address')}</span>
                 </a>
               </li>
               <li>
-                <a href={`tel:${companyInfo.phoneTel}`} className="flex items-center gap-3 text-white/85 hover:text-accent text-sm transition-colors py-0.5">
+                <a href={`tel:${companyInfo.phoneTel}`} className="flex items-center gap-3 text-white hover:text-accent text-sm transition-colors py-0.5">
                   <HiDeviceMobile className="w-4 h-4 text-accent shrink-0" />
                   <span dir="ltr" className="font-medium">{companyInfo.phoneDisplay}</span>
                 </a>
               </li>
               <li>
-                <a href={`tel:${companyInfo.phoneLandlineTel}`} className="flex items-center gap-3 text-white/85 hover:text-accent text-sm transition-colors py-0.5">
+                <a href={`tel:${companyInfo.phoneLandlineTel}`} className="flex items-center gap-3 text-white hover:text-accent text-sm transition-colors py-0.5">
                   <HiPhone className="w-4 h-4 text-accent shrink-0" />
                   <span dir="ltr" className="font-medium">{companyInfo.phoneLandlineDisplay}</span>
                 </a>
               </li>
               <li>
-                <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-3 text-white/85 hover:text-accent text-sm transition-colors py-0.5">
+                <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-3 text-white hover:text-accent text-sm transition-colors py-0.5">
                   <HiMail className="w-4 h-4 text-accent shrink-0" />
                   <span dir="ltr" className="break-all">{companyInfo.email}</span>
                 </a>
@@ -106,7 +106,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/8">
-        <div className="container-custom py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-xs text-white/65 text-center sm:text-start">
+        <div className="container-custom py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-3 text-xs text-white text-center sm:text-start">
           <p>© {new Date().getFullYear()} ميدان الإعمار للمقاولات. {t('copyright')}</p>
           <p className="shrink-0" dir="ltr">D-U-N-S: #{companyInfo.duns}</p>
         </div>

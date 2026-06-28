@@ -7,7 +7,13 @@
   --secondary: #7030A0;
   --accent: #00B09B;
   --dark: #080e20;
+  --brand-gradient: linear-gradient(135deg, #4D297D 0%, #2E3A8C 45%, #00C8A0 100%);
 }
+
+/* Single consistent brand gradient — used as solid bg on image-less sections,
+   or as an overlay layer above a background image. */
+.bg-brand-gradient { background: var(--brand-gradient); }
+.bg-brand-gradient-overlay { position: absolute; inset: 0; background: var(--brand-gradient); opacity: 0.82; }
 
 * { box-sizing: border-box; padding: 0; margin: 0; }
 

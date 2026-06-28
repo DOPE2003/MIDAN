@@ -4,9 +4,11 @@ import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { clientIds, clientPngIds } from '@/lib/data'
 
+// Some source SVGs have large internal padding around the mark — compensate so every
+// logo reads as visually the same size inside the fixed 70px container.
 const logoScale: Record<string, number> = {
-  sipchem:      2.5,
-  riyadhcables: 2.2,
+  sipchem:      2.2,
+  riyadhcables: 2,
 }
 
 export default function ClientsPage() {
@@ -14,7 +16,10 @@ export default function ClientsPage() {
   const items = t.raw('items') as Record<string, { name: string; sector: string }>
 
   return (
-    <div className="min-h-screen bg-[#040c1e] relative overflow-hidden">
+    <div
+      className="min-h-screen relative overflow-hidden"
+      style={{ background: 'linear-gradient(180deg, #4D297D 0%, #2E3A8C 35%, #00C8A0 65%, #2E3A8C 85%, #4D297D 100%)' }}
+    >
       <div
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(ellipse at 30% 50%, #7030A0 0%, transparent 55%), radial-gradient(ellipse at 70% 50%, #00B09B 0%, transparent 55%)' }}
@@ -49,11 +54,11 @@ export default function ClientsPage() {
                 className="group bg-white hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-default overflow-hidden"
                 style={{ minHeight: '110px' }}
               >
-                <div className="h-12 sm:h-14 w-full flex items-center justify-center overflow-hidden">
+                <div className="w-full flex items-center justify-center overflow-hidden" style={{ height: '70px' }}>
                   <img
                     src={`/logos/${id}.${ext}`}
                     alt={client.name}
-                    className="max-h-full w-auto max-w-full object-contain"
+                    className="h-full w-full object-contain"
                     style={logoScale[id] ? { transform: `scale(${logoScale[id]})` } : undefined}
                   />
                 </div>

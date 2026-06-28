@@ -7,9 +7,11 @@ import Link from 'next/link'
 import { HiArrowRight, HiArrowLeft, HiPhone, HiChevronDown } from 'react-icons/hi'
 import { categories, certifications, statsValues, clientIds, clientPngIds } from '@/lib/data'
 
+// Some source SVGs have large internal padding around the mark — compensate so every
+// logo reads as visually the same size inside the fixed 70px container.
 const logoScale: Record<string, number> = {
-  sipchem:      2.5,
-  riyadhcables: 2.2,
+  sipchem:      2.2,
+  riyadhcables: 2,
 }
 
 const anim = (delay = 0) => ({
@@ -88,14 +90,21 @@ export default function HomePage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={HERO_BG} alt="" className="w-full h-full object-cover object-[center_30%] scale-105" />
         </motion.div>
-        {/* Brand gradient overlay */}
+        {/* Brand gradient wash — diagonal purple → teal, light enough to keep the photo visible */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(135deg, rgb(112 48 160) 0%, rgb(0 32 96 / 50%) 50%, rgb(0 176 155) 100%)' }}
+          style={{ background: 'linear-gradient(135deg, rgba(77,41,125,0.78) 0%, rgba(46,58,140,0.55) 45%, rgba(0,200,160,0.45) 100%)' }}
+        />
+        {/* Focused dark vignette behind the headline/paragraph for contrast */}
+        <div
+          className="absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,8,20,0.55) 0%, transparent 75%)' }}
         />
         {/* Bottom-up darkening — makes stats + buttons area deeply readable */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#001030]/80 via-[#001030]/50 to-transparent" />
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#001030]/80 via-[#001030]/40 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/60 to-transparent" />
+        {/* Fade the very bottom edge into white so the next section feels connected, not cut */}
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-white" />
 
         <div className="flex-1" style={{ minHeight: 'clamp(88px, 14vh, 160px)' }} />
 
@@ -119,7 +128,8 @@ export default function HomePage() {
 
           <motion.p
             {...anim(0.22)}
-            className="text-white font-medium text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0 leading-relaxed"
+            className="text-white font-semibold max-w-2xl mx-auto mb-10 sm:mb-12 px-2 sm:px-0 leading-relaxed"
+            style={{ fontSize: 'clamp(1.05rem, 2.4vw, 1.4rem)', textShadow: 'none', WebkitTextStroke: '0px' }}
           >
             {t('subtitle')}
           </motion.p>
@@ -168,7 +178,7 @@ export default function HomePage() {
             className="absolute bottom-8 end-8 hidden xl:flex items-center gap-4"
           >
             {certifications.map((c) => (
-              <span key={c} className="text-white/20 text-[9px] font-bold">{c}</span>
+              <span key={c} className="text-white/70 text-[9px] font-bold">{c}</span>
             ))}
           </motion.div>
         </div>
@@ -300,10 +310,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 4. STATS / PROJECTS SHOWCASE ─────────────────── */}
-      <section className="py-14 sm:py-20 bg-primary overflow-hidden relative">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 25% 50%, #7030A0 0%, transparent 60%), radial-gradient(circle at 75% 50%, #00B09B 0%, transparent 60%)' }} />
-        <div className="container-custom relative z-10">
+      {/* ── 4+5+6. STATS + CLIENTS + GENERAL NOTES — one continuous gradient, no seam ── */}
+      <section className="bg-brand-gradient overflow-hidden relative">
+        {/* Fade top edge from the light section above so the gradient eases in, not cuts in */}
+        <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-b from-[#f8f9fc] to-transparent" />
+        <div className="container-custom relative z-10 py-14 sm:py-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
             {statsValues.map((s, i) => (
               <motion.div
@@ -314,7 +325,7 @@ export default function HomePage() {
                 transition={{ delay: i * 0.08, duration: 0.6 }}
                 className="text-center"
               >
-                <div className="stat-value text-accent mb-2">
+                <div className="stat-value text-white mb-2">
                   {s.value}{s.suffix}
                 </div>
                 <div className="text-white/90 font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
@@ -324,12 +335,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* ── 5. CLIENTS ────────────────────────────────────── */}
-      <section className="py-14 sm:py-20 md:py-24 bg-[#040c1e] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(ellipse at 30% 50%, #7030A0 0%, transparent 55%), radial-gradient(ellipse at 70% 50%, #00B09B 0%, transparent 55%)' }} />
-        <div className="container-custom relative z-10">
+        <div className="container-custom relative z-10 pb-14 sm:pb-20 md:pb-24 pt-4 sm:pt-6 border-t border-white/10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -356,12 +363,12 @@ export default function HomePage() {
                   className="group bg-white hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center gap-3 transition-all duration-300 cursor-default overflow-hidden"
                   style={{ minHeight: '100px' }}
                 >
-                  <div className="h-12 sm:h-14 w-full flex items-center justify-center overflow-hidden">
+                  <div className="w-full flex items-center justify-center overflow-hidden" style={{ height: '70px' }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`/logos/${id}.${ext}`}
                       alt={clientData?.name ?? id}
-                      className="max-h-full w-auto max-w-full object-contain"
+                      className="h-full w-full object-contain"
                       style={logoScale[id] ? { transform: `scale(${logoScale[id]})` } : undefined}
                     />
                   </div>
@@ -387,46 +394,43 @@ export default function HomePage() {
               {tcl('footnote')}
             </span>
           </motion.div>
-        </div>
-      </section>
 
-      {/* ── 6. GENERAL NOTES ──────────────────────────────── */}
-      <section className="py-14 sm:py-20 md:py-24 bg-[#080e20] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(ellipse at 20% 50%, #7030A0 0%, transparent 55%), radial-gradient(ellipse at 80% 50%, #00B09B 0%, transparent 55%)' }} />
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-10 sm:mb-14"
-          >
-            <span className="section-label mx-auto block text-center">
-              {locale === 'ar' ? 'ملاحظات عامة' : locale === 'ur' ? 'عمومی نوٹس' : 'General Notes'}
-            </span>
-            <h2 className="section-title-white">
-              {locale === 'ar' ? 'ملاحظات حول منهجية العمل' : locale === 'ur' ? 'ہمارے منصوبوں کے طریقہ کار پر نوٹس' : 'Notes on Our Project Methodology'}
-            </h2>
-          </motion.div>
+          {/* General Notes — same gradient section, no new background */}
+          <div className="mt-16 sm:mt-24 pt-12 sm:pt-16 border-t border-white/10">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-10 sm:mb-14"
+            >
+              <span className="section-label mx-auto block text-center">
+                {locale === 'ar' ? 'ملاحظات عامة' : locale === 'ur' ? 'عمومی نوٹس' : 'General Notes'}
+              </span>
+              <h2 className="section-title-white">
+                {locale === 'ar' ? 'ملاحظات حول منهجية العمل' : locale === 'ur' ? 'ہمارے منصوبوں کے طریقہ کار پر نوٹس' : 'Notes on Our Project Methodology'}
+              </h2>
+            </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
-            {notes.map((note, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm px-6 py-6 sm:px-7 sm:py-7 hover:border-accent/30 hover:bg-white/8 transition-all duration-300 group"
-              >
-                <div className="absolute top-5 start-6 w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center">
-                  <span className="text-accent text-[10px] font-extrabold">{String(i + 1).padStart(2, '0')}</span>
-                </div>
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white transition-colors duration-300">
-                  {note}
-                </p>
-              </motion.div>
-            ))}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
+              {notes.map((note, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm px-6 py-6 sm:px-7 sm:py-7 hover:border-accent/30 hover:bg-white/8 transition-all duration-300 group"
+                >
+                  <div className="absolute top-5 start-6 w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center">
+                    <span className="text-accent text-[10px] font-extrabold">{String(i + 1).padStart(2, '0')}</span>
+                  </div>
+                  <p className="text-white/90 text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white transition-colors duration-300">
+                    {note}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -439,7 +443,10 @@ export default function HomePage() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/90 to-primary/70" />
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: '#4D297D', opacity: 0.82 }}
+        />
         <div className="container-custom relative z-10">
           <div className="max-w-xl">
             <motion.div

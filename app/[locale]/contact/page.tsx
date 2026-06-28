@@ -42,14 +42,14 @@ export default function ContactPage() {
     },
     {
       Icon: HiDeviceMobile,
-      label: t('phoneMobile'),
+      label: null,
       value: companyInfo.phoneDisplay,
       href: `tel:${companyInfo.phoneTel}`,
       ltr: true,
     },
     {
       Icon: HiPhone,
-      label: t('phoneLandline'),
+      label: null,
       value: companyInfo.phoneLandlineDisplay,
       href: `tel:${companyInfo.phoneLandlineTel}`,
       ltr: true,
@@ -70,7 +70,7 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#040c1e]">
+    <div className="min-h-screen bg-white">
 
       {/* ── PAGE HERO ────────────────────────────────────── */}
       <div className="relative pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden">
@@ -78,9 +78,11 @@ export default function ContactPage() {
         <img
           src="/projects/landscape/img7.jpg"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-10"
+          className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#040c1e]/60 via-[#040c1e]/80 to-[#040c1e]" />
+        <div className="bg-brand-gradient-overlay" />
+        {/* Fade bottom edge into white so the next section feels connected, not cut */}
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-b from-transparent to-white" />
 
         <div className="container-custom relative z-10">
           <motion.div {...fadeUp(0)} className="max-w-2xl">
@@ -100,11 +102,14 @@ export default function ContactPage() {
       </div>
 
       {/* ── CONTACT INFO ─────────────────────────────────── */}
-      <div className="container-custom pb-24">
+      <div className="relative overflow-hidden">
+        {/* Fade bottom edge into the footer's purple so it doesn't cut hard */}
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#4D297D] pointer-events-none z-20" />
+      <div className="container-custom pb-24 pt-12">
 
         {/* Section label */}
         <motion.div {...fadeUpView(0)} className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2 tracking-[-0.02em]">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 tracking-[-0.02em]">
             {t('infoTitle')}
           </h2>
           <div className="w-10 h-0.5 bg-accent rounded-full" />
@@ -116,25 +121,27 @@ export default function ContactPage() {
             const card = (
               <div className={`group flex items-start gap-4 p-6 rounded-2xl border transition-all duration-300 ${
                 href
-                  ? 'bg-white/4 border-white/8 hover:bg-white/8 hover:border-accent/30 cursor-pointer'
-                  : 'bg-white/3 border-white/6'
+                  ? 'bg-gray-50 border-gray-100 hover:bg-white hover:border-accent/40 hover:shadow-md cursor-pointer'
+                  : 'bg-gray-50 border-gray-100'
               }`}>
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  href ? 'bg-white/8 group-hover:bg-accent' : 'bg-white/5'
+                  href ? 'bg-accent/10 group-hover:bg-accent' : 'bg-accent/10'
                 }`}>
                   <Icon className={`w-5 h-5 transition-colors duration-300 ${
-                    href ? 'text-accent group-hover:text-white' : 'text-accent/60'
+                    href ? 'text-accent group-hover:text-white' : 'text-accent'
                   }`} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[9px] font-bold text-white/65 tracking-[0.2em] uppercase mb-1.5">{label}</div>
+                  {label && (
+                    <div className="text-[9px] font-bold text-gray-400 tracking-[0.2em] uppercase mb-1.5">{label}</div>
+                  )}
                   <div className={`font-semibold text-[15px] leading-snug transition-colors duration-300 ${
-                    href ? 'text-white/90 group-hover:text-accent' : 'text-white/85'
+                    href ? 'text-gray-900 group-hover:text-accent' : 'text-gray-700'
                   }`}>
                     {ltr ? <span dir="ltr">{value}</span> : value}
                   </div>
                   {href && (
-                    <div className="flex items-center gap-1 mt-2 text-accent/50 text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center gap-1 mt-2 text-accent/70 text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <HiExternalLink className="w-3 h-3" />
                       {external
                         ? (locale === 'ar' ? 'فتح الخريطة' : locale === 'ur' ? 'نقشہ کھولیں' : 'Open Maps')
@@ -170,7 +177,7 @@ export default function ContactPage() {
             href={companyInfo.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-[#25D366]/12 border border-[#25D366]/22 text-[#4ade80] font-bold text-sm hover:bg-[#25D366]/22 hover:border-[#25D366]/40 transition-all duration-200 group"
+            className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-[#25D366]/10 border border-[#25D366]/25 text-[#1a9c4a] font-bold text-sm hover:bg-[#25D366]/18 hover:border-[#25D366]/45 transition-all duration-200 group"
           >
             <FaWhatsapp className="w-5 h-5 text-[#25D366] shrink-0" />
             <span>{t('whatsappCta')}</span>
@@ -181,7 +188,7 @@ export default function ContactPage() {
             href={companyInfo.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-white/5 border border-white/10 text-white/85 font-bold text-sm hover:bg-white/10 hover:border-white/20 hover:text-white transition-all duration-200 group"
+            className="flex items-center gap-3 px-7 py-4 rounded-2xl bg-gray-50 border border-gray-200 text-gray-700 font-bold text-sm hover:bg-gray-100 hover:border-gray-300 hover:text-gray-900 transition-all duration-200 group"
           >
             <HiLocationMarker className="w-5 h-5 text-accent shrink-0" />
             <span>{t('mapsCta')}</span>
@@ -192,28 +199,29 @@ export default function ContactPage() {
         {/* ── CERTIFICATIONS ── */}
         <motion.div
           {...fadeUpView(0.45)}
-          className="border-t border-white/8 pt-10"
+          className="border-t border-gray-100 pt-10"
         >
           <div className="flex items-center gap-2 mb-6">
             <HiShieldCheck className="w-4 h-4 text-accent" />
-            <span className="text-[10px] font-bold text-white/65 tracking-[0.2em] uppercase">
+            <span className="text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase">
               {locale === 'ar' ? 'الشهادات والاعتمادات' : locale === 'ur' ? 'سرٹیفیکیشن اور اعتماد' : 'Certifications & Accreditations'}
             </span>
           </div>
           <div className="flex flex-wrap gap-3">
             {certifications.map((c) => (
-              <div key={c} className="flex items-center gap-2.5 bg-white/4 border border-white/8 rounded-xl px-4 py-2.5">
-                <HiCheckCircle className="w-3.5 h-3.5 text-accent/70 shrink-0" />
-                <span className="text-white/85 text-[13px] font-semibold">{c}</span>
+              <div key={c} className="flex items-center gap-2.5 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2.5">
+                <HiCheckCircle className="w-3.5 h-3.5 text-accent shrink-0" />
+                <span className="text-gray-700 text-[13px] font-semibold">{c}</span>
               </div>
             ))}
-            <div className="flex items-center gap-2.5 bg-white/4 border border-white/8 rounded-xl px-4 py-2.5">
-              <HiCheckCircle className="w-3.5 h-3.5 text-accent/70 shrink-0" />
-              <span className="text-white/85 text-[13px] font-semibold" dir="ltr">D-U-N-S: #{companyInfo.duns}</span>
+            <div className="flex items-center gap-2.5 bg-gray-50 border border-gray-100 rounded-xl px-4 py-2.5">
+              <HiCheckCircle className="w-3.5 h-3.5 text-accent shrink-0" />
+              <span className="text-gray-700 text-[13px] font-semibold" dir="ltr">D-U-N-S: #{companyInfo.duns}</span>
             </div>
           </div>
         </motion.div>
 
+      </div>
       </div>
     </div>
   )

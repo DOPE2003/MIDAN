@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -19,16 +19,6 @@ export default function Navbar() {
 
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [isLangOpen, setIsLangOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`
-  const isSolid = !isHome || scrolled
 
   const navLinks = [
     { href: `/${locale}`,           label: t('home') },
@@ -51,13 +41,7 @@ export default function Navbar() {
   }
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-400 ${
-        isSolid
-          ? 'bg-white/96 backdrop-blur-md border-b border-gray-100/80 py-3 shadow-sm'
-          : 'bg-gradient-to-b from-[#020812]/55 to-transparent backdrop-blur-[2px] py-5'
-      }`}
-    >
+    <header className="fixed top-0 inset-x-0 z-50 py-3" style={{ backgroundColor: '#4D297D' }}>
       <div className="container-custom flex items-center justify-between">
 
         {/* Logo */}
@@ -79,11 +63,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-3.5 py-2 text-[13px] font-semibold transition-colors duration-200 rounded-lg tracking-wide ${
-                  active
-                    ? 'text-accent'
-                    : isSolid
-                    ? 'text-gray-500 hover:text-primary hover:bg-gray-50'
-                    : 'text-white/75 hover:text-white hover:bg-white/10'
+                  active ? 'text-accent' : 'text-white hover:text-black hover:bg-white/10'
                 }`}
               >
                 {link.label}
@@ -105,9 +85,7 @@ export default function Navbar() {
           <div className="relative">
             <button
               onClick={() => setIsLangOpen(!isLangOpen)}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-colors ${
-                isSolid ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-white/65 hover:text-white hover:bg-white/10'
-              }`}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-colors text-white hover:bg-white/10 hover:text-black"
             >
               {LOCALE_LABELS[locale]}
               <HiChevronDown className={`w-3 h-3 transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
@@ -139,11 +117,7 @@ export default function Navbar() {
           {/* CTA */}
           <Link
             href={`/${locale}/contact`}
-            className={`text-[13px] font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 ${
-              isSolid
-                ? 'bg-primary text-white hover:bg-[#001848] hover:shadow-lg'
-                : 'bg-white/15 border border-white/30 text-white hover:bg-white hover:text-primary backdrop-blur-sm'
-            }`}
+            className="text-[13px] font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 bg-white text-[#4D297D] hover:bg-black hover:text-white"
           >
             {t('cta')}
           </Link>
@@ -151,7 +125,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className={`lg:hidden p-2 rounded-lg transition-colors ${isSolid ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'}`}
+          className="lg:hidden p-2 rounded-lg transition-colors text-white hover:bg-white/10"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label="Toggle menu"
         >
@@ -167,7 +141,8 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden bg-white border-t border-gray-100 shadow-xl"
+            className="lg:hidden overflow-hidden border-t border-white/10 shadow-xl"
+            style={{ backgroundColor: '#4D297D' }}
           >
             <div className="container-custom py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -177,19 +152,19 @@ export default function Navbar() {
                   onClick={() => setIsMobileOpen(false)}
                   className={`px-4 py-3.5 rounded-xl text-[14px] font-semibold transition-all ${
                     isActive(link.href)
-                      ? 'bg-primary text-white'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+                      ? 'bg-white text-[#4D297D]'
+                      : 'text-white hover:bg-white/10 hover:text-black'
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex gap-2 mt-3 pt-3 border-t border-gray-100">
+              <div className="flex gap-2 mt-3 pt-3 border-t border-white/10">
                 {routing.locales.map((loc) => (
                   <button
                     key={loc}
                     onClick={() => { switchLocale(loc); setIsMobileOpen(false) }}
-                    className={`flex-1 py-2.5 rounded-lg text-sm font-bold transition-all ${loc === locale ? 'bg-primary text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    className={`flex-1 py-2.5 rounded-lg text-sm font-bold transition-all ${loc === locale ? 'bg-white text-[#4D297D]' : 'bg-white/10 text-white hover:bg-white/20'}`}
                   >
                     {LOCALE_LABELS[loc]}
                   </button>
@@ -198,7 +173,7 @@ export default function Navbar() {
               <Link
                 href={`/${locale}/contact`}
                 onClick={() => setIsMobileOpen(false)}
-                className="btn-primary mt-2 justify-center text-sm"
+                className="mt-2 flex items-center justify-center gap-2 bg-white text-[#4D297D] hover:bg-black hover:text-white rounded-lg py-3.5 text-sm font-semibold transition-all"
               >
                 {t('cta')}
               </Link>
