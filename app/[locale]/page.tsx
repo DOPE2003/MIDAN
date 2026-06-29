@@ -103,8 +103,6 @@ export default function HomePage() {
         {/* Bottom-up darkening — makes stats + buttons area deeply readable */}
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#001030]/80 via-[#001030]/40 to-transparent" />
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#001030]/60 to-transparent" />
-        {/* Fade the very bottom edge into white so the next section feels connected, not cut */}
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-white" />
 
         <div className="flex-1" style={{ minHeight: 'clamp(88px, 14vh, 160px)' }} />
 
@@ -312,8 +310,6 @@ export default function HomePage() {
 
       {/* ── 4+5+6. STATS + CLIENTS + GENERAL NOTES — one continuous gradient, no seam ── */}
       <section className="bg-brand-gradient overflow-hidden relative">
-        {/* Fade top edge from the light section above so the gradient eases in, not cuts in */}
-        <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-b from-[#f8f9fc] to-transparent" />
         <div className="container-custom relative z-10 py-14 sm:py-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12">
             {statsValues.map((s, i) => (

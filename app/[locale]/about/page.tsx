@@ -46,8 +46,6 @@ export default function AboutPage() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="bg-brand-gradient-overlay" />
-        {/* Fade the bottom edge into white so the next section feels connected, not cut */}
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-white" />
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -155,9 +153,6 @@ export default function AboutPage() {
 
       {/* ── TIMELINE ──────────────────────────────────── */}
       <section className="relative py-20 md:py-28 bg-brand-gradient overflow-hidden">
-        {/* Fade top edge from the light section above, and bottom edge into white below */}
-        <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-b from-[#f8f9fc] to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-b from-transparent to-white" />
         <div className="container-custom relative z-10">
           <motion.div {...fade(0)} className="mb-14 text-center">
             <span className="section-label">{t('timelineTitle')}</span>
@@ -189,8 +184,6 @@ export default function AboutPage() {
 
       {/* ── WORKFORCE ─────────────────────────────────── */}
       <section className="relative py-20 md:py-28 overflow-hidden">
-        {/* Fade bottom edge into the footer's purple so it doesn't cut hard */}
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#4D297D] pointer-events-none z-20" />
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fade(0)}>

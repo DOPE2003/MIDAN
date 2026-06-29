@@ -164,8 +164,8 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={project.coverImage} alt={data.title} className="w-full h-full object-cover" />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020812] via-[#020812]/60 to-[#020812]/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020812]/65 via-transparent to-transparent" />
+        <div className="bg-brand-gradient-overlay" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
         {/* Breadcrumb */}
         <motion.div

@@ -107,8 +107,6 @@ export default function ProjectsPage() {
 
       {/* ── PAGE HERO ─────────────────────────────────── */}
       <div className="relative bg-brand-gradient pt-28 pb-14 md:pt-32 md:pb-16 overflow-hidden">
-        {/* Fade bottom edge into white so the next section feels connected, not cut */}
-        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-b from-transparent to-white" />
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -202,8 +200,6 @@ export default function ProjectsPage() {
 
       {/* ── PROJECT GRID ──────────────────────────────── */}
       <div className="relative overflow-hidden">
-        {/* Fade bottom edge into the footer's purple so it doesn't cut hard */}
-        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-b from-transparent to-[#4D297D] pointer-events-none z-20" />
       <div className="container-custom py-12 md:py-16">
         <AnimatePresence mode="popLayout">
           <motion.div
@@ -421,7 +417,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Details panel — no overflow on mobile (parent scrolls); lg gets its own scroll */}
-                <div className="w-full lg:w-80 xl:w-96 bg-[#0a0f1e] border-t border-white/8 lg:border-t-0 lg:border-s lg:border-white/10 shrink-0 lg:overflow-y-auto"
+                <div className="w-full lg:w-80 xl:w-96 bg-brand-gradient border-t border-white/8 lg:border-t-0 lg:border-s lg:border-white/10 shrink-0 lg:overflow-y-auto"
                   style={{ WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
                 >
                   <div className="p-5 md:p-6 space-y-5">
@@ -544,7 +540,7 @@ export default function ProjectsPage() {
                     <Link
                       href={`/${locale}/projects/${selectedProject.id}`}
                       onClick={closeModal}
-                      className="flex items-center justify-center gap-2 w-full bg-accent hover:bg-[#00988a] text-white font-bold py-3 rounded-xl text-sm transition-all duration-200 hover:shadow-lg"
+                      className="flex items-center justify-center gap-2 w-full bg-white hover:bg-[#f0f0f0] text-[#002060] font-bold py-3 rounded-xl text-sm transition-all duration-200 hover:shadow-lg"
                     >
                       Full Project Details
                       <HiArrowRight className="w-4 h-4" />
