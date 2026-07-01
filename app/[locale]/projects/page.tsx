@@ -119,7 +119,7 @@ export default function ProjectsPage() {
             >
               {tp('header.title')}
             </h1>
-            <p className="text-white/85 text-sm md:text-base max-w-xl">{tp('header.subtitle')}</p>
+            <p className="text-white text-sm md:text-base max-w-xl">{tp('header.subtitle')}</p>
           </motion.div>
 
           {/* General Notes */}
@@ -133,7 +133,7 @@ export default function ProjectsPage() {
               {locale === 'ar' ? 'ملاحظات عامة' : locale === 'ur' ? 'عمومی نوٹس' : 'General Notes'}
             </span>
             <div className="h-px bg-white/10 hidden sm:block w-4 shrink-0" />
-            <div className="flex flex-col gap-2 text-white/85 text-xs leading-relaxed">
+            <div className="flex flex-col gap-2 text-white text-xs leading-relaxed">
               {(locale === 'ar'
                 ? ['لكل مشروع نطاق أعمال خاص وفق متطلبات العميل.', 'تم تنفيذ المشاريع بنظام المقاول الرئيسي والمقاول الفرعي.', 'جميع وثائق المشاريع متوفرة في قاعدة بياناتنا وتُقدَّم عند الطلب.']
                 : locale === 'ur'
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
                 <div className="text-2xl md:text-3xl font-extrabold text-accent leading-none mb-1">
                   {s.value}{s.suffix}
                 </div>
-                <div className="text-white/85 text-[9px] sm:text-[10px] leading-tight mt-1 font-medium">{statLabels[i]}</div>
+                <div className="text-white text-[9px] sm:text-[10px] leading-tight mt-1 font-medium">{statLabels[i]}</div>
               </div>
             ))}
           </motion.div>
@@ -424,7 +424,7 @@ export default function ProjectsPage() {
 
                     {/* Role badge + description — most prominent fact */}
                     <div className="bg-white/5 rounded-xl p-4 border border-white/8">
-                      <div className="flex items-center gap-2 text-white/70 text-[10px] font-bold tracking-wider uppercase mb-3">
+                      <div className="flex items-center gap-2 text-white text-[10px] font-bold tracking-wider uppercase mb-3">
                         <HiBriefcase className="w-3.5 h-3.5 shrink-0" />
                         {tpd('contractorRole')}
                       </div>
@@ -436,13 +436,13 @@ export default function ProjectsPage() {
                           size="sm"
                         />
                       </div>
-                      <p className="text-white/85 text-[12px] leading-relaxed mt-2">{roleDesc}</p>
+                      <p className="text-white text-[12px] leading-relaxed mt-2">{roleDesc}</p>
                     </div>
 
                     {/* Key figures */}
                     <div className="grid grid-cols-2 gap-3">
                       <div className="bg-white/5 rounded-xl p-4">
-                        <div className="flex items-center gap-1.5 text-white/70 text-[10px] font-bold tracking-wider uppercase mb-2">
+                        <div className="flex items-center gap-1.5 text-white text-[10px] font-bold tracking-wider uppercase mb-2">
                           <HiCurrencyDollar className="w-3.5 h-3.5" />
                           {tp('contractValue')}
                         </div>
@@ -451,7 +451,7 @@ export default function ProjectsPage() {
                         </div>
                       </div>
                       <div className="bg-white/5 rounded-xl p-4">
-                        <div className="flex items-center gap-1.5 text-white/70 text-[10px] font-bold tracking-wider uppercase mb-2">
+                        <div className="flex items-center gap-1.5 text-white text-[10px] font-bold tracking-wider uppercase mb-2">
                           <HiClock className="w-3.5 h-3.5" />
                           {tp('duration')}
                         </div>
@@ -464,7 +464,7 @@ export default function ProjectsPage() {
                     {/* Contract breakdown — multi-package projects */}
                     {breakdown && breakdown.length > 0 && (
                       <div className="space-y-2">
-                        <div className="text-white/70 text-[10px] font-bold tracking-wider uppercase mb-1">
+                        <div className="text-white text-[10px] font-bold tracking-wider uppercase mb-1">
                           Contract Breakdown
                         </div>
                         {breakdown.map((pkg, i) => {
@@ -474,8 +474,8 @@ export default function ProjectsPage() {
                             <div key={i} className="flex items-start gap-2.5 bg-white/5 border border-white/8 rounded-xl px-3 py-2.5">
                               <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                               <div className="flex-1 min-w-0">
-                                <div className="text-white/90 text-[12px] font-bold leading-snug">{pkg.label}</div>
-                                <div className="text-white/70 text-[10px] mt-0.5">{pkg.sublabel}</div>
+                                <div className="text-white text-[12px] font-bold leading-snug">{pkg.label}</div>
+                                <div className="text-white text-[10px] mt-0.5">{pkg.sublabel}</div>
                               </div>
                               <div className="text-accent font-extrabold text-[13px] shrink-0 ms-1">SAR {pkgVal}M</div>
                             </div>
@@ -485,7 +485,7 @@ export default function ProjectsPage() {
                     )}
 
                     <div className="bg-white/5 rounded-xl p-4">
-                      <div className="flex items-center gap-1.5 text-white/70 text-[10px] font-bold tracking-wider uppercase mb-2">
+                      <div className="flex items-center gap-1.5 text-white text-[10px] font-bold tracking-wider uppercase mb-2">
                         <HiLocationMarker className="w-3.5 h-3.5" />
                         {tp('location')}
                       </div>
@@ -494,18 +494,18 @@ export default function ProjectsPage() {
 
                     {/* Description */}
                     <div>
-                      <p className="text-white/85 text-[13px] leading-relaxed">{desc}</p>
+                      <p className="text-white text-[13px] leading-relaxed">{desc}</p>
                     </div>
 
                     {/* Scope */}
                     <div>
-                      <div className="flex items-center gap-2 text-white/70 text-[10px] font-bold tracking-wider uppercase mb-3">
+                      <div className="flex items-center gap-2 text-white text-[10px] font-bold tracking-wider uppercase mb-3">
                         <HiClipboardList className="w-3.5 h-3.5" />
                         {tp('scope')}
                       </div>
                       <ul className="space-y-2">
                         {scopeRaw.map((item: string, idx: number) => (
-                          <li key={idx} className="flex items-start gap-2.5 text-white/85 text-[13px]">
+                          <li key={idx} className="flex items-start gap-2.5 text-white text-[13px]">
                             <span className="w-1.5 h-1.5 bg-accent rounded-full mt-1.5 shrink-0" />
                             {item}
                           </li>
@@ -516,7 +516,7 @@ export default function ProjectsPage() {
                     {/* Thumbnail strip */}
                     {selectedProject.images.length > 1 && (
                       <div>
-                        <div className="text-white/70 text-[10px] font-bold tracking-wider uppercase mb-3">
+                        <div className="text-white text-[10px] font-bold tracking-wider uppercase mb-3">
                           {tpd('allPhotos')}
                         </div>
                         <div className="flex gap-2 flex-wrap">

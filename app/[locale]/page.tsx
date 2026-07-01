@@ -110,7 +110,7 @@ export default function HomePage() {
 
           <motion.div
             {...anim(0.05)}
-            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white/85 text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full uppercase mb-8 sm:mb-10"
+            className="inline-flex items-center gap-2 border border-white/20 bg-white/5 backdrop-blur-sm text-white text-[9px] sm:text-[10px] font-bold px-4 sm:px-5 py-2 rounded-full uppercase mb-8 sm:mb-10"
           >
             <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
             {t('badge')}
@@ -150,7 +150,7 @@ export default function HomePage() {
                 <div className="text-xl sm:text-2xl md:text-3xl font-extrabold text-accent mb-1 group-hover:scale-105 transition-transform duration-200">
                   {s.val}
                 </div>
-                <div className="text-white/90 font-medium text-[9px] sm:text-[10px] leading-tight mt-0.5">
+                <div className="text-white font-medium text-[9px] sm:text-[10px] leading-tight mt-0.5">
                   {s.label}
                 </div>
               </div>
@@ -167,7 +167,7 @@ export default function HomePage() {
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <HiChevronDown className="w-5 h-5 text-white/25" />
+              <HiChevronDown className="w-5 h-5 text-white" />
             </motion.div>
           </motion.div>
 
@@ -176,7 +176,7 @@ export default function HomePage() {
             className="absolute bottom-8 end-8 hidden xl:flex items-center gap-4"
           >
             {certifications.map((c) => (
-              <span key={c} className="text-white/70 text-[9px] font-bold">{c}</span>
+              <span key={c} className="text-white text-[9px] font-bold">{c}</span>
             ))}
           </motion.div>
         </div>
@@ -324,7 +324,7 @@ export default function HomePage() {
                 <div className="stat-value text-white mb-2">
                   {s.value}{s.suffix}
                 </div>
-                <div className="text-white/90 font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
+                <div className="text-white font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
                   {statLabels[i]}
                 </div>
               </motion.div>
@@ -342,7 +342,7 @@ export default function HomePage() {
           >
             <span className="section-label mx-auto">{tcl('label')}</span>
             <h2 className="section-title-white">{tcl('title')}</h2>
-            <p className="text-white/85 text-base leading-relaxed max-w-lg mx-auto">{tcl('body')}</p>
+            <p className="text-white text-base leading-relaxed max-w-lg mx-auto">{tcl('body')}</p>
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto">
@@ -385,7 +385,7 @@ export default function HomePage() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-8 sm:mt-10 text-center"
           >
-            <span className="inline-flex items-center gap-2 border border-white/12 text-white/80 text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
+            <span className="inline-flex items-center gap-2 border border-white/12 text-white text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
               <span className="w-1.5 h-1.5 bg-accent rounded-full" />
               {tcl('footnote')}
             </span>
@@ -421,7 +421,7 @@ export default function HomePage() {
                   <div className="absolute top-5 start-6 w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center">
                     <span className="text-accent text-[10px] font-extrabold">{String(i + 1).padStart(2, '0')}</span>
                   </div>
-                  <p className="text-white/90 text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white transition-colors duration-300">
+                  <p className="text-white text-sm sm:text-base leading-relaxed pt-8 sm:pt-9 group-hover:text-white transition-colors duration-300">
                     {note}
                   </p>
                 </motion.div>
@@ -453,7 +453,7 @@ export default function HomePage() {
             >
               <span className="section-label">{tc('homeLabel')}</span>
               <h2 className="section-title-white mb-4">{tc('title')}</h2>
-              <p className="text-white/85 text-base mb-8 leading-relaxed">{tc('body')}</p>
+              <p className="text-white text-base mb-8 leading-relaxed">{tc('body')}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href={`/${locale}/contact`} className="btn-accent">
                   {tc('ctaButton')} <Arrow className="w-4 h-4" />

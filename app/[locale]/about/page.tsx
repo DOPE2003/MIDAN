@@ -57,7 +57,7 @@ export default function AboutPage() {
             <h1 className="text-[clamp(2.2rem,5vw,3.8rem)] font-extrabold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
               {t('header.title')}
             </h1>
-            <p className="text-white/85 text-base leading-relaxed">{t('header.subtitle')}</p>
+            <p className="text-white text-base leading-relaxed">{t('header.subtitle')}</p>
           </motion.div>
         </div>
       </div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="bg-primary rounded-2xl p-8 text-white">
                 <div className="flex items-end gap-3 mb-6">
                   <div className="text-[5rem] font-extrabold leading-none text-accent">{tAbout('yearsVal')}</div>
-                  <div className="text-white/85 text-sm font-semibold tracking-widest uppercase pb-3">{tAbout('yearsLabel')}</div>
+                  <div className="text-white text-sm font-semibold tracking-widest uppercase pb-3">{tAbout('yearsLabel')}</div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-5 mb-8">
@@ -105,7 +105,7 @@ export default function AboutPage() {
                     { label: tAbout('certsLabel'),     value: tAbout('certsValue') },
                   ].map((row) => (
                     <div key={row.label}>
-                      <div className="text-white/70 text-[9px] font-bold tracking-widest uppercase mb-1">{row.label}</div>
+                      <div className="text-white text-[9px] font-bold tracking-widest uppercase mb-1">{row.label}</div>
                       <div className="text-white font-semibold text-sm">{row.value}</div>
                     </div>
                   ))}
@@ -113,7 +113,7 @@ export default function AboutPage() {
 
                 <div className="border-t border-white/15 pt-6 flex flex-wrap gap-2">
                   {certifications.map((c) => (
-                    <span key={c} className="bg-white/10 text-white/90 text-[10px] font-bold px-3 py-1 rounded-full tracking-wide">
+                    <span key={c} className="bg-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wide">
                       {c}
                     </span>
                   ))}
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   <div className="relative z-10 w-3 h-3 bg-accent rounded-full mx-auto mb-5 ring-4 ring-accent/20" />
 
                   <div className="text-accent text-xl font-extrabold mb-2">{m.year}</div>
-                  <p className="text-white/85 text-[12px] leading-snug">{m.event}</p>
+                  <p className="text-white text-[12px] leading-snug">{m.event}</p>
                 </motion.div>
               ))}
             </div>
@@ -227,7 +227,7 @@ export default function AboutPage() {
                   </div>
                   <div className="bg-primary rounded-2xl p-5 text-white text-center">
                     <div className="text-3xl font-extrabold text-accent">{t('totalManpower')}</div>
-                    <div className="text-white/85 text-xs font-semibold mt-1">{t('totalLabel')}</div>
+                    <div className="text-white text-xs font-semibold mt-1">{t('totalLabel')}</div>
                   </div>
                 </div>
               </div>

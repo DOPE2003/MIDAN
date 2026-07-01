@@ -44,7 +44,7 @@ export default function EquipmentPage() {
             <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-white leading-[1.1] mb-4 tracking-[-0.02em]">
               {t('header.title')}
             </h1>
-            <p className="text-white/85 text-sm md:text-base leading-relaxed">{t('header.subtitle')}</p>
+            <p className="text-white text-sm md:text-base leading-relaxed">{t('header.subtitle')}</p>
           </motion.div>
 
           {/* Grand total strip */}
@@ -56,17 +56,17 @@ export default function EquipmentPage() {
           >
             <div className="text-center">
               <div className="text-accent text-3xl md:text-4xl font-extrabold">{grandTotal}+</div>
-              <div className="text-white/85 text-xs font-semibold tracking-wide mt-1">{t('statsTotal')}</div>
+              <div className="text-white text-xs font-semibold tracking-wide mt-1">{t('statsTotal')}</div>
             </div>
             <div className="w-px bg-white/10 self-stretch hidden sm:block" />
             <div className="text-center">
               <div className="text-accent text-3xl md:text-4xl font-extrabold">{equipment.length}</div>
-              <div className="text-white/85 text-xs font-semibold tracking-wide mt-1">{t('statsCategories')}</div>
+              <div className="text-white text-xs font-semibold tracking-wide mt-1">{t('statsCategories')}</div>
             </div>
             <div className="w-px bg-white/10 self-stretch hidden sm:block" />
             <div className="text-center">
               <div className="text-accent text-3xl md:text-4xl font-extrabold">8+</div>
-              <div className="text-white/85 text-xs font-semibold tracking-wide mt-1">{t('statsBrands')}</div>
+              <div className="text-white text-xs font-semibold tracking-wide mt-1">{t('statsBrands')}</div>
             </div>
           </motion.div>
         </div>
@@ -102,7 +102,7 @@ export default function EquipmentPage() {
                 <h3 className="text-white font-extrabold text-base md:text-lg leading-snug mb-1">
                   {categories[cat.categoryIndex]}
                 </h3>
-                <div className="text-white/75 text-[11px] font-medium">
+                <div className="text-white text-[11px] font-medium">
                   {cat.items.length} {t('itemsLabel')}
                 </div>
               </div>
@@ -115,11 +115,11 @@ export default function EquipmentPage() {
                 {cat.items.map((item, j) => (
                   <div key={j} className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
-                      <div className="text-white/90 text-[13px] font-semibold truncate">
+                      <div className="text-white text-[13px] font-semibold truncate">
                         {itemNames[item.nameIndex]}
                       </div>
                       {item.brand && item.model !== '—' && (
-                        <div className="text-white/70 text-[11px] truncate">
+                        <div className="text-white text-[11px] truncate">
                           {item.brand} {item.model}
                         </div>
                       )}
@@ -136,7 +136,7 @@ export default function EquipmentPage() {
 
               {/* Bottom total bar */}
               <div className="mx-6 mb-6 mt-2 pt-4 border-t border-white/10 flex items-center justify-between">
-                <span className="text-white/70 text-[10px] font-bold tracking-wider uppercase">{t('totalLabel')}</span>
+                <span className="text-white text-[10px] font-bold tracking-wider uppercase">{t('totalLabel')}</span>
                 <span className="font-extrabold text-base" style={{ color: categoryColors[i].accent }}>
                   {totals[i]}
                 </span>

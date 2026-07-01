@@ -94,7 +94,7 @@ export default function ContactPage() {
             >
               {t('header.title')}
             </h1>
-            <p className="text-white/85 text-[15px] leading-relaxed max-w-lg">{t('header.subtitle')}</p>
+            <p className="text-white text-[15px] leading-relaxed max-w-lg">{t('header.subtitle')}</p>
           </motion.div>
         </div>
       </div>

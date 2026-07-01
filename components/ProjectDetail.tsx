@@ -174,12 +174,12 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="relative z-10 container-custom pt-28 md:pt-32"
         >
-          <nav className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide text-white/75">
+          <nav className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wide text-white">
             <Link href={`/${locale}`} className="hover:text-white transition-colors">{homeLabel}</Link>
-            <span className="text-white/30">/</span>
+            <span className="text-white">/</span>
             <Link href={`/${locale}/projects`} className="hover:text-white transition-colors">{projLabel}</Link>
-            <span className="text-white/30">/</span>
-            <span className="text-white/90 truncate max-w-[220px]">{data.title}</span>
+            <span className="text-white">/</span>
+            <span className="text-white truncate max-w-[220px]">{data.title}</span>
           </nav>
         </motion.div>
 
@@ -202,11 +202,11 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                 variant="dark"
                 size="sm"
               />
-              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-white/85">
+              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-white/8 border border-white/15 text-white">
                 {project.year}
               </span>
               {project.featured && (
-                <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/40 border border-primary/50 text-white/90">
+                <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/40 border border-primary/50 text-white">
                   {featuredLabel}
                 </span>
               )}
@@ -221,7 +221,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             </h1>
 
             {/* Role description — one-line credential under title */}
-            <p className="text-white/80 text-sm mb-7 max-w-xl font-medium leading-snug">
+            <p className="text-white text-sm mb-7 max-w-xl font-medium leading-snug">
               {data.roleDesc}
             </p>
 
@@ -236,7 +236,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                 <div key={i} className="flex items-start gap-3">
                   {i > 0 && <div className="w-px h-10 bg-white/12 self-stretch hidden sm:block" />}
                   <div>
-                    <div className="text-white/65 text-[9px] font-bold tracking-widest uppercase mb-1">{label}</div>
+                    <div className="text-white text-[9px] font-bold tracking-widest uppercase mb-1">{label}</div>
                     <div className={`font-semibold text-sm md:text-base ${accent ? 'text-accent font-extrabold text-xl md:text-2xl leading-none' : 'text-white'}`}>
                       {value}
                     </div>
@@ -277,8 +277,8 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
               { label: tp('contractorRole'), value: data.role                   },
             ].map(({ label, value, accent }) => (
               <div key={label} className="px-5 py-4 shrink-0">
-                <div className="text-[9px] font-bold text-white/65 tracking-widest uppercase mb-1">{label}</div>
-                <div className={`font-bold text-[13px] ${accent ? 'text-accent' : 'text-white/90'}`}>{value}</div>
+                <div className="text-[9px] font-bold text-white tracking-widest uppercase mb-1">{label}</div>
+                <div className={`font-bold text-[13px] ${accent ? 'text-accent' : 'text-white'}`}>{value}</div>
               </div>
             ))}
           </div>
@@ -480,7 +480,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
 
               {/* Contract value card */}
               <div className="bg-[#001f5b] rounded-2xl p-5">
-                <div className="text-white/80 text-[9px] font-bold tracking-widest uppercase mb-1.5">
+                <div className="text-white text-[9px] font-bold tracking-widest uppercase mb-1.5">
                   {tp('contractValue')}
                 </div>
                 <div className="text-accent font-extrabold text-[2rem] leading-none mb-3">{sarValue}</div>
@@ -495,8 +495,8 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                         <div key={i} className="flex items-start gap-2.5 bg-white/6 rounded-xl px-3 py-2.5 border border-white/8">
                           <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                           <div className="min-w-0">
-                            <div className="text-white/90 text-[12px] font-bold leading-tight">{pkg.label}</div>
-                            <div className="text-white/70 text-[10px] mt-0.5">{pkg.sublabel}</div>
+                            <div className="text-white text-[12px] font-bold leading-tight">{pkg.label}</div>
+                            <div className="text-white text-[10px] mt-0.5">{pkg.sublabel}</div>
                           </div>
                           <div className="ms-auto text-accent font-extrabold text-[13px] shrink-0">SAR {pkgVal}M</div>
                         </div>
@@ -505,7 +505,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                   </div>
                 )}
 
-                <div className="text-white/70 text-[11px] pt-3 border-t border-white/8">
+                <div className="text-white text-[11px] pt-3 border-t border-white/8">
                   {project.year} · {data.duration}
                 </div>
               </div>
@@ -598,7 +598,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
               </div>
               <Link
                 href={`/${locale}/projects`}
-                className="hidden sm:flex items-center gap-2 text-white/75 hover:text-accent text-sm font-semibold transition-colors group"
+                className="hidden sm:flex items-center gap-2 text-white hover:text-accent text-sm font-semibold transition-colors group"
               >
                 {allProjLabel}
                 {isRTL
@@ -631,7 +631,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#040a18]/85 via-[#040a18]/15 to-transparent" />
                         <div className="absolute top-3 start-3 flex items-center gap-1.5">
-                          <span className="bg-black/50 backdrop-blur-sm border border-white/12 text-white/90 text-[10px] font-bold px-2.5 py-1 rounded-full">
+                          <span className="bg-black/50 backdrop-blur-sm border border-white/12 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                             {rpCat}
                           </span>
                           <RoleBadge role={rp.projectRole} label={rpData.role} variant="dark" size="xs" />
@@ -640,7 +640,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                           <span className="text-accent font-extrabold text-[15px]">
                             SAR {(() => { const m = rp.value / 1_000_000; return m % 1 === 0 ? m.toFixed(0) : m.toFixed(2) })()}M
                           </span>
-                          <span className="text-white/0 group-hover:text-white/60 transition-colors duration-300 text-[11px] font-bold flex items-center gap-1">
+                          <span className="text-white/0 group-hover:text-white transition-colors duration-300 text-[11px] font-bold flex items-center gap-1">
                             {tp('viewProject')}
                             {isRTL
                               ? <HiArrowLeft className="w-3 h-3" />
@@ -652,7 +652,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
                       <h3 className="text-white font-extrabold text-[15px] leading-snug group-hover:text-accent transition-colors duration-200 mb-1.5 line-clamp-2">
                         {rpData.title}
                       </h3>
-                      <div className="flex items-center gap-1.5 text-white/75 text-xs font-medium">
+                      <div className="flex items-center gap-1.5 text-white text-xs font-medium">
                         <HiLocationMarker className="w-3.5 h-3.5 text-accent/50 shrink-0" />
                         {rpData.location}
                       </div>
@@ -684,7 +684,7 @@ export default function ProjectDetail({ projectId }: { projectId: string }) {
             >
               <div className="flex items-center gap-3 min-w-0">
                 <span className="text-white font-extrabold text-sm truncate">{data.title}</span>
-                <span className="text-white/70 text-xs shrink-0">{lightboxIndex + 1} / {project.images.length}</span>
+                <span className="text-white text-xs shrink-0">{lightboxIndex + 1} / {project.images.length}</span>
               </div>
               <button
                 onClick={closeLightbox}

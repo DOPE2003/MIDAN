@@ -36,7 +36,7 @@ export default function ClientsPage() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-2 mb-3 leading-tight">
             {t('title')}
           </h1>
-          <p className="text-white/85 text-sm max-w-md mx-auto">{t('body')}</p>
+          <p className="text-white text-sm max-w-md mx-auto">{t('body')}</p>
         </motion.div>
 
         {/* Client grid */}
@@ -80,7 +80,7 @@ export default function ClientsPage() {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.65 }}
           className="flex justify-center"
         >
-          <span className="inline-flex items-center gap-2 border border-white/12 text-white/80 text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
+          <span className="inline-flex items-center gap-2 border border-white/12 text-white text-xs font-semibold px-5 py-2.5 rounded-full bg-white/4">
             <span className="w-1.5 h-1.5 bg-accent rounded-full" />
             {t('footnote')}
           </span>

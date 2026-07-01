@@ -35,7 +35,7 @@ export default function ServicesPage() {
             <h1 className="text-[clamp(1.75rem,5vw,3.5rem)] font-extrabold text-white leading-[1.15] mb-3 sm:mb-4" style={{ letterSpacing: isRTL ? '0' : '-0.02em' }}>
               {tp('header.title')}
             </h1>
-            <p className="text-white/85 text-sm md:text-base leading-relaxed">
+            <p className="text-white text-sm md:text-base leading-relaxed">
               {tp('header.subtitle')}
             </p>
           </motion.div>
