@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { equipment } from '@/lib/data'
 
-const categoryIcons = ['⛏', '🏗', '🪣', '🛣', '⚡']
 const categoryColors = [
   { bg: 'from-[#002060] to-[#001540]', accent: '#00B09B' },
   { bg: 'from-[#1a0a3d] to-[#0f0625]', accent: '#9d60ce' },
@@ -74,7 +73,7 @@ export default function EquipmentPage() {
 
       {/* ── EQUIPMENT CATEGORIES ──────────────────────── */}
       <div className="relative overflow-hidden">
-      <div className="container-custom pb-20 md:pb-28 min-h-[70vh] flex flex-col justify-center">
+      <div className="container-custom pt-12 sm:pt-16 pb-20 md:pb-28 min-h-[70vh] flex flex-col justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
           {equipment.map((cat, i) => (
             <motion.div
@@ -88,7 +87,12 @@ export default function EquipmentPage() {
               {/* Header */}
               <div className="p-6 pb-4">
                 <div className="flex items-start justify-between mb-5">
-                  <div className="text-3xl">{categoryIcons[i]}</div>
+                  <div
+                    className="w-9 h-9 rounded-full border-2 flex items-center justify-center text-[11px] font-extrabold shrink-0"
+                    style={{ borderColor: categoryColors[i].accent, color: categoryColors[i].accent }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
                   <div className="text-end">
                     <div className="text-4xl md:text-5xl font-extrabold text-white leading-none">
                       {totals[i]}
