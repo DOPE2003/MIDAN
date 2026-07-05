@@ -321,7 +321,7 @@ export default function HomePage() {
                 transition={{ delay: i * 0.08, duration: 0.6 }}
                 className="text-center"
               >
-                <div className="stat-value text-white mb-2">
+                <div className="stat-value text-accent mb-2">
                   {s.value}{s.suffix}
                 </div>
                 <div className="text-white font-medium text-[11px] sm:text-xs leading-tight max-w-[7rem] mx-auto">
